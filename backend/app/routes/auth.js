@@ -13,8 +13,4 @@ router.get('/feedback', feedback.findAll);
 
 router.get('/feedback/:Id', feedback.findOne);
 
-
-//category
-router.post('/category', feedback.findAll);
-
 module.exports = router;
