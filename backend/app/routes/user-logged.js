@@ -5,7 +5,7 @@ router.get("/", (req, res) => {
     res.json({
         error: null,
         data: {
-            title: "My dashboard",
+            title: "User dashboard",
             content: "dashboard content",
             user: req.user,
         },
