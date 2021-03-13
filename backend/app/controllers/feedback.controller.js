@@ -8,7 +8,6 @@ exports.create = (req, res) => {
         user: req.user.id,
         feedback: req.body.feedback
     });
-
     feedback.save()
         .then(data => {
             Feedback.populate(feedback, {path: "user"})
