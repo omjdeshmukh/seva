@@ -4,9 +4,11 @@ const cors = require('cors');
 const connectDB = require("./app/config/database");
 const bodyParser = require('body-parser');
 const dotenv = require("dotenv");
-const verifyToken = require("./app/middleware/validate-token");
+const verifyTokenUser = require("./app/middleware/token-check-user");
+const checkprovider = require("./app/middleware/token-check-provider");
 const authRoutes = require("./app/routes/auth.js");
 const userRoutes = require("./app/routes/user-logged");
+const providerRoutes = require("./app/routes/provider-logged");
 
 const port = 5000
 
@@ -30,7 +32,8 @@ app.use("/", authRoutes);
 
 // admin route only logged in user can access
 // this route is protected with token
-app.use("/user", verifyToken, userRoutes);
+app.use("/user", verifyTokenUser, userRoutes);
+app.use("/provider", checkprovider, providerRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
