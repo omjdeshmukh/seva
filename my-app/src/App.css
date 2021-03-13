@@ -1,3 +1,18 @@
+@font-face {
+  font-family: hindLight;
+  src: url("./FontHind/Hind-Light.ttf");
+}
+
+@font-face {
+  font-family: hindRegular;
+  src: url("./FontHind/Hind-Regular.ttf");
+}
+
+@font-face {
+  font-family: hindMedium;
+  src: url("./FontHind/Hind-Medium.ttf");
+}
+
 .App {
   text-align: center;
 }
@@ -31,9 +46,9 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(10px)
+    transform: translateY(10px);
   }
   100% {
-    transform: translateY(0px)
+    transform: translateY(0px);
   }
 }
