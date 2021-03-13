@@ -14,6 +14,10 @@ var serviceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    serviceEmail: {
+        type: String,
+        required: true
+    },
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'category',
@@ -23,7 +27,7 @@ var serviceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    location: {
+    map_location: {
         type: String,
         required: true
     },
