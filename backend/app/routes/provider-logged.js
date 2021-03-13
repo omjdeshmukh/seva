@@ -1,5 +1,5 @@
 const router = require("express").Router();
-
+const service = require('../controllers/service.controller');
 
 router.get("/", (req, res) => {
     res.json({
@@ -12,6 +12,15 @@ router.get("/", (req, res) => {
     });
 });
 
+ router.post('/service', service.create);
+
+router.put('/service/:Id', service.update);
+
+router.delete('/service/:Id', service.delete);
+
+router.get('/service', service.findAll);
+
+router.get('/service/:Id', service.findOne);
 
 
 module.exports = router;
