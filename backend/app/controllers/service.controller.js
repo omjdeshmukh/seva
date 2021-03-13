@@ -1,0 +1,137 @@
+const Service = require('../model/service.model');
+const User = require('../model/user.model');
+const { valid } = require('@hapi/joi');
+
+exports.create = (req, res) => {
+
+    // creat a notes
+    const service = new Service({
+        user: req.user.id,
+        image: req.body.image,
+        serviceNames: req.body.serviceNames,
+        serviceEmail: req.body.serviceEmail,
+        category: req.body.category,
+        contactNo: req.body.contactNo,
+        map_location: req.body.map_location,
+        description: req.body.description
+    });
+    service.save()
+        .then(data => {
+            Service.populate(service, {path: "user"})
+            Service.populate(service, {path: "category"})
+            .then(Service => {
+                res.json({
+                    message: "service added",
+                    Service
+                 });
+            })
+            //res.send(service);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
+
+
+exports.findAll = (req, res) => {
+
+    Service.find()
+        .populate("user") 
+        .populate("category") 
+        .then(service => {
+            res.send(service);
+            //console.log(feedback);
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
+
+exports.findOne = (req, res) => {
+    Service.findById(req.params.Id)
+        .populate("user")
+        .populate("category") 
+        .then(service => {
+            if (!service) {
+                return res.status(404).send({
+                    message: "feedback not found with id " + req.params.Id
+                });
+            }
+            res.send(service);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "service not found with id " + req.params.Id
+                });
+            }
+            return res.status(500).send({
+                message: "Error retrieving service with id " + req.params.Id
+            });
+        });
+};
+
+exports.update = (req, res) => {
+    // Validate Request
+    if (!req.body.serviceNames) {
+        return res.status(400).send({
+            message: "service content can not be empty"
+        });
+    }
+
+    // Find note and update it with the request body
+    Service.findByIdAndUpdate(req.params.Id, {
+        user: req.user.id,
+        image: req.body.image,
+        serviceNames: req.body.serviceNames,
+        serviceEmail: req.body.serviceEmail,
+        category: req.body.category,
+        contactNo: req.body.contactNo,
+        map_location: req.body.map_location,
+        description: req.body.description
+        }, { new: true })
+        .populate("user")
+        .populate("category") 
+        .then(service => {
+            if (!service) {
+                return res.status(404).send({
+                    message: "service not found with id " + req.params.Id
+                });
+            }
+            res.send(service);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "service not found with id " + req.params.Id
+                });
+            }
+            return res.status(500).send({
+                message: "Error updating service with id " + req.params.Id
+            });
+        });
+};
+
+exports.delete = (req, res) => {
+    Service.findByIdAndRemove(req.params.Id)
+        .then(service => {
+            if (!service) {
+                return res.status(404).send({
+                    message: "service not found with id " + req.params.Id
+                });
+            }
+            res.send({ message: "service deleted successfully!" });
+        }).catch(err => {
+            if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+                return res.status(404).send({
+                    message: "service not found with id " + req.params.Id
+                });
+            }
+            return res.status(500).send({
+                message: "Could not delete service with id " + req.params.Id
+            });
+        });
+};
