@@ -9,6 +9,7 @@ const checkprovider = require("./app/middleware/token-check-provider");
 const authRoutes = require("./app/routes/auth.js");
 const userRoutes = require("./app/routes/user-logged");
 const providerRoutes = require("./app/routes/provider-logged");
+const adminRoutes = require("./app/routes/admin");
 
 const port = 5000
 
@@ -29,6 +30,8 @@ app.get('/', (req, res) => {
 // public route anyone can access 
 // route middlewares
 app.use("/", authRoutes);
+
+app.use("/admin", adminRoutes);
 
 // admin route only logged in user can access
 // this route is protected with token
