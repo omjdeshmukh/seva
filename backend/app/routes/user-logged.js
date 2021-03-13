@@ -20,9 +20,9 @@ router.put('/feedback/:Id', feedback.update);
 
 router.delete('/feedback/:Id', feedback.delete);
 
-router.get('/feedback', feedback.findAll);
+// router.get('/feedback', feedback.findAll);
 
-router.get('/feedback/:Id', feedback.findOne);
+// router.get('/feedback/:Id', feedback.findOne);
 
 
 module.exports = router;

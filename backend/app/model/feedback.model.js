@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
-var userSchema = new mongoose.Schema({
+var feedbackSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
+        required: true
     },
     feedback: {
         type: String,
@@ -11,4 +12,4 @@ var userSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('feedback', userSchema);
+module.exports = mongoose.model('feedback', feedbackSchema);
