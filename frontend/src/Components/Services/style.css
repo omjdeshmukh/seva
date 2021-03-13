@@ -1,0 +1,45 @@
+.card-container{
+    align-items: center;
+
+}
+
+.sl-col{
+    height: 150px;
+    width: 150px;
+    background-color: rgba(255, 235, 205, 0.255);
+    margin: 10px;
+    float: left;
+}
+
+/* FontAwesome for working BootSnippet :> */
+
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+#team {
+    background: #eee !important;
+}
+
+
+
+section {
+    padding: 60px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+#team .card {
+    border: none;
+    background: #ffffff;
+}
+
+
+
+.card .card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
