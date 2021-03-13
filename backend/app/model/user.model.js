@@ -21,13 +21,29 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    location:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'location',
-    },
+    // location:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'location',
+    // },
     role: {
         type: String,
-        default: "user"
+        required: true
+    },
+    state: {
+        type: String,
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    village: {
+        type: String,
+        required: true
+    },
+    pincode: {
+        type: String,
+        required: true
     },
     createdAt: {
         type: Date,

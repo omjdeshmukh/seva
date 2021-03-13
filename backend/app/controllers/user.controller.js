@@ -28,6 +28,11 @@ exports.register = async(req, res) => {
         userName: req.body.userName,
         fullName: req.body.fullName,
         email: req.body.email,
+        role: req.body.role,
+        state: req.body.state,
+        city: req.body.city,
+        village: req.body.village,
+        pincode: req.body.pincode,
         password,
     });
 
