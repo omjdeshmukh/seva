@@ -1,7 +1,10 @@
-* {
+:root {
   --main-color: #5ab9ea;
   --font-color: #393232;
   --secondary-color: #39afec;
+}
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
