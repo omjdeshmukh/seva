@@ -1,40 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Modal } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-import { Checkbox } from "@material-ui/core";
-import { FormControlLabel } from "@material-ui/core";
 import { Button } from "@material-ui/core";
+import PropTypes from "prop-types";
 
-function LoginModal({ open, handleClose }) {
+//Connecting to backend login api
+async function LoginUser(Credentials) {
+  console.log(Credentials);
+  return fetch("http://localhost:5000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(Credentials),
+  })
+    .then((data) => data.json())
+    .catch((err) => err.message);
+}
+
+function LoginModal({ open, handleClose, setToken }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmailChange = (event) => {
+    //  getting the Username or Email value
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    //  getting the Password value
+    setPassword(event.target.value);
+  };
+
+  const handleLoginSubmit = async (event) => {
+    event.preventDefault();
+    // getting back token session key on submit
+    const token = await LoginUser({
+      email,
+      password,
+    });
+    setToken(token);
+  };
+
   const LoginForm = (
     <FormContainer>
-      <form action="" onSubmit="">
-        {/* Choose User Or Proider */}
-        <Choose>
-          <FormControlLabel
-            label="User"
-            value="User"
-            control={<Checkbox color="primary" />}
-            inputProps={{ "aria-label": "User" }}
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            label="Provider"
-            value="Provider"
-            control={<Checkbox color="primary" />}
-            inputProps={{ "aria-label": "Provider" }}
-            labelPlacement="end"
-          />
-        </Choose>
+      <form action="" onSubmit={handleLoginSubmit}>
         {/* Username  */}
         <Username>
           <TextField
             id="outlined-text-input"
-            label="Username"
-            type="text"
+            label="Email"
+            type="email"
             autoComplete="off"
             variant="outlined"
+            value={email}
+            onChange={handleEmailChange}
           />
         </Username>
         {/* Password */}
@@ -45,9 +66,11 @@ function LoginModal({ open, handleClose }) {
             type="password"
             autoComplete="current-password"
             variant="outlined"
+            value={password}
+            onChange={handlePasswordChange}
           />
         </Password>
-        <Button onSubmit="">Log In</Button>
+        <Button type="submit">Log In</Button>
       </form>
     </FormContainer>
   );
@@ -66,11 +89,15 @@ function LoginModal({ open, handleClose }) {
   );
 }
 
+LoginUser.propTypes = {
+  setToken: PropTypes.func.isRequired,
+};
+
 export default LoginModal;
 
 const FormContainer = styled.div`
-  height: 80vh;
-  width: 50vh;
+  min-height: 80vh;
+  min-width: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,4 +139,3 @@ const Username = styled.div`
 const Password = styled.div`
   margin: 0.7rem 0;
 `;
-const Choose = styled.div``;

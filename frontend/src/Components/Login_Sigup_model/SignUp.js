@@ -1,19 +1,125 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Modal } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { FormLabel } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
-import { FormControl } from "@material-ui/core";
 import { InputLabel } from "@material-ui/core";
 import { Select } from "@material-ui/core";
+import { RadioGroup } from "@material-ui/core";
+import { FormControl } from "@material-ui/core";
+import { Radio } from "@material-ui/core";
+import { FormControlLabel } from "@material-ui/core";
+
+//Connecting to backend login api
+
+function Register(Credentials) {
+  return fetch("http://localhost:5000/register", {
+    method: "POST",
+    header: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(Credentials),
+  })
+    .then((data) => data.json())
+    .catch((err) => err.message);
+}
 
 function SignupModal({ open, handleClose }) {
+  const [role, setRole] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [city, setCity] = useState("");
+  const [password, setPassword] = useState("");
+  const [stateValue, setStateValue] = useState("");
+
+  const handleEmailChange = (event) => {
+    //  getting the Email
+    setEmail(event.target.value);
+  };
+
+  const handleUsernameChange = (event) => {
+    //  getting the Username
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    //  getting the Password value
+    setPassword(event.target.value);
+  };
+
+  const handleRadioChange = (event) => {
+    //  getting the radio value
+    setRole(event.target.value);
+  };
+
+  const handleCityChange = (event) => {
+    //  getting the radio value
+    setCity(event.target.value);
+  };
+
+  const handlePincodeChange = (event) => {
+    //  getting the radio value
+    setPincode(event.target.value);
+  };
+
+  const handleStateChange = (event) => {
+    //Getting state value
+    setStateValue(event.target.value);
+  };
+
+  const handleSignupSubmit = async (event) => {
+    event.preventDefault();
+    // Data send back to server
+    // getting back UserId on submit
+    const userId = await Register({
+      userName: username,
+      fullName: username,
+      email: email,
+      role: role,
+      state: stateValue,
+      city: city,
+      village: city,
+      pincode: pincode,
+      password: password,
+    });
+    console.log(userId);
+  };
+
   const LoginForm = (
     <FormContainer>
       <h3>Sign Up ({})</h3>
-      <form action="" onSubmit="">
+      <form action="" onSubmit={handleSignupSubmit}>
+        {/* Choose User Or Proider */}
+        <Choose>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Role</FormLabel>
+            <RadioGroup
+              aria-label="Role"
+              name="Role"
+              value={role}
+              onChange={handleRadioChange}
+            >
+              {/* User */}
+              <RadioContainer>
+                <FormControlLabel
+                  value="User"
+                  control={<Radio color="primary" />}
+                  label="User"
+                />
+                {/* Provider */}
+                <FormControlLabel
+                  value="Provider"
+                  control={<Radio color="primary" />}
+                  label="Provider"
+                />
+              </RadioContainer>
+            </RadioGroup>
+          </FormControl>
+        </Choose>
+        {/* Username */}
         <Username>
           <TextField
             id="outlined-text-input"
@@ -21,8 +127,10 @@ function SignupModal({ open, handleClose }) {
             type="text"
             autoComplete="off"
             variant="outlined"
+            onChange={handleUsernameChange}
           />
         </Username>
+        {/* password */}
         <Password>
           <TextField
             id="outlined-password-input"
@@ -30,8 +138,10 @@ function SignupModal({ open, handleClose }) {
             type="password"
             autoComplete="current-password"
             variant="outlined"
+            onChange={handlePasswordChange}
           />
         </Password>
+        {/* Email */}
         <Email>
           <TextField
             id="outlined-email-input"
@@ -39,10 +149,25 @@ function SignupModal({ open, handleClose }) {
             type="email"
             autoComplete="off"
             variant="outlined"
+            onChange={handleEmailChange}
           />
         </Email>
+        {/* Location Section */}
         <Location>
           <FormLabel>Location</FormLabel>
+          {/* Pincode */}
+          <Pincode>
+            <TextField
+              id="outlined-number-input"
+              label="Pincode"
+              type="number"
+              autoComplete="off"
+              variant="outlined"
+              value={pincode}
+              onChange={handlePincodeChange}
+            />
+          </Pincode>
+          {/* State */}
           <State>
             <FormControl variant="outlined">
               <InputLabel id="demo-simple-select-outlined-label">
@@ -51,21 +176,22 @@ function SignupModal({ open, handleClose }) {
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
-                //   value={age}
-                //   onChange={handleChange} //Add event
+                value={stateValue}
+                onChange={handleStateChange} //Add event
                 label="Age"
               >
                 <MenuItem value="">
                   <em>States</em>
                 </MenuItem>
                 {/* rerender state list */}
-                <MenuItem value={10}>Mp</MenuItem>
-                <MenuItem value={20}>Up</MenuItem>
-                <MenuItem value={30}>Tg</MenuItem>
-                <MenuItem value={30}>Mh</MenuItem>
+                <MenuItem value={"Madhya Pradesh"}>Mp</MenuItem>
+                <MenuItem value={"Utter Pradesh"}>Up</MenuItem>
+                <MenuItem value={"Telangana"}>Tg</MenuItem>
+                <MenuItem value={"Maharashtra"}>Mh</MenuItem>
               </Select>
             </FormControl>
           </State>
+          {/* City */}
           <City>
             <TextField
               id="outlined-text-input"
@@ -73,19 +199,11 @@ function SignupModal({ open, handleClose }) {
               type="text"
               autoComplete="off"
               variant="outlined"
+              onChange={handleCityChange}
             />
           </City>
-          <Pincode>
-            <TextField
-              id="outlined-number-input"
-              label="Pincode"
-              type="number"
-              autoComplete="off"
-              variant="outlined"
-            />
-          </Pincode>
         </Location>
-        <Button onSubmit="">Sign Up</Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </FormContainer>
   );
@@ -107,6 +225,7 @@ function SignupModal({ open, handleClose }) {
 export default SignupModal;
 
 const FormContainer = styled.div`
+  /* max-height: 100vh; */
   padding: 2rem 0;
   width: 60vh;
   display: flex;
@@ -116,12 +235,12 @@ const FormContainer = styled.div`
   border-radius: 10px;
   align-self: center;
   position: absolute;
-  top: 5%;
+  top: 0%;
   left: 40%;
   background-color: #fff;
 
   > form > button {
-    margin-top: 2rem;
+    margin-top: 1rem;
     width: 140px;
     height: 45px;
     font-family: hindLight;
@@ -165,4 +284,11 @@ const City = styled.div`
 `;
 const Pincode = styled.div`
   margin: 1rem 0;
+`;
+const Choose = styled.div``;
+const RadioContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 `;
