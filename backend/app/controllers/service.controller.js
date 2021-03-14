@@ -10,6 +10,7 @@ exports.create = (req, res) => {
         image: req.body.image,
         serviceNames: req.body.serviceNames,
         serviceEmail: req.body.serviceEmail,
+        servicePincode: req.body.servicePincode,
         category: req.body.category,
         contactNo: req.body.contactNo,
         map_location: req.body.map_location,
@@ -51,6 +52,86 @@ exports.findAll = (req, res) => {
         });
 };
 
+exports.findWhere = (req, res) => {
+
+    Service.find({ servicePincode: req.params.pin})
+        .populate("user") 
+        .populate("category") 
+        .then(service => {
+            res.send(service);
+            //console.log(feedback);
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
+exports.findMyService = (req, res) => {
+
+    Service.find({ user: req.params.Id})
+        .populate("user") 
+        .populate("category") 
+        .then(service => {
+            res.send(service);
+            //console.log(feedback);
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
+exports.findServiceByCategory = (req, res) => {
+
+    Service.find({ category: req.params.Id})
+        .populate("user") 
+        .populate("category") 
+        .then(service => {
+            res.send(service);
+            //console.log(feedback);
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
+exports.findVerify = (req, res) => {
+
+    Service.find({ isVerify: "true"})
+        .populate("user") 
+        .populate("category") 
+        .then(service => {
+            res.send(service);
+            //console.log(feedback);
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
+exports.findServiceByCategoryAndPin = (req, res) => {
+
+    Service.find({ category: req.params.Id , servicePincode: req.params.pin })
+        .populate("user") 
+        .populate("category") 
+        .then(service => {
+            res.send(service);
+            //console.log(feedback);
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
 
 exports.findOne = (req, res) => {
     Service.findById(req.params.Id)
@@ -59,7 +140,7 @@ exports.findOne = (req, res) => {
         .then(service => {
             if (!service) {
                 return res.status(404).send({
-                    message: "feedback not found with id " + req.params.Id
+                    message: "service not found with id " + req.params.Id
                 });
             }
             res.send(service);
@@ -89,6 +170,7 @@ exports.update = (req, res) => {
         image: req.body.image,
         serviceNames: req.body.serviceNames,
         serviceEmail: req.body.serviceEmail,
+        servicePincode: req.body.servicePincode,
         category: req.body.category,
         contactNo: req.body.contactNo,
         map_location: req.body.map_location,

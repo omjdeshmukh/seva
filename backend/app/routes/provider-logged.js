@@ -18,9 +18,13 @@ router.put('/service/:Id', service.update);
 
 router.delete('/service/:Id', service.delete);
 
-router.get('/service', service.findAll);
+router.get('/my/service/:Id', service.findMyService);
 
-router.get('/service/:Id', service.findOne);
+// router.get('/service/:Id', service.findOne);
+
+// router.get('/service', service.findAll);
+
+// router.get('/service/:pin', service.findWhere);
 
 
 module.exports = router;
