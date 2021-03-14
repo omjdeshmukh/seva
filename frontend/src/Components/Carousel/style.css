@@ -1,0 +1,20 @@
+.carousel-container {
+  height: 300px;
+  width: 90%;
+  align-items: center;
+
+  /* display: flex; */
+  flex-wrap: wrap;
+  margin-bottom: 200px;
+}
+
+.carousel-bar {
+  max-height: 300px;
+  width: 100%;
+  display:table-cell;
+}
+
+.carousel-image {
+  max-height: 300px;
+  /* width: 100%; */
+}

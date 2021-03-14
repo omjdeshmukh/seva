@@ -4,7 +4,7 @@ import "./App.css";
 import Navbar from "./Components/Header/Navbar";
 import Main from "./Components/Tagline/Main";
 import Services from './Components/Services/Services';
-import CarouselBar from './Components/OwlCarousel/CarouselBar'
+import CarouselBar from './Components/Carousel/CarouselBar'
 import Footer from './Components/Footer/footer'
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -18,8 +18,10 @@ function App() {
           <Main />
         </Switch>
         <Services />
-        <CarouselBar/>
-        <Footer/>
+        <br />
+        <CarouselBar />
+        <hr />
+        <Footer />
       </div>
     </Router>
   );
