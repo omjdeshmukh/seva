@@ -25,6 +25,8 @@ router.get('/service', service.findAll);
 
 router.get('/service/:pin', service.findWhere);
 
+router.get('/VerifiedService', service.findVerify);
+
 
 
 module.exports = router;
