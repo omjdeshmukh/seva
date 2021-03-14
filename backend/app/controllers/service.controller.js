@@ -84,6 +84,38 @@ exports.findMyService = (req, res) => {
         });
 };
 
+exports.findServiceByCategory = (req, res) => {
+
+    Service.find({ category: req.params.Id})
+        .populate("user") 
+        .populate("category") 
+        .then(service => {
+            res.send(service);
+            //console.log(feedback);
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
+exports.findServiceByCategoryAndPin = (req, res) => {
+
+    Service.find({ category: req.params.Id , servicePincode: req.params.pin })
+        .populate("user") 
+        .populate("category") 
+        .then(service => {
+            res.send(service);
+            //console.log(feedback);
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
 
 exports.findOne = (req, res) => {
     Service.findById(req.params.Id)
