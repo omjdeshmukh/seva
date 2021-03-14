@@ -35,6 +35,10 @@ var serviceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    servicePincode: {
+        type: String,
+        required: true
+    },
     isVerify: {
         type: String,
         default: false

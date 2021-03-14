@@ -20,6 +20,8 @@ router.delete('/service/:Id', service.delete);
 
 router.get('/service', service.findAll);
 
+router.get('/service/:pin', service.findWhere);
+
 router.get('/service/:Id', service.findOne);
 
 
