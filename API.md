@@ -207,5 +207,13 @@ Header :
 
 ```
 
+21. ``` GET``` http://localhost:5000/VerifiedService
+
+```
+
+```
+
+
+
 
 
