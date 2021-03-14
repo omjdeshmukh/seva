@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import styled from "styled-components";
 import FacebookIcon from "@material-ui/icons/Facebook";
@@ -10,19 +9,6 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Appstore from "./images/appstore.png";
 import Playstore from "./images/appstore.png";
-=======
-import React from 'react'
-import styled from 'styled-components'
-import FacebookIcon from '@material-ui/icons/Facebook';
-import InsertCommentIcon from '@material-ui/icons/InsertComment';
-import LanguageIcon from '@material-ui/icons/Language';
-import HeadsetIcon from '@material-ui/icons/Headset';
-import EmailIcon from '@material-ui/icons/Email';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import Appstore from './images/appstore.png'
-import Playstore from './images/playstore.png'
->>>>>>> c660e695547959fe505f2b7ba581d2dd8fe10819
 
 function Footer() {
   return (
@@ -146,14 +132,3 @@ const Copyrights = styled.div`
     text-align: center;
   }
 `;
-<<<<<<< HEAD
-=======
-const Copyrights=styled.div`
-background-color:#363636;
-color:white;
-padding:15px;
-p{
-   text-align:center;
-}
-`;
->>>>>>> c660e695547959fe505f2b7ba581d2dd8fe10819
