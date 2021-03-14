@@ -22,6 +22,8 @@ router.get('/service', service.findAll);
 
 router.get('/service/:pin', service.findWhere);
 
+router.get('/my/service/:Id', service.findMyService);
+
 router.get('/service/:Id', service.findOne);
 
 

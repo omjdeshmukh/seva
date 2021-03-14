@@ -68,6 +68,22 @@ exports.findWhere = (req, res) => {
         });
 };
 
+exports.findMyService = (req, res) => {
+
+    Service.find({ user: req.params.Id})
+        .populate("user") 
+        .populate("category") 
+        .then(service => {
+            res.send(service);
+            //console.log(feedback);
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
 
 exports.findOne = (req, res) => {
     Service.findById(req.params.Id)
