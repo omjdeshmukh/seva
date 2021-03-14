@@ -39,7 +39,6 @@ var userSchema = new mongoose.Schema({
     },
     village: {
         type: String,
-        required: true
     },
     pincode: {
         type: String,
