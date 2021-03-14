@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import Vector from "./vector";
-import SignupModal from "../Login_Sigup_model/SignUp";
 
 function Main() {
   return (
@@ -15,10 +14,9 @@ function Main() {
           <h1>
             If you can't find any Service just <span>Suggest Us</span>.
           </h1>
-          <Link to="#">
+          <Link to="/secured">
             <Button>Suggest Us</Button>
           </Link>
-          <SignupModal />
         </TaglineSection>
         {/* Vector Section */}
         <VectorSection>

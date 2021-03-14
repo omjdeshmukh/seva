@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SignupModal from "../Login_Sigup_model/SignUp";
 import LoginModal from "../Login_Sigup_model/Login";
 
-function Navbar() {
+function Navbar({ setToken }) {
   // For Login and Signup section
   // State to open and close modal
   const [loginOpen, setLoginOpen] = useState(false);
@@ -28,6 +28,12 @@ function Navbar() {
     setSignupOpen(false);
   };
 
+  const handleLogOut = () => {
+    console.log("Hello");
+    sessionStorage.removeItem("token");
+    setToken();
+  };
+
   return (
     <>
       <NavbarContainer>
@@ -40,15 +46,21 @@ function Navbar() {
         {/* Navigation Options */}
         <NavContainer>
           <Link to="#">Services</Link>
-          <Link to="#">Suggestions</Link>
-          <Link to="#" type="button" onClick={handleLoginOpen}>
+          <Link to="/" type="button" onClick={handleLogOut}>
+            Suggestions
+          </Link>
+          <Link to="/" type="button" onClick={handleLoginOpen}>
             Log in
           </Link>
           <Link to="#" type="button" onClick={handleSignupOpen}>
             Sign up
           </Link>
           <SignupModal open={signupOpen} handleClose={handleSignupClose} />
-          <LoginModal open={loginOpen} handleClose={handleLoginClose} />
+          <LoginModal
+            setToken={setToken}
+            open={loginOpen}
+            handleClose={handleLoginClose}
+          />
         </NavContainer>
       </NavbarContainer>
     </>

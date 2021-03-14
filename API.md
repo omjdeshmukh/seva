@@ -121,11 +121,10 @@ Header :
 
 ### Service
 
-12. ``` GET``` http://localhost:5000/provider/service
+12. ``` GET``` http://localhost:5000/service
 
 ```
-Header : 
-    auth-token - token-value
+
 ```
 
 13. ``` POST``` http://localhost:5000/provider/service
@@ -182,12 +181,39 @@ Header :
     auth-token - token-value
 ```
 
-17. ``` GET``` http://localhost:5000/provider/service/:Pincode
+17. ``` GET``` http://localhost:5000/service/:Pincode
 
 ```
 Header : 
     auth-token - token-value
 ```
+
+18. ``` GET``` http://localhost:5000/seriveBycategoryAndPin/:categoryId/:Pincode
+
+```
+
+```
+
+
+19. ``` GET``` http://localhost:5000/seriveBycategoryAndPin/:categoryId/:Pincode
+
+```
+
+```
+
+20. ``` GET``` http://localhost:5000/service/:Id
+
+```
+
+```
+
+21. ``` GET``` http://localhost:5000/VerifiedService
+
+```
+
+```
+
+
 
 
 
