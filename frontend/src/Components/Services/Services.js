@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CardData from "./CardData";
 import axios from "axios";
 import "./style.css";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Services() {
   //   const [service, setService] = useState("");

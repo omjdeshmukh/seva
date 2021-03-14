@@ -8,7 +8,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Appstore from './images/appstore.png'
-import Playstore from './images/appstore.png'
+import Playstore from './images/playstore.png'
 
 function footer(){
   return(
