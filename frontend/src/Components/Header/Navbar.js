@@ -89,6 +89,7 @@ const NavContainer = styled.div`
   align-items: center;
 
   > a {
+    font-size: 15px;
     padding: 0.5rem 1rem;
     font-weight: 200;
     border: 0.5px solid transparent;
