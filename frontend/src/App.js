@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
 import Navbar from "./Components/Header/Navbar";
-import Main from "./Components/Tagline/Main";
+import Homepage from "./Components/HomePage/Homepage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AfterLogin from "./Components/UsersPage/AfterLogin";
 import Footer from "./Components/Footer/footer";
@@ -37,7 +37,11 @@ function App() {
       <div className="App">
         <Navbar setToken={setToken} />
         <Switch>
-          <Route path="/" exact component={getToken() ? AfterLogin : Main} />
+          <Route
+            path="/"
+            exact
+            component={getToken() ? AfterLogin : Homepage}
+          />
           <Route path="/admin" exact component={AdminDashboard} />
         </Switch>
       </div>

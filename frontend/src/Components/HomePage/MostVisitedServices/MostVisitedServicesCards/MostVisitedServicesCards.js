@@ -18,6 +18,7 @@ function MostVisitedServicesCard(props) {
 export default MostVisitedServicesCard;
 
 const ServicesCardContainer = styled.div`
+  padding: 1rem;
   flex: 1;
   display: flex;
   margin: 0 0.5rem;
@@ -25,6 +26,10 @@ const ServicesCardContainer = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  > h4 {
+    font-size: 1rem;
+    font-weight: 200;
+  }
 `;
 
 const ServiceImage = styled.div`
