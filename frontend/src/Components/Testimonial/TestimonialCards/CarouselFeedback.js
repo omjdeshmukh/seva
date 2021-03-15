@@ -41,12 +41,11 @@ function Responsive(props) {
   };
   return (
     <CarousalContainer>
-      <h2> Feedbacks </h2>
+      <h3> Feedbacks </h3>
       <CarousalInnerContainer>
         <Slider {...settings}>
           {feedback &&
             feedback.map((item, index) => {
-              console.log(item);
               const { user, feedback } = item;
               return (
                 <>
