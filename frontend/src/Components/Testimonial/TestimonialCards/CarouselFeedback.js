@@ -88,6 +88,15 @@ export default Responsive;
 const CarousalContainer = styled.div``;
 const CarousalInnerContainer = styled.div`
   padding: 3rem;
+
+  .slick-slider {
+    > button {
+      width: 30px;
+      height: 30px;
+      background: #000;
+      opacity: 0.2;
+    }
+  }
 `;
 const FeedbackCardContainer = styled.div`
   color: #fff;
