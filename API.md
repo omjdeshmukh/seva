@@ -8,6 +8,7 @@
     "userName" : "bhupendra",
     "fullName" : "user bhupendra ",
     "email":"provider1@gmail.com",
+    "img":"https://res.cloudinary.com/drampnn2w/image/upload/v1615808628/user_iapj1a.tiff"
     "password":"12345678",
     "role": "provider",
     "state": "MH",

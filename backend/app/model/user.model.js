@@ -13,6 +13,9 @@ var userSchema = new mongoose.Schema({
         min: 6,
         max: 255,
     },
+    img: {
+        type: String,
+    },
     email: {
         type: String,
         required: true
