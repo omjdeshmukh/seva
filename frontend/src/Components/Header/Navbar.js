@@ -89,14 +89,16 @@ const NavContainer = styled.div`
   align-items: center;
 
   > a {
+    font-size: 15px;
     padding: 0.5rem 1rem;
     font-weight: 200;
-    border: 0.5px solid transparent;
+    border-bottom: 0.5px solid transparent;
   }
 
   > a:hover {
     border: none;
     border-bottom: 0.5px solid var(--main-color);
     font-weight: 400;
+    text-decoration: none;
   }
 `;

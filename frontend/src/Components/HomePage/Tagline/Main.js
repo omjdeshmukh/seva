@@ -36,10 +36,12 @@ const TaglineContainer = styled.main`
   align-items: center;
 `;
 const TaglineSection = styled.main`
+  flex: 2;
   text-align: left;
   padding: 20vh 0;
 
   > h3 {
+    font-size: 25px;
     font-family: hindLight;
     font-weight: 200;
   }
@@ -48,7 +50,7 @@ const TaglineSection = styled.main`
     line-height: 4rem;
     font-family: hindMedium;
     font-weight: 300;
-    font-size: 55px;
+    font-size: 50px;
     width: 80%;
     > span {
       color: var(--main-color);
@@ -86,7 +88,9 @@ const TaglineSection = styled.main`
 `;
 
 const VectorSection = styled.div`
+  flex: 1;
+
   > svg {
-    width: 95%;
+    width: 100%;
   }
 `;

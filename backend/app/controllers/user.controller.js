@@ -27,6 +27,7 @@ exports.register = async (req, res) => {
     userName: req.body.userName,
     fullName: req.body.fullName,
     email: req.body.email,
+    img: req.body.img,
     role: req.body.role,
     state: req.body.state,
     city: req.body.city,
