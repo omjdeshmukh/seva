@@ -122,7 +122,8 @@ const FooterInnerContainer = styled.div`
 `;
 
 const FooterAboutUs = styled.div`
-  width: 33%;
+  flex: 2;
+  padding: 0 0.5rem 0 0;
 
   > h3 {
     padding: 0.5rem 0;
@@ -137,7 +138,7 @@ const FooterAboutUs = styled.div`
 `;
 
 const SocialLinks = styled.ul`
-  width: 50%;
+  width: 25%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -159,7 +160,7 @@ const SocialLinks = styled.ul`
 `;
 
 const FooterServices = styled.div`
-  width: 33%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -197,7 +198,7 @@ const ServiceInfo = styled.div`
 `;
 
 const FooterFormSection = styled.div`
-  width: 33%;
+  flex: 1;
   color: #fff;
   display: flex;
   flex-direction: column;
