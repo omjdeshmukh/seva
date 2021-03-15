@@ -9,7 +9,7 @@ function FeedbackCard(props) {
       <FeedbackCardContainer>
         <FeedbackCardInnerContainer>
           <UserInfoContainer>
-            <img src="" alt="" />
+            <img src={user.img} alt="" />
             <UserInfo>
               <h4>
                 {user.userName.charAt(0).toUpperCase() + user.userName.slice(1)}
