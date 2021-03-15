@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import Vector from "./vector";
 import Feedback from "../Testimonial/Feedback";
+import MostVisitedServices from "../MostVisitedServices/MostVisitedServices";
 
 function Main() {
   return (
@@ -24,6 +25,7 @@ function Main() {
           <Vector />
         </VectorSection>
       </TaglineContainer>
+      <MostVisitedServices />
       <Feedback />
     </>
   );
