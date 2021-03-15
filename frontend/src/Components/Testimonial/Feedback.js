@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import FeedbackCard from "./TestimonialCards/FeedbackCards";
+import Responsive from "./TestimonialCards/CarouselFeedback";
 import axios from "axios";
 
 function Feedback() {
@@ -17,14 +17,7 @@ function Feedback() {
     <>
       <FeedbackContainer>
         <FeedbackInnerContainer>
-          {feedback &&
-            feedback.map((item, index) => {
-              return (
-                <>
-                  <FeedbackCard feedback={item} />
-                </>
-              );
-            })}
+          <Responsive feedback={feedback} />
         </FeedbackInnerContainer>
       </FeedbackContainer>
     </>
@@ -37,4 +30,5 @@ const FeedbackContainer = styled.div``;
 const FeedbackInnerContainer = styled.div`
   width: 90%;
   margin: 0 auto;
+  padding: 3rem 0;
 `;
