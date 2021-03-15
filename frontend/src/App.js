@@ -6,6 +6,7 @@ import Main from "./Components/Tagline/Main";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AfterLogin from "./Components/UsersPage/AfterLogin";
 import Footer from "./Components/Footer/footer";
+import AdminCategory from "./page/admin/page";
 
 //Set the Token from backend to sessionStorage of a browser
 function setUserToken(userToken) {
@@ -37,6 +38,7 @@ function App() {
         <Navbar setToken={setToken} />
         <Switch>
           <Route path="/" exact component={getToken() ? AfterLogin : Main} />
+          <Route path="/admin" exact component={AdminCategory} />
         </Switch>
       </div>
       <Footer />
