@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: hindLight;
   src: url("./Assets/FontHind/Hind-Light.ttf");
@@ -13,8 +12,6 @@
   font-family: hindMedium;
   src: url("./Assets/FontHind/Hind-Medium.ttf");
 }
-
-
 
 .App {
   width: 90%;
