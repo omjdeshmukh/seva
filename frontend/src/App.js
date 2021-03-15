@@ -6,11 +6,10 @@ import Homepage from "./Components/HomePage/Homepage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AfterLogin from "./Components/UsersPage/AfterLogin";
 import Footer from "./Components/Footer/footer";
-
-import Dashboard from './Components/Dashboard/Dashboard';
+import Main from './Components/HomePage/Tagline/Main';
+import Dashboard from "./Components/Dashboard/Dashboard";
 
 import AdminDashboard from "./Components/admin/AdminDashboard";
-
 
 //Set the Token from backend to sessionStorage of a browser
 function setUserToken(userToken) {
@@ -41,17 +40,13 @@ function App() {
       <div className="App">
         <Navbar setToken={setToken} />
         <Switch>
-
           <Route path="/" exact component={getToken() ? AfterLogin : Main} />
-         
-
           <Route
             path="/"
             exact
             component={getToken() ? AfterLogin : Homepage}
           />
           <Route path="/admin" exact component={AdminDashboard} />
-
         </Switch>
       </div>
       <Footer />
