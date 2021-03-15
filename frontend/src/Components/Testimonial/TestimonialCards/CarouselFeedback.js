@@ -50,7 +50,14 @@ function Responsive(props) {
               const { user, feedback } = item;
               return (
                 <>
-                  <FeedbackCardContainer>
+                  <FeedbackCardContainer
+                    style={{
+                      backgroundImage: `url(/Assets/Icons/Quotes.png)`,
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                    }}
+                  >
                     <FeedbackCardInnerContainer>
                       <UserInfoContainer>
                         <img src={user.img} alt="User Avatar" />
@@ -129,5 +136,9 @@ const FeedbackSection = styled.div`
   > p {
     text-align: center;
     font-weight: 100;
+    background-image: url("/Assets/Icons/Ouotes.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 `;
