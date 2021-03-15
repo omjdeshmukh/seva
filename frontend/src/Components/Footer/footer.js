@@ -131,6 +131,7 @@ const FooterAboutUs = styled.div`
     color: #5ab9ea;
   }
   > p {
+    width: 95%;
     font-size: 0.9rem;
     padding: 0.5rem 0;
     color: #ffffff;
@@ -206,7 +207,8 @@ const FooterFormSection = styled.div`
   align-items: flex-start;
 
   > h4 {
-    font-weight: 400;
+    font-weight: 300;
+    font-size: 1.2rem;
   }
   > form {
     padding: 10px 0;
@@ -222,8 +224,7 @@ const FooterFormSection = styled.div`
   }
   > form > button {
     background-color: #5ab9ea;
-
-    padding: 9.6px;
+    padding: 10px;
     border: none;
     border-radius: 0px 5px 5px 0px;
   }
