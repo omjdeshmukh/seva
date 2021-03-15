@@ -10,6 +10,7 @@ function MostVisitedServicesCard(props) {
           <img src={icon} alt={description} />
         </ServiceImage>
         <h4>{category}</h4>
+        <small>{description}</small>
       </ServicesCardContainer>
     </>
   );
@@ -33,9 +34,12 @@ const ServicesCardContainer = styled.div`
 `;
 
 const ServiceImage = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   margin: 1rem 0;
+  padding: 1rem;
+  background-color: #5ab9ea;
+  border-radius: 50%;
 
   > img {
     width: 100%;
