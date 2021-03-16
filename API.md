@@ -1,5 +1,7 @@
 # API for SEVA APP
 
+https://seva-backend1.herokuapp.com
+## replace localhost with https://seva-backend1.herokuapp.com 
 ### register
 
 1. ``` POST``` http://localhost:5000/register

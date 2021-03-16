@@ -8,7 +8,7 @@ function Feedback() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/feedback")
+      .get("https://seva-backend1.herokuapp.com/feedback")
       .then((response) => setFeedback(response.data))
       .catch((err) => console.log(err));
   }, []);

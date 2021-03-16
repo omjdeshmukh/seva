@@ -24,7 +24,7 @@ app.use(bodyParser.json())
 app.use(express.json()); // for body parser
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('welcome to Seva application api')
 })
 
 // public route anyone can access 
@@ -38,6 +38,6 @@ app.use("/admin", adminRoutes);
 app.use("/user", verifyTokenUser, userRoutes);
 app.use("/provider", checkprovider, providerRoutes);
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
