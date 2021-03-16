@@ -46,7 +46,6 @@ function Responsive(props) {
         <Slider {...settings}>
           {feedback &&
             feedback.map((item, index) => {
-              console.log(item);
               const { user, feedback } = item;
               return (
                 <>

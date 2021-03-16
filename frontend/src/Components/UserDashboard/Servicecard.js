@@ -1,32 +1,18 @@
-import React from "react";
-// import {Form ,Button , Card} from 'react-bootstrap';
-import styled from "styled-components";
-
-function CategroyCard(props) {
-  const { category, icon, description } = props.category;
- // console.log(props.category);
-  return (
+import React from 'react'
+import styled from 'styled-components'
+function Servicecard(props){
+     const { serviceNames, servicePincode}=props.service
+return(
     <>
-            {/* <Card>
-  <Card.Header as="h5">{category}</Card.Header>
-  <Card.Body>
-  <Card.Title>{description}</Card.Title>
-    <Card.Text>
-        <img src={icon} height="50px" weight="35px" ></img>
-      {description}
-    </Card.Text>
-    <Button variant="primary">Edit</Button>
-  </Card.Body>
-</Card> */}
-  <CardContainer>
+    <CardContainer>
          <CardInnerContainer>
            <InfoContainer>
-             <img src={icon} alt="" />
+             {/* <img src={icon} alt="" /> */}
              <Info>
                <h4>
-                 {category}
+                  {serviceNames} 
                </h4>
-               <small>{category}</small>
+               <small>{servicePincode}</small>
              </Info>
            </InfoContainer>
            {/* <Button variant="primary">Edit</Button> */}
@@ -36,7 +22,8 @@ function CategroyCard(props) {
   );
 }
 
-export default CategroyCard;
+export default Servicecard;
+
 
 const CardContainer = styled.div`
 margin: 1rem 0;
@@ -75,7 +62,3 @@ color:white;
   padding: 0;
 }
 `;
-
-
-
-

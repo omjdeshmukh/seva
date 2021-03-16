@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AfterLogin from "./Components/UsersPage/AfterLogin";
 import Footer from "./Components/Footer/footer";
 import AdminDashboard from "./Components/admin/AdminDashboard";
+import UserDashboard from "./Components/UserDashboard/UserDashboard"
 
 //Set the Token from backend to sessionStorage of a browser
 function setUserToken(userToken) {
@@ -39,6 +40,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={getToken() ? AfterLogin : Main} />
           <Route path="/admin" exact component={AdminDashboard} />
+          <Route path="/user" exact component={UserDashboard} />
         </Switch>
       </div>
       <Footer />
