@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import {Form ,Button , Row, ListGroup , Tab} from 'react-bootstrap';
 import CategroyCard from './categoryCard/catetoryCard';
 import axios from "axios";
+import ADDCategroyCard from './categoryCard/addCategory';
 
 
 
@@ -13,7 +14,7 @@ const [category, setCategory] = useState();
 
 useEffect(() => {
   axios
-    .get("http://localhost:5000/admin/category")
+    .get("https://seva-backend1.herokuapp.com/admin/category")
     .then((response) => setCategory(response.data))
     .catch((err) => console.log(err));
 }, []);
@@ -38,7 +39,7 @@ return(
         <ListGroup.Item action href="#link2">
           Add Category
         </ListGroup.Item>
-        <ListGroup.Item action href="#link3">
+        <ListGroup.Item action href="#showCategory">
           Show Category
         </ListGroup.Item>
         <ListGroup.Item action href="/">
@@ -52,9 +53,9 @@ return(
         <h1>profile</h1>
         </Tab.Pane>
         <Tab.Pane eventKey="#link2">
-          <h1>add categroy</h1>
+          <ADDCategroyCard />
         </Tab.Pane>
-        <Tab.Pane eventKey="#link3">
+        <Tab.Pane eventKey="#showCategory">
           {category &&
             category.map((item, index) => {
               return (

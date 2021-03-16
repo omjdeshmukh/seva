@@ -29,7 +29,6 @@ function CategroyCard(props) {
                <small>{category}</small>
              </Info>
            </InfoContainer>
-           {/* <Button variant="primary">Edit</Button> */}
          </CardInnerContainer>
        </CardContainer>
     </>
@@ -49,17 +48,14 @@ const CardInnerContainer = styled.div`
 width: 95%;
 margin: 0 auto;
 padding: 2rem 0;
-> p {
-  text-align: left;
-  padding: 4rem 0;
-}
+
 `;
 
 const InfoContainer = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: flex-start;
-align-items: center;
+// align-items: center;
 > img {
   width: 4rem;
   height: 4rem;

@@ -108,7 +108,7 @@ const media = {
 const FooterContainer = styled.footer`
   background-color: #393232;
   font-family: hindLight;
-  font-height: 0.9rem;
+  font-size: 0.9rem;
 `;
 
 const FooterInnerContainer = styled.div`
@@ -118,7 +118,7 @@ const FooterInnerContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-item: center;
+  align-items: center;
 `;
 
 const FooterAboutUs = styled.div`
@@ -149,7 +149,7 @@ const SocialLinks = styled.ul`
   > a > li {
     display: flex;
     justify-content: center;
-    align-item: center;
+    align-items: center;
     list-style-type: none;
     width: 15px;
     height: 15px;

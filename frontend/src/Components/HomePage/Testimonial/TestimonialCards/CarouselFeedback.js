@@ -41,7 +41,7 @@ function Responsive(props) {
   };
   return (
     <CarousalContainer>
-      <h2> Feedbacks </h2>
+      <h3> Feedbacks </h3>
       <CarousalInnerContainer>
         <Slider {...settings}>
           {feedback &&
@@ -120,8 +120,8 @@ const UserInfoContainer = styled.div`
   align-items: center;
 
   > img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
   }
 `;
@@ -142,8 +142,9 @@ const FeedbackSection = styled.div`
   padding: 0.5rem 0;
 
   > p {
+    font-size: 0.8rem;
     text-align: center;
-    font-weight: 100;
+    font-weight: 500;
     background-image: url("/Assets/Icons/Ouotes.png");
     background-position: center;
     background-size: cover;
