@@ -30,6 +30,7 @@ const CardContainer = styled.div`
   border-radius: 10px;
   background-color: #39afec;
   font-family: hindLight;
+  box-shadow: 0 10px 28px 1px black;
 `;
 const CardInnerContainer = styled.div`
   width: 95%;
