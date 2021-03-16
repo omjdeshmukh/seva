@@ -19,7 +19,7 @@ useEffect(() => {
     .catch((err) => console.log(err));
 }, []);
 
-//  console.log(category);
+  console.log(category);
 return(
 
   <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
