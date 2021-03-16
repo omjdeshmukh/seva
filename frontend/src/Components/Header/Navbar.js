@@ -1,66 +1,29 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import SignupModal from "../Login_Sigup_model/SignUp";
-import LoginModal from "../Login_Sigup_model/Login";
 
-function Navbar({ setToken }) {
-  // For Login and Signup section
-  // State to open and close modal
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [signupOpen, setSignupOpen] = useState(false);
-  // Open modal handler
-  const handleLoginOpen = () => {
-    setLoginOpen(true);
-  };
-
-  // Close modal handler
-  const handleLoginClose = () => {
-    setLoginOpen(false);
-  };
-
-  const handleSignupOpen = () => {
-    setSignupOpen(true);
-  };
-
-  // Close modal handler
-  const handleSignupClose = () => {
-    setSignupOpen(false);
-  };
-
-  const handleLogOut = () => {
-    console.log("Hello");
-    sessionStorage.removeItem("token");
-    setToken();
-  };
-
+function Navbar() {
   return (
     <>
       <NavbarContainer>
         {/* Brand Container */}
         <BrandContainer>
-          <Link to="#">
+          <Link to="/">
             <h3>SEVA</h3>
           </Link>
         </BrandContainer>
         {/* Navigation Options */}
         <NavContainer>
           <Link to="#">Services</Link>
-          <Link to="/" type="button" onClick={handleLogOut}>
+          <Link to="#" type="button">
             Suggestions
           </Link>
-          <Link to="/" type="button" onClick={handleLoginOpen}>
+          <Link to="/login" type="button">
             Log in
           </Link>
-          <Link to="#" type="button" onClick={handleSignupOpen}>
+          <Link to="/signup" type="button">
             Sign up
           </Link>
-          <SignupModal open={signupOpen} handleClose={handleSignupClose} />
-          <LoginModal
-            setToken={setToken}
-            open={loginOpen}
-            handleClose={handleLoginClose}
-          />
         </NavContainer>
       </NavbarContainer>
     </>
@@ -77,6 +40,9 @@ const NavbarContainer = styled.nav`
 `;
 
 const BrandContainer = styled.div`
+  > a {
+    text-decoration: none;
+  }
   > a > h3 {
     color: var(--main-color);
   }
