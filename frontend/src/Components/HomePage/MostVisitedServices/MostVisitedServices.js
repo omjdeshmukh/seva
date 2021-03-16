@@ -8,7 +8,7 @@ function MostVisitedServices() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/service")
+      .get("https://seva-backend1.herokuapp.com/service")
       .then((response) => setCategory(response.data))
       .catch((err) => console.log(err));
   }, []);
