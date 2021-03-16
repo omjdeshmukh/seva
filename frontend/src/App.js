@@ -40,7 +40,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={getToken() ? AfterLogin : Main} />
           <Route path="/admin" exact component={AdminDashboard} />
-          <Route path="/user" exact component={UserDashboard} />
+          
         </Switch>
       </div>
       <Footer />
