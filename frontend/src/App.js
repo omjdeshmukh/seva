@@ -6,7 +6,7 @@ import Homepage from "./Components/HomePage/Homepage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AfterLogin from "./Components/UsersPage/AfterLogin";
 import Footer from "./Components/Footer/footer";
-import Dashboard from "./Components/Dashboard/Dashboard";
+import ProviderDashboard from "./Components/ProviderDashboard/Dashboard";
 
 import AdminDashboard from "./Components/admin/AdminDashboard";
 
@@ -51,6 +51,7 @@ function App() {
             component={getToken() ? AfterLogin : Homepage}
           />
           <Route path="/admin" exact component={AdminDashboard} />
+          <Route path="/provider" exact component={ProviderDashboard} />
         </Switch>
       </div>
       <Footer />
