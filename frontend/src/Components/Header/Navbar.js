@@ -55,6 +55,7 @@ const NavContainer = styled.div`
   align-items: center;
 
   > a {
+    color: #393232;
     font-size: 15px;
     padding: 0.5rem 1rem;
     font-weight: 200;

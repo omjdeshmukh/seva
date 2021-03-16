@@ -1,9 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Form, FormGroup, Label, Input } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Form, FormGroup, Input } from "reactstrap";
+import { Link, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function Login() {
+async function loginUser(credentials) {
+  return fetch("http://localhost:5000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  })
+    .then((data) => data.json())
+    .then((data) => data.data.token)
+    .catch((err) => console.log(err.message));
+}
+
+function Login({ setToken }) {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLoginSubmit = async (event) => {
+    event.preventDefault();
+    const token = await loginUser({
+      email,
+      password,
+    });
+    setToken(token);
+  };
+
   return (
     <>
       <LoginContainer>
@@ -23,7 +57,7 @@ function Login() {
             </AuthLinks>
             <CredentialSection>
               <small>Or Log in with Credentials</small>
-              <Form>
+              <Form onSubmit={handleLoginSubmit}>
                 <FormGroup>
                   <Input
                     type="email"
@@ -31,6 +65,7 @@ function Login() {
                     id="exampleEmail"
                     autoComplete="off"
                     placeholder="Email"
+                    onChange={handleEmailChange}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -40,6 +75,7 @@ function Login() {
                     id="examplePassword"
                     placeholder="Password"
                     autoComplete="off"
+                    onChange={handlePasswordChange}
                   />
                 </FormGroup>
                 <button type="submit">Login</button>
@@ -59,6 +95,10 @@ function Login() {
     </>
   );
 }
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
+};
 
 export default Login;
 
