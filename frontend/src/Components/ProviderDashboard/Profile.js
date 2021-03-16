@@ -1,7 +1,12 @@
 import React from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+
+
 function Profile() {
+
+
+  
   return (
     <div>
       <form>
@@ -11,12 +16,9 @@ function Profile() {
               <input
                 type="text"
                 id="form6Example1"
-                class="form-control"
+                class="form-control shadow"
                 placeholder="First Name"
               />
-              {/* <label class="form-label" for="form6Example1">
-                First name
-              </label> */}
             </div>
           </div>
           <div class="col">
@@ -24,12 +26,9 @@ function Profile() {
               <input
                 type="text"
                 id="form6Example2"
-                class="form-control"
+                class="form-control shadow"
                 placeholder="Last Name"
               />
-              {/* <label class="form-label" for="form6Example2">
-                Last name
-              </label> */}
             </div>
           </div>
         </div>
@@ -38,30 +37,28 @@ function Profile() {
           <input
             type="text"
             id="form6Example3"
-            class="form-control"
+            class="form-control shadow"
             placeholder="Service Name"
           />
-          {/* <label class="form-label" for="form6Example3">
-            Service Name
-          </label> */}
         </div>
 
         <div class="form-outline mb-2">
           <input
             type="text"
             id="form6Example4"
-            class="form-control"
+            class="form-control shadow"
             placeholder="Address"
           />
-          {/* <label class="form-label" for="form6Example4">
-            Address
-          </label> */}
         </div>
 
         <div className="row">
           <div className="col">
             <div class="form-outline mb-2">
-              <input type="email" id="form6Example5" class="form-control" />
+              <input
+                type="email"
+                id="form6Example5"
+                class="form-control shadow"
+              />
               <label class="form-label" for="form6Example5">
                 Email
               </label>
@@ -69,7 +66,11 @@ function Profile() {
           </div>
           <div className="col">
             <div class="form-outline mb-2">
-              <input type="number" id="form6Example6" class="form-control" />
+              <input
+                type="number"
+                id="form6Example6"
+                class="form-control shadow"
+              />
               <label class="form-label" for="form6Example6">
                 Phone
               </label>
@@ -79,14 +80,14 @@ function Profile() {
 
         <div class="form-outline mb-2">
           <textarea class="form-control" id="form6Example7" rows="4"></textarea>
-          <label class="form-label" for="form6Example7">
+          <label class="form-label shadow" for="form6Example7">
             Additional information
           </label>
         </div>
 
-        <div class="form-check d-flex justify-content-center mb-4">
+        <div class="form-check d-flex justify-content-center mb-4 shadow">
           <input
-            class="form-check-input me-2"
+            class="form-check-input me-2 shadow"
             type="checkbox"
             value=""
             id="form6Example8"
@@ -94,7 +95,7 @@ function Profile() {
           />
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block mb-4">
+        <button type="submit" class="btn btn-primary btn-block mb-4 shadow">
           Save Changes
         </button>
       </form>

@@ -5,7 +5,7 @@ import axios from "axios";
 import Profile from './Profile';
 import AddServices from './AddService';
 import MyServiceCard from './MyServiceCard';
-
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function AdminDashboard() {
 
@@ -23,10 +23,10 @@ useEffect(() => {
 //  console.log(category);
 return (
   <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
-    <h1>Provider dashboard</h1>
+    <h1 className="text-bolt" >Provider dashboard</h1>
     <br></br>
     <Row>
-      <Col sm={3}>
+      <Col sm={3} className="shadow">
         <ListGroup>
           <ListGroup.Item>
             <img
