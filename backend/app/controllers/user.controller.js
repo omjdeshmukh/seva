@@ -74,6 +74,7 @@ exports.login = async (req, res) => {
 
   res.header("auth-token", token).json({
     error: null,
+    role: user.role,
     data: {
       token,
     },
