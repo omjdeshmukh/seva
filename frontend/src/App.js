@@ -8,27 +8,9 @@ import AfterLogin from "./Components/UsersPage/AfterLogin";
 import Footer from "./Components/Footer/footer";
 import ProviderDashboard from "./Components/ProviderDashboard/Dashboard";
 import AdminDashboard from "./Components/admin/AdminDashboard";
-<<<<<<< HEAD
-import UserDashboard from "./Components/UserDashboard/UserDashboard"
-
-//Set the Token from backend to sessionStorage of a browser
-function setUserToken(userToken) {
-  if (userToken === "") {
-    return;
-  }
-  sessionStorage.setItem("token", JSON.stringify(userToken));
-}
-
-//Check is there is any session token available in sessionStorage
-function getToken() {
-  const tokenString = sessionStorage.getItem("token");
-  const userToken = JSON.parse(tokenString);
-  return userToken ? true : false;
-}
-=======
+import UserDashboard from "./Components/UserDashboard/UserDashboard";
 import Login from "./Components/Login_Signup/Login";
 import Signup from "./Components/Login_Signup/Signup";
->>>>>>> main
 
 //Main App
 function App() {
@@ -48,11 +30,8 @@ function App() {
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
           <Route path="/admin" exact component={AdminDashboard} />
-<<<<<<< HEAD
-          
-=======
           <Route path="/provider" exact component={ProviderDashboard} />
->>>>>>> main
+          <Route path="/userdashboard" exact component={UserDashboard} />
         </Switch>
       </div>
       <Footer />

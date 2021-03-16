@@ -6,6 +6,7 @@ import axios from "axios";
 function MostVisitedServices() {
   const [category, setCategory] = useState();
 
+  // https://seva-backend1.herokuapp.com/admin/category
   useEffect(() => {
     axios
       .get("https://seva-backend1.herokuapp.com/service")
