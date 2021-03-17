@@ -12,7 +12,7 @@ async function userRegistration(Credentials) {
     body: JSON.stringify(Credentials),
   })
     .then((data) => data.json())
-    .then((data) => data.data.token)
+    .then((data) => data)
     .catch((err) => console.log(err.message));
 }
 
@@ -51,7 +51,6 @@ function Signup() {
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
     console.log(`${role} ${username} ${email} ${password}`);
-    console.log();
     const address = await getAddress(
       sessionStorage.getItem("pincode")
         ? sessionStorage.getItem("pincode")
@@ -59,7 +58,7 @@ function Signup() {
     );
     const { District, State, Name, Pincode, Block } = address[0].PostOffice[0];
     const Credentials = {
-      UserName: username,
+      userName: username,
       fullName: username,
       email: email,
       password: password,
