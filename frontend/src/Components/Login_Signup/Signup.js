@@ -1,12 +1,38 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Form, FormGroup, Label, Input } from "reactstrap";
+import axios from "axios";
+
+async function userRegistration(Credentials) {
+  return fetch("http://localhost:5000/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(Credentials),
+  })
+    .then((data) => data.json())
+    .then((data) => data.data.token)
+    .catch((err) => console.log(err.message));
+}
+
+const getAddress = (Pincode) => {
+  return fetch(`https://api.postalpincode.in/pincode/${Pincode}`)
+    .then((response) => response.json())
+    .then((response) => response)
+    .catch((error) => console.log(error.message));
+};
 
 function Signup() {
+  const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [role, setRole] = useState();
   const [password, setPassword] = useState();
   const [pincode, setPincode] = useState();
+
+  const handleUserNameChange = (event) => {
+    setUsername(event.target.value);
+  };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -22,9 +48,30 @@ function Signup() {
     setRole(event.target.value);
   };
 
-  const handleRegisterSubmit = (event) => {
+  const handleRegisterSubmit = async (event) => {
     event.preventDefault();
-    console.log(`${role} ${email} ${password} ${pincode}`);
+    console.log(`${role} ${username} ${email} ${password}`);
+    console.log();
+    const address = await getAddress(
+      sessionStorage.getItem("pincode")
+        ? sessionStorage.getItem("pincode")
+        : pincode
+    );
+    const { District, State, Name, Pincode, Block } = address[0].PostOffice[0];
+    const Credentials = {
+      UserName: username,
+      fullName: username,
+      email: email,
+      password: password,
+      role: role,
+      state: State,
+      city: Name,
+      village: Block,
+      pincode: Pincode,
+    };
+
+    const response = await userRegistration(Credentials);
+    console.log(response);
   };
 
   return (
@@ -71,6 +118,16 @@ function Signup() {
                   </Label>
                 </FormGroup>
               </Role>
+              <FormGroup>
+                <Input
+                  type="text"
+                  name="username"
+                  id="exampleEmail"
+                  autoComplete="off"
+                  placeholder="User Name"
+                  onChange={handleUserNameChange}
+                />
+              </FormGroup>
               <FormGroup>
                 <Input
                   type="email"
