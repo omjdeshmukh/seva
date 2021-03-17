@@ -22,7 +22,6 @@ function MostVisitedServices() {
           {category &&
             category.map((item, index) => {
               const { category } = item;
-              console.log(category);
               return (
                 <>
                   <MostVisitedServicesCard category={category} />

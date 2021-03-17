@@ -15,19 +15,32 @@ import Signup from "./Components/Login_Signup/Signup";
 //Main App
 function App() {
   const [token, setToken] = useState();
+  const [logStatus, setLogStatus] = useState(false);
 
   // Rerender based on session Token
   useEffect(() => {
-    // setUserToken(token ? token.data.token : "");
-  }, []);
+    if (token) {
+      console.log(token);
+      setLogStatus(true);
+      console.log(logStatus);
+    }
+  }, [token]);
 
   return (
     <Router>
       <div className="App">
-        <Navbar setToken={setToken} />
+        <Navbar />
         <Switch>
-          <Route path="/" exact component={Homepage} />
-          <Route path="/login" exact component={Login} />
+          {logStatus ? (
+            <Route path="/" exact render={() => <AfterLogin />} />
+          ) : (
+            <Route path="/" exact render={() => <Homepage />} />
+          )}
+          <Route
+            path="/login"
+            exact
+            render={(props) => <Login {...props} setToken={setToken} />}
+          />
           <Route path="/signup" exact component={Signup} />
           <Route path="/admin" exact component={AdminDashboard} />
           <Route path="/provider" exact component={ProviderDashboard} />
