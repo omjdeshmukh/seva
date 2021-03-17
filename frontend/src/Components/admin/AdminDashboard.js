@@ -1,9 +1,9 @@
 import React, { useState ,useEffect } from 'react';
-import Col from 'react-bootstrap/Col';
-import {Form ,Button , Row, ListGroup , Tab} from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';import {Form , Row, ListGroup , Tab} from 'react-bootstrap';
 import CategroyCard from './categoryCard/catetoryCard';
 import axios from "axios";
 import ADDCategroyCard from './categoryCard/addCategory';
+import { Button } from 'reactstrap';
 
 
 
@@ -20,10 +20,14 @@ useEffect(() => {
 }, []);
 
   console.log(category);
+
+  function refreshPage(){ 
+    window.location.reload(); 
+}
 return(
 
   <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
-     <h1>Admin dashboard</h1>
+     {/* <h1>Admin dashboard</h1> */}
      <br></br>
   <Row>
     <Col sm={4}>
@@ -36,7 +40,7 @@ return(
         <ListGroup.Item action href="#link1">
           Profile
         </ListGroup.Item>
-        <ListGroup.Item action href="#link2">
+        <ListGroup.Item action href="#addCategory">
           Add Category
         </ListGroup.Item>
         <ListGroup.Item action href="#showCategory">
@@ -52,14 +56,16 @@ return(
         <Tab.Pane eventKey="#link1">
         <h1>profile</h1>
         </Tab.Pane>
-        <Tab.Pane eventKey="#link2">
+        <Tab.Pane eventKey="#addCategory">
           <ADDCategroyCard />
         </Tab.Pane>
         <Tab.Pane eventKey="#showCategory">
+        <Button  color="primary" onClick={ refreshPage }> Reload </Button> 
           {category &&
             category.map((item, index) => {
               return (
                 <>
+                
                   <CategroyCard category={item} />
                 </>
               );

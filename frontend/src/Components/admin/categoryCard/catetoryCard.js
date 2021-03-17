@@ -1,5 +1,6 @@
 import React from "react";
 // import {Form ,Button , Card} from 'react-bootstrap';
+import { Button } from 'reactstrap';
 import styled from "styled-components";
 
 function CategroyCard(props) {
@@ -7,18 +8,7 @@ function CategroyCard(props) {
  // console.log(props.category);
   return (
     <>
-            {/* <Card>
-  <Card.Header as="h5">{category}</Card.Header>
-  <Card.Body>
-  <Card.Title>{description}</Card.Title>
-    <Card.Text>
-        <img src={icon} height="50px" weight="35px" ></img>
-      {description}
-    </Card.Text>
-    <Button variant="primary">Edit</Button>
-  </Card.Body>
-</Card> */}
-  <CardContainer>
+      <CardContainer>
          <CardInnerContainer>
            <InfoContainer>
              <img src={icon} alt="" />
@@ -27,8 +17,14 @@ function CategroyCard(props) {
                  {category}
                </h4>
                <small>{category}</small>
+               
              </Info>
+             <Action>
+             <Button color="danger">Delete</Button>
+             </Action>
+            
            </InfoContainer>
+           
          </CardInnerContainer>
        </CardContainer>
     </>
@@ -40,8 +36,8 @@ export default CategroyCard;
 const CardContainer = styled.div`
 margin: 1rem 0;
 padding: 0.5rem 0;
+box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 border-radius: 10px;
-background-color: #39afec;
 font-family: hindLight;
 `;
 const CardInnerContainer = styled.div`
@@ -66,9 +62,18 @@ justify-content: flex-start;
 const Info = styled.div`
 padding: 0 1rem;
 text-align: left;
-color:white;
+width: 85%;
+color:black;
 > h4 {
   padding: 0;
+}
+`;
+
+const Action = styled.div`
+padding: 0 1rem;
+align: right;
+> button {
+  padding: 12;
 }
 `;
 
