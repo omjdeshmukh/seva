@@ -1,8 +1,11 @@
 import React from "react";
-// import {Form ,Button , Card} from 'react-bootstrap';
 import { Button } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
+
+
+const api =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
 
 function ServiceCard(props) {
   const { _id, category, icon, description } = props.category;
@@ -11,7 +14,12 @@ function ServiceCard(props) {
   function ActionDelete() {
     axios({
       method: "DELETE",
-      url: "https://seva-backend1.herokuapp.com/admin/category/" + _id,
+      url:
+        "https://seva-backend1.herokuapp.com/provider/my/service/604d8695711ca305b4941102",
+      headers: {
+        // 'Content-Type': "application/json",
+        "auth-token": `${api}`,
+      },
     })
       .then(function (response) {
         //handle success

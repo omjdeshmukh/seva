@@ -1,7 +1,5 @@
 import {React, useState} from "react";
-// import {Form ,Button , Card, Col} from 'react-bootstrap';
-import { Card }  from 'react-bootstrap';
-import { Button, Form, FormGroup, Label, Input, FormText , FormFeedback} from 'reactstrap';
+import {Form ,Button , Card, Col} from 'react-bootstrap';
 import axios from "axios";
 
 function ADDCategroyCard() {
@@ -18,18 +16,14 @@ function ADDCategroyCard() {
   const handleSubmit = event => {
     event.preventDefault()
     sendCategory()
-  }
-
-  function afterPost(){
     console.log(formData);
     setFormData({
       category: '',
       description: '',
       icon: '',
     })
-    window.location.reload(); 
+    
   }
-
 
     const sendCategory = () => {
         axios({
@@ -40,8 +34,7 @@ function ADDCategroyCard() {
             .then(function (response) {
               //handle success
               console.log(response);
-              alert("hurry! Cateory added.." );
-              afterPost()
+            //   window.location.reload(false);
             })
             .catch(function (response) {
               //handle error
@@ -56,51 +49,36 @@ function ADDCategroyCard() {
 <Card align="left">
   <Card.Header as="h2" align="center">Add category</Card.Header>
   <Card.Body>
-
+    {/* <Card.Title>Special title treatment</Card.Title> */}
     <Card.Text>
-<Form onSubmit={handleSubmit} >
-      <FormGroup>
-        <Label for="category">Category</Label>
-        <Input
+
+    <form onSubmit={handleSubmit}>
+        <input
           type="text"
           name="category"
           placeholder="category"
           onChange={updateInput}
           value={formData.category || ''}
         />
-        <FormFeedback>You will not be able to see this</FormFeedback>
-      </FormGroup>
-      <FormGroup>
-        <Label for="description">Description</Label>
-        <Input
+         <br></br>
+        <input
           type="text"
           name="description"
           placeholder="description"
           onChange={updateInput}
           value={formData.description || ''}
         />
-      </FormGroup>
-      
-      <FormGroup>
-        <Label for="exampleFile">Icon</Label>
-        <Input type="file" name="file" id="exampleFile" />
-        <FormText color="muted">
-          This is some placeholder block-level help text for the above input.
-          It's a bit lighter and easily wraps to a new line.
-        </FormText>
-      </FormGroup>
-
-      <FormGroup>
-        <Label for="icon">Icon</Label>
-        <Input 
+        <br></br>
+        <input
           type="text"
           name="icon"
           placeholder="icon"
           onChange={updateInput}
-          value={formData.icon || ''} />
-      </FormGroup>
-      <Button color="primary" size="lg" type="submit" >Submit</Button>
-    </Form>
+          value={formData.icon || ''}
+        ></input>
+        <br></br>
+        <button type="submit">Submit</button>
+      </form>
     
     </Card.Text>
   </Card.Body>

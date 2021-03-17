@@ -96,7 +96,7 @@ color:black;
 
 const Action = styled.div`
 padding: 0 1rem;
-align: right;
+/* align-items: right; */
 > button {
   padding: 12;
 }

@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from "react";
 import Col from "react-bootstrap/Col";
 import { Form, Row, ListGroup, Tab } from "react-bootstrap";
 import axios from "axios";
 import { Button } from "reactstrap";
 import AddService from "./service/AddService";
-import ServiceCard from './ServiceCards/ServiceCard';
+import ServiceCard from "./ServiceCards/ServiceCard";
 
 function ProviderDashboard() {
   const [category, setCategory] = useState();
@@ -69,13 +68,13 @@ function ProviderDashboard() {
                 Reload
               </Button>
               {category &&
-            category.map((item, index) => {
-              return (
-                <>
-                  <ServiceCard category={item} />
-                </>
-              );
-            })}
+                category.map((item, index) => {
+                  return (
+                    <>
+                      <ServiceCard category={item} />
+                    </>
+                  );
+                })}
             </Tab.Pane>
           </Tab.Content>
         </Col>
