@@ -2,10 +2,35 @@ import React from "react";
 // import {Form ,Button , Card} from 'react-bootstrap';
 import { Button } from 'reactstrap';
 import styled from "styled-components";
+import axios from "axios";
 
 function CategroyCard(props) {
-  const { category, icon, description } = props.category;
+  const { _id,category, icon, description } = props.category;
  // console.log(props.category);
+
+ function ActionDelete() {
+  axios({
+    method: "DELETE",
+    url: "https://seva-backend1.herokuapp.com/admin/category/" +_id 
+  })
+    .then(function (response) {
+      //handle success
+      console.log(response);
+      alert("woohh! Cateory Deleted.." );
+      refreshPage()
+      // window.location.reload();
+    })
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+    });
+  //alert("I'm an alert" + _id);
+}
+
+function refreshPage(){ 
+  window.location.reload(); 
+}
+
   return (
     <>
       <CardContainer>
@@ -20,7 +45,7 @@ function CategroyCard(props) {
                
              </Info>
              <Action>
-             <Button color="danger">Delete</Button>
+             <Button color="danger" onClick={ ActionDelete }>Delete</Button>
              </Action>
             
            </InfoContainer>

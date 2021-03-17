@@ -18,18 +18,19 @@ function ADDCategroyCard() {
   const handleSubmit = event => {
     event.preventDefault()
     sendCategory()
+  }
+
+  function afterPost(){
     console.log(formData);
     setFormData({
       category: '',
       description: '',
       icon: '',
     })
-    refresh()
+    window.location.reload(); 
   }
 
-  const refresh = () => {
-    console.log("heelos")
-  }
+
     const sendCategory = () => {
         axios({
             method: "POST",
@@ -39,7 +40,8 @@ function ADDCategroyCard() {
             .then(function (response) {
               //handle success
               console.log(response);
-            //   window.location.reload(false);
+              alert("hurry! Cateory added.." );
+              afterPost()
             })
             .catch(function (response) {
               //handle error
