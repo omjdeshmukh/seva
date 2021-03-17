@@ -4,6 +4,7 @@ import CategroyCard from './categoryCard/catetoryCard';
 import axios from "axios";
 import ADDCategroyCard from './categoryCard/addCategory';
 import { Button } from 'reactstrap';
+import Dashboard from './Dashboard/adminDashboard';
 
 
 
@@ -19,14 +20,14 @@ useEffect(() => {
     .catch((err) => console.log(err));
 }, []);
 
-  console.log(category);
+  // console.log(category);
 
   function refreshPage(){ 
     window.location.reload(); 
-}
+  }
 return(
 
-  <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
+  <Tab.Container id="list-group-tabs-example" defaultActiveKey="#dashboard">
      {/* <h1>Admin dashboard</h1> */}
      <br></br>
   <Row>
@@ -37,7 +38,10 @@ return(
           <h5>Bhupendra</h5>
           <p>ADMIN</p>
         </ListGroup.Item>
-        <ListGroup.Item action href="#link1">
+        <ListGroup.Item action href="#dashboard">
+          Dashboard
+        </ListGroup.Item>
+        <ListGroup.Item action href="#link2">
           Profile
         </ListGroup.Item>
         <ListGroup.Item action href="#addCategory">
@@ -53,7 +57,10 @@ return(
     </Col>
     <Col sm={8}>
       <Tab.Content>
-        <Tab.Pane eventKey="#link1">
+        <Tab.Pane eventKey="#dashboard">
+            <Dashboard />
+        </Tab.Pane>
+        <Tab.Pane eventKey="#link2">
         <h1>profile</h1>
         </Tab.Pane>
         <Tab.Pane eventKey="#addCategory">
