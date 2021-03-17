@@ -20,7 +20,9 @@ function App() {
   // Rerender based on session Token
   useEffect(() => {
     if (token) {
+      console.log(token);
       setLogStatus(true);
+      console.log(logStatus);
     }
   }, [token]);
 
@@ -37,7 +39,7 @@ function App() {
           <Route
             path="/login"
             exact
-            render={() => <Login setToken={setToken} />}
+            render={(props) => <Login {...props} setToken={setToken} />}
           />
           <Route path="/signup" exact component={Signup} />
           <Route path="/admin" exact component={AdminDashboard} />

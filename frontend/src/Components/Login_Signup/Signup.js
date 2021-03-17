@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 
 function Signup() {
+  const [email, setEmail] = useState();
+  const [role, setRole] = useState();
+  const [password, setPassword] = useState();
+  const [pincode, setPincode] = useState();
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+  const handlePincodeChange = (event) => {
+    setPincode(event.target.value);
+  };
+
+  const handleRadioChange = (event) => {
+    setRole(event.target.value);
+  };
+
+  const handleRegisterSubmit = (event) => {
+    event.preventDefault();
+    console.log(`${role} ${email} ${password} ${pincode}`);
+  };
+
   return (
     <>
       <SignContainer>
@@ -20,7 +44,7 @@ function Signup() {
           </AuthLinks>
           <CredentialSection>
             <small>Or Log in with Credentials</small>
-            <Form>
+            <Form onSubmit={handleRegisterSubmit}>
               <Role>
                 <FormGroup check>
                   <Input
@@ -28,6 +52,7 @@ function Signup() {
                     type="radio"
                     value="User"
                     name="role"
+                    onChange={handleRadioChange}
                   />
                   <Label check for="radio1-option1">
                     User
@@ -39,6 +64,7 @@ function Signup() {
                     name="role"
                     value="Provider"
                     id="radio1-option2"
+                    onChange={handleRadioChange}
                   />
                   <Label check for="radio1-option2">
                     Provider
@@ -52,6 +78,7 @@ function Signup() {
                   id="exampleEmail"
                   autoComplete="off"
                   placeholder="Email"
+                  onChange={handleEmailChange}
                 />
               </FormGroup>
               <FormGroup>
@@ -61,6 +88,7 @@ function Signup() {
                   id="examplePassword"
                   placeholder="Password"
                   autoComplete="off"
+                  onChange={handlePasswordChange}
                 />
               </FormGroup>
               <FormGroup>
@@ -70,6 +98,12 @@ function Signup() {
                   id="examplePassword"
                   placeholder="Pincode"
                   autoComplete="off"
+                  value={
+                    sessionStorage.getItem("pincode")
+                      ? sessionStorage.getItem("pincode")
+                      : pincode
+                  }
+                  onChange={handlePincodeChange}
                 />
               </FormGroup>
               <button type="submit">Sign Up</button>

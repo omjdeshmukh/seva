@@ -17,7 +17,7 @@ async function loginUser(credentials) {
     .catch((err) => console.log(err.message));
 }
 
-function Login({ setToken }) {
+function Login({ history, setToken }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -35,7 +35,10 @@ function Login({ setToken }) {
       email,
       password,
     });
-    setToken(token);
+    if (token) {
+      setToken(token);
+      history.push("/");
+    }
   };
 
   return (
