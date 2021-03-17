@@ -44,6 +44,9 @@ function AddService() {
     window.location.reload();
   }
 
+  const api =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTI0YWQxZDQwNDNmMDAyMmM4NjM4NCIsImlhdCI6MTYxNjAwNTk1N30.p6OZnVyJEH20NfPbWed_UJEGJWNWs-FaJbD9e3Cfu70";
+
   const sendService = () => {
     axios({
       method: "POST",
@@ -51,18 +54,18 @@ function AddService() {
       data: serviceformData,
       headers: {
         // 'Content-Type': "application/json",
-        "auth-token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk2MzgwMX0.ViTjC7mfXMoaahvvjJ0CLeASGOJQERdy8iltrtWvSks`,
+        "auth-token": `${api}`,
       },
     })
       .then(function (response) {
         //handle success
         console.log(response.data);
-        alert("hurry! Service added.." );
+        alert("hurry! Service added..");
         afterPost();
       })
       .catch(function (response) {
         //handle error
-         alert("Opppssss Somthing went wrong...");
+        alert("Opppssss Somthing went wrong...");
         console.log(response);
       });
   };

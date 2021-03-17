@@ -1,3 +1,4 @@
+
 import { React, useState } from "react";
 // import {Form ,Button , Card, Col} from 'react-bootstrap';
 import { Card } from "react-bootstrap";
@@ -10,6 +11,7 @@ import {
   FormText,
   FormFeedback,
 } from "reactstrap";
+
 import axios from "axios";
 
 function ADDCategroyCard() {
@@ -22,6 +24,8 @@ function ADDCategroyCard() {
         [e.target.name] == "file" ? e.target.files[0] : e.target.value,
     });
   };
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,6 +59,7 @@ function ADDCategroyCard() {
         console.log(response);
       });
   };
+
 
   return (
     <>
@@ -101,6 +106,7 @@ function ADDCategroyCard() {
                 </FormText>
               </FormGroup>
 
+
               <FormGroup>
                 <Label for="icon">Icon</Label>
                 <Input
@@ -118,6 +124,7 @@ function ADDCategroyCard() {
           </Card.Text>
         </Card.Body>
       </Card>
+
     </>
   );
 }

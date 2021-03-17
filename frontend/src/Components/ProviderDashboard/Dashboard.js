@@ -1,27 +1,52 @@
-
 import React, { useState, useEffect } from "react";
 import Col from "react-bootstrap/Col";
 import { Form, Row, ListGroup, Tab } from "react-bootstrap";
 import axios from "axios";
 import { Button } from "reactstrap";
 import AddService from "./service/AddService";
-import ServiceCard from './ServiceCards/ServiceCard';
+import ServiceCard from "./ServiceCards/ServiceCard";
+import Profile from "./profile/Profile";
+
+const api =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
 
 function ProviderDashboard() {
-  const [category, setCategory] = useState();
+ 
+  const [service, setService] = useState();
 
   useEffect(() => {
-    axios
-      .get("https://seva-backend1.herokuapp.com/admin/category")
-      .then((response) => setCategory(response.data))
-      .catch((err) => console.log(err));
+    // axios
+    //   .get("https://seva-backend1.herokuapp.com/admin/category")
+    //   .then((response) => setService(response.data))
+    //   .catch((err) => console.log(err));
+    axios({
+      method: "GET",
+      url:
+        "https://seva-backend1.herokuapp.com/provider/my/service/60524ad1d4043f0022c86384",
+      headers: {
+        "auth-token": `${api}`,
+      },
+    })
+      .then(function (response) {
+        //handle success
+        console.log(response.data);
+        setService([response.data])
+        //  alert("woohh! Cateory Deleted..");
+        //  refreshPage();
+        // window.location.reload();
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
   }, []);
 
-  console.log(category);
+  console.log(service);
 
   function refreshPage() {
     window.location.reload();
   }
+
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#dashboard">
       {/* <h1>Admin dashboard</h1> */}
@@ -57,9 +82,9 @@ function ProviderDashboard() {
         </Col>
         <Col sm={9}>
           <Tab.Content>
-            <Tab.Pane eventKey="#dashboard">{/* <Dashboard /> */}</Tab.Pane>
+            <Tab.Pane eventKey="#dashboard">  </Tab.Pane>
             <Tab.Pane eventKey="#link2">
-              <h1>profile</h1>
+              <Profile />
             </Tab.Pane>
             <Tab.Pane eventKey="#addService">
               <AddService />
@@ -68,14 +93,14 @@ function ProviderDashboard() {
               <Button color="primary" onClick={refreshPage}>
                 Reload
               </Button>
-              {category &&
-            category.map((item, index) => {
-              return (
-                <>
-                  <ServiceCard category={item} />
-                </>
-              );
-            })}
+              {service &&
+                service.map((item, index) => {
+                  return (
+                    <>
+                      <ServiceCard service={item} />
+                    </>
+                  );
+                })}
             </Tab.Pane>
           </Tab.Content>
         </Col>
