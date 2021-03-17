@@ -12,14 +12,14 @@ function Dashboard(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/category")
+      .get("https://seva-backend1.herokuapp.com/admin/category")
       .then((response) => setCategory(response.data))
       .catch((err) => console.log(err.message));
   }, []);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/service")
+      .get("https://seva-backend1.herokuapp.com/service")
       .then((response) => setTotalServices(response.data))
       .catch((err) => console.log(err.message));
   }, []);
