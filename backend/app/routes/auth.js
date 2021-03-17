@@ -2,6 +2,7 @@ const router = require("express").Router();
 const user = require("../controllers/user.controller");
 const feedback = require("../controllers/feedback.controller");
 const service = require("../controllers/service.controller");
+const suggestion = require('../controllers/suggestion.controller');
 
 // register route
 router.post("/register", user.register);
@@ -26,6 +27,21 @@ router.get('/service', service.findAll);
 router.get('/service/:pin', service.findWhere);
 
 router.get('/VerifiedService', service.findVerify);
+
+
+
+//suggestion
+router.get("/suggestionBycategory/:Id", suggestion.findSuggestionByCategory);
+
+router.get("/suggestionBycategoryAndPin/:Id/:pin", suggestion.findSuggestionByCategoryAndPin);
+
+router.get('/suggestion/:Id', suggestion.findOne);
+
+router.get('/suggestion', suggestion.findAll);
+
+router.get('/suggestion/:pin', suggestion.findWhere);
+
+router.get('/validSuggestion', suggestion.findVaild);
 
 
 

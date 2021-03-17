@@ -25,7 +25,7 @@ var suggestionSchema = new mongoose.Schema({
     },
     voteCount: {
         type: String,
-        required: true
+        default: 0
     },
     isVaild: {
         type: String,
