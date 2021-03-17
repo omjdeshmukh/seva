@@ -34,7 +34,7 @@ function Dashboard(props) {
               alt=""
             />
             <InfoSection>
-              <p>{category.length}</p>
+              <p>{category && category.length}</p>
               <small>Total Category</small>
             </InfoSection>
           </CatagorySection>
@@ -64,7 +64,7 @@ function Dashboard(props) {
               alt=""
             />
             <InfoSection>
-              <p>{totalServices.length}</p>
+              <p>{totalServices && totalServices.length}</p>
               <small>Total Services</small>
             </InfoSection>
           </TotalServices>
@@ -77,7 +77,6 @@ function Dashboard(props) {
 export default Dashboard;
 
 const DashBoardContainer = styled.div`
-  border: 1px solid #ccc;
   font-family: hindLight;
 `;
 
