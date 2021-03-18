@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Col, ListGroup, Tab ,Row } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
@@ -7,17 +6,6 @@ import SuggestionsForm from './suggestionsForm'
 
 function UserDashboard(){
 const [service , setService] = useState();
-const [suggestions , setSuggestions] = useState("")
-
-    useEffect(()=>{
-        fetch("http://localhost:5000/admin/category")
-        .then((res) =>res.json())
-        .then((data) =>setSuggestions(data))
-        .catch((err) => console.log(err))    
-    },[])
-    console.log(suggestions)
-
-   
       
 useEffect(()=>{
     fetch(" https://seva-backend1.herokuapp.com/service")
@@ -70,11 +58,7 @@ return(
                     })}
                 </Tab.Pane>
                 <Tab.Pane eventKey="#link3">
-                {suggestions && suggestions.map((item, i) =>{
-                     return  (
-                        <SuggestionsForm name={suggestions[i].category}/>
-                             )
-                 })}
+                    <SuggestionsForm />
                 </Tab.Pane>
                 <Tab.Pane eventKey="#link4">
                     <h1>Feedback</h1>

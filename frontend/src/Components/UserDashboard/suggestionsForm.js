@@ -3,8 +3,17 @@ import React, { useEffect, useState } from 'react'
 import {Card, Col, Row} from 'react-bootstrap'
 import { Button, Form, FormGroup, Label, Input, FormText , FormFeedback} from 'reactstrap'
 
-function SuggestionsForm(props){
-   
+function SuggestionsForm() {
+    const [category , setCategory] = useState();
+
+    useEffect(() => {
+        axios
+        .get("https://seva-backend1.herokuapp.com/admin/category")
+        .then((response) => setCategory(response.data))
+        .catch((err) => console.log(err));
+    }, []);
+     console.log(category)
+
 return(
     <Card align="left">
         <Card.Header as="h2" align="center">Suggestions</Card.Header>
@@ -12,23 +21,24 @@ return(
 
             <Card.Text>
                <Form>
-                   <FormGroup>
-                   <Row>
-                        <Col sm={4}>
-                       <Label for="categories">categories</Label>
-                       <br></br>
-                       <Input
-                            type="select"
-                            name="select"
-                            id="exampleSelect"
-                            value=""
-                        >
-                       
-                       {console.log(props.name)})    
-                      </Input>
-                     </Col>
-                  </Row>               
-                   </FormGroup>
+
+                    <FormGroup>
+                        <Label for="exampleSelect">Category</Label>
+                        <Input type="select" name="select" id="exampleSelect">
+                        {category &&
+                                category.map((item, index) => {
+                                    // console.log(item)
+                                    // {console.log(item.category)}
+                                return (
+                                    <>
+                                    <option key={item._id}>{item.category}</option>
+                                    </>
+                                );
+                                })}
+
+                        </Input>
+                    </FormGroup>
+                  
                    <FormGroup>
                        <Label for="pincode">Pincode</Label>
                        <Input type="text"
