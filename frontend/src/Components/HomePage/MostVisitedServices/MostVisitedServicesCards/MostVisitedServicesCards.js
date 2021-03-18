@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 function MostVisitedServicesCard(props) {
-  const { category, description, icon } = props.category;
+  const { _id, description, icon, category } = props.category;
   return (
     <>
-      <ServicesCardContainer>
+      <ServicesCardContainer key={_id}>
         <ServiceImage>
           <img src={icon} alt={description} />
         </ServiceImage>
         <h4>{category}</h4>
-        <small>{description}</small>
       </ServicesCardContainer>
     </>
   );
@@ -43,6 +42,6 @@ const ServiceImage = styled.div`
   border-radius: 50%;
 
   > img {
-    width: 100%;
+    width: 90%;
   }
 `;

@@ -21,9 +21,7 @@ function App() {
   // Rerender based on session Token
   useEffect(() => {
     if (token) {
-      console.log(token);
       setLogStatus(true);
-      console.log(logStatus);
     }
   }, [token]);
 
@@ -33,9 +31,13 @@ function App() {
         <Navbar />
         <Switch>
           {logStatus ? (
-            <Route path="/" exact render={() => <AfterLogin />} />
+            <Route
+              path="/:role"
+              exact
+              render={(props) => <AfterLogin {...props} />}
+            />
           ) : (
-            <Route path="/" exact render={() => <Homepage />} />
+            <Route path="/" exact render={(props) => <Homepage {...props} />} />
           )}
           <Route
             path="/login"
@@ -46,7 +48,7 @@ function App() {
           <Route path="/admin" exact component={AdminDashboard} />
           <Route path="/provider" exact component={ProviderDashboard} />
           <Route path="/userdashboard" exact component={UserDashboard} />
-          <Route path="/Services" exact component={Services} />
+          <Route path="/services" exact component={Services} />
         </Switch>
       </div>
       <Footer />
