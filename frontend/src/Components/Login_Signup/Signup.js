@@ -4,7 +4,7 @@ import { Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 
 async function userRegistration(Credentials) {
-  return fetch("http://localhost:5000/register", {
+  return fetch("https://seva-backend1.herokuapp.com/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

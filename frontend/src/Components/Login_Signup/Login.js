@@ -5,7 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
 async function loginUser(credentials) {
-  return fetch("http://localhost:5000/login", {
+  return fetch("https://seva-backend1.herokuapp.com/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -24,7 +24,7 @@ router.get('/service/:Id', service.findOne);
 
 router.get('/service', service.findAll);
 
-router.get('/service/:pin', service.findWhere);
+router.get('/serviceByPin/:pin', service.findWhere);
 
 router.get('/VerifiedService', service.findVerify);
 
