@@ -6,12 +6,12 @@ import { Button } from "reactstrap";
 import AddService from "./service/AddService";
 import ServiceCard from "./ServiceCards/ServiceCard";
 import Profile from "./profile/Profile";
+import Experiment from "./experiment";
 
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
 
 function ProviderDashboard() {
- 
   const [service, setService] = useState();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function ProviderDashboard() {
       .then(function (response) {
         //handle success
         console.log(response.data);
-        setService([response.data])
+        setService([response.data]);
         //  alert("woohh! Cateory Deleted..");
         //  refreshPage();
         // window.location.reload();
@@ -41,14 +41,13 @@ function ProviderDashboard() {
       });
   }, []);
 
-  console.log(service);
-
   function refreshPage() {
     window.location.reload();
   }
 
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#dashboard">
+      <Experiment />
       {/* <h1>Admin dashboard</h1> */}
       <br></br>
       <Row>
@@ -82,7 +81,7 @@ function ProviderDashboard() {
         </Col>
         <Col sm={9}>
           <Tab.Content>
-            <Tab.Pane eventKey="#dashboard">  </Tab.Pane>
+            <Tab.Pane eventKey="#dashboard"> </Tab.Pane>
             <Tab.Pane eventKey="#link2">
               <Profile />
             </Tab.Pane>
@@ -95,7 +94,6 @@ function ProviderDashboard() {
               </Button>
               {service &&
                 service.map((item, index) => {
-                  console.log(item[index]);
                   return (
                     <>
                       <ServiceCard service={item} />

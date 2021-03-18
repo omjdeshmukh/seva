@@ -11,6 +11,7 @@ import AdminDashboard from "./Components/admin/AdminDashboard";
 import UserDashboard from "./Components/UserDashboard/UserDashboard";
 import Login from "./Components/Login_Signup/Login";
 import Signup from "./Components/Login_Signup/Signup";
+import Services from "./Components/Services/Services";
 
 //Main App
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="/admin" exact component={AdminDashboard} />
           <Route path="/provider" exact component={ProviderDashboard} />
           <Route path="/userdashboard" exact component={UserDashboard} />
+          <Route path="/Services" exact component={Services} />
         </Switch>
       </div>
       <Footer />
