@@ -124,6 +124,7 @@ function ProviderDashboard() {
               {/* --------------------Experiment------------------------ */}
               {data &&
                 data.map((item, index) => {
+                  // console.log(item);
                   return (
                     <>
                       <ServiceCard data={item} />
