@@ -41,6 +41,7 @@ const MostVisitedServicesSection = styled.div`
   margin: 0 auto;
   padding: 3rem 0;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;

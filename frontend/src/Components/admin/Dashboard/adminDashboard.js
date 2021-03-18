@@ -12,14 +12,14 @@ function Dashboard(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/category")
+      .get("https://seva-backend1.herokuapp.com/admin/category")
       .then((response) => setCategory(response.data))
       .catch((err) => console.log(err.message));
   }, []);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/service")
+      .get("https://seva-backend1.herokuapp.com/service")
       .then((response) => setTotalServices(response.data))
       .catch((err) => console.log(err.message));
   }, []);
@@ -95,8 +95,9 @@ const DashBoardInnerContainer = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    min-width: 250px;
-    min-height: 150px;
+    max-width: 100%;
+    min-width: 45%;
+    min-height: 100px;
     border-radius: 10px;
     padding: 1rem;
     margin: 0.5rem;
