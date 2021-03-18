@@ -50,8 +50,6 @@ function Signup() {
 
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
-    console.log(`${role} ${username} ${email} ${password}`);
-
     const userData = JSON.parse(sessionStorage.getItem("userData"));
 
     const address = await getAddress(userData ? userData.pincode : pincode);
