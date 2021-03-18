@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import userData from "../../userData";
 
 function Prompt(props) {
   const [pincode, setPincode] = useState();
@@ -18,7 +19,8 @@ function Prompt(props) {
     if (pincode == undefined || pincode == null) {
       //Do Noting
     } else {
-      sessionStorage.setItem("pincode", pincode);
+      userData.pincode = pincode;
+      sessionStorage.setItem("userData", JSON.stringify(userData));
       props.setPincodeExist(true);
     }
   };

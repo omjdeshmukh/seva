@@ -6,10 +6,9 @@ import axios from "axios";
 function MostVisitedServices() {
   const [category, setCategory] = useState();
 
-  // https://seva-backend1.herokuapp.com/admin/category
   useEffect(() => {
     axios
-      .get("https://seva-backend1.herokuapp.com/service")
+      .get(" https://seva-backend1.herokuapp.com/admin/category")
       .then((response) => setCategory(response.data))
       .catch((err) => console.log(err));
   }, []);
@@ -21,10 +20,9 @@ function MostVisitedServices() {
         <MostVisitedServicesSection>
           {category &&
             category.map((item, index) => {
-              const { category } = item;
               return (
                 <>
-                  <MostVisitedServicesCard category={category} />
+                  <MostVisitedServicesCard category={item} />
                 </>
               );
             })}

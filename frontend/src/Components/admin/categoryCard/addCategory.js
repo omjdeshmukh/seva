@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  Button, Card, Col } from "react-bootstrap";
+import { Button, Card, Col } from "react-bootstrap";
 
 import {
   // Button,
@@ -102,8 +102,6 @@ function ADDCategroyCard() {
                   input. It's a bit lighter and easily wraps to a new line.
                 </FormText>
               </FormGroup>
-
-              
 
               {/* <FormGroup>
                 <Label for="icon">Icon</Label>
