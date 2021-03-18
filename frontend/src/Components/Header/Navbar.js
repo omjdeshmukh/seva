@@ -14,7 +14,7 @@ function Navbar() {
         </BrandContainer>
         {/* Navigation Options */}
         <NavContainer>
-          <Link to="#">Services</Link>
+          <Link to="/services">Services</Link>
           <Link to="#" type="button">
             Suggestions
           </Link>
