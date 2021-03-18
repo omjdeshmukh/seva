@@ -11,11 +11,11 @@ import {
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
-import CategroyCard from "../../admin/categoryCard/catetoryCard"
+import CategroyCard from "../../admin/categoryCard/catetoryCard";
 
 function AddService() {
   const [serviceformData, setFormData] = useState({});
-  const [category, setCategory] = useState({})
+  const [category, setCategory] = useState({});
 
   const updateInput = (e) => {
     setFormData({
@@ -114,7 +114,6 @@ function AddService() {
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
-                   
                   </Input>
                 </FormGroup>
               </FormGroup>
@@ -187,25 +186,6 @@ function AddService() {
                 />
               </FormGroup>
 
-              {/* <FormGroup>
-                <Label for="exampleFile">Icon</Label>
-                <Input type="file" name="file" id="exampleFile" />
-                <FormText color="muted">
-                  This is some placeholder block-level help text for the above
-                  input. It's a bit lighter and easily wraps to a new line.
-                </FormText>
-              </FormGroup>
-
-              <FormGroup>
-                <Label for="icon">Icon</Label>
-                <Input
-                  type="text"
-                  name="icon"
-                  placeholder="icon"
-                  onChange={updateInput}
-                  value={serviceformData.icon || ""}
-                />
-              </FormGroup> */}
               <Button
                 color="primary"
                 size="lg"
