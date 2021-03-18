@@ -44,7 +44,25 @@ exports.register = async (req, res) => {
 
   try {
     const savedUser = await user.save();
-    res.json({ error: null, data: { userId: savedUser._id } });
+    const token = jwt.sign(
+      // payload data
+      {
+        name: savedUser.name,
+        id: savedUser._id,
+      },
+      process.env.TOKEN_SECRET
+      // TOKEN_SECRET
+    );
+  
+    res.header("auth-token", token).json({
+      error: null,
+      id: savedUser._id,
+      role: savedUser.role,
+      data: {
+        token,
+      },
+    });
+    //res.json({ error: null, data: { userId: savedUser._id } });
   } catch (error) {
     res.status(400).json({ error });
   }
@@ -80,6 +98,7 @@ exports.login = async (req, res) => {
 
   res.header("auth-token", token).json({
     error: null,
+    id: user._id,
     role: user.role,
     data: {
       token,

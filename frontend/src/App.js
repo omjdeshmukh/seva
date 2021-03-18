@@ -12,6 +12,7 @@ import UserDashboard from "./Components/UserDashboard/UserDashboard";
 import Login from "./Components/Login_Signup/Login";
 import Signup from "./Components/Login_Signup/Signup";
 import Services from "./Components/Services/Services";
+import ServicesPerPincode from "./Components/Services/ServicesPerPincode/ServicesPerPincode";
 
 //Main App
 function App() {
@@ -21,9 +22,7 @@ function App() {
   // Rerender based on session Token
   useEffect(() => {
     if (token) {
-      console.log(token);
       setLogStatus(true);
-      console.log(logStatus);
     }
   }, [token]);
 
@@ -33,9 +32,13 @@ function App() {
         <Navbar />
         <Switch>
           {logStatus ? (
-            <Route path="/" exact render={() => <AfterLogin />} />
+            <Route
+              path="/:role"
+              exact
+              render={(props) => <AfterLogin {...props} />}
+            />
           ) : (
-            <Route path="/" exact render={() => <Homepage />} />
+            <Route path="/" exact render={(props) => <Homepage {...props} />} />
           )}
           <Route
             path="/login"
@@ -46,7 +49,12 @@ function App() {
           <Route path="/admin" exact component={AdminDashboard} />
           <Route path="/provider" exact component={ProviderDashboard} />
           <Route path="/userdashboard" exact component={UserDashboard} />
-          <Route path="/Services" exact component={Services} />
+          <Route path="/services" exact component={Services} />
+          <Route
+            path="/services/:pincode"
+            exact
+            component={ServicesPerPincode}
+          />
         </Switch>
       </div>
       <Footer />

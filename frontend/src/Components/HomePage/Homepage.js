@@ -9,12 +9,12 @@ function Homepage() {
   const [pincodeExist, setPincodeExist] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem("pincode")) {
+    const userData = JSON.parse(sessionStorage.getItem("userData"));
+    if (userData) {
       setPincodeExist(true);
     }
     if (pincodeExist) {
-      console.log(`inside if statement`);
-      setCheckPincode(sessionStorage.getItem("pincode"));
+      setCheckPincode(userData.pincode);
     }
   });
 

@@ -48,16 +48,18 @@ function ServiceCard(props) {
 
   return (
     <>
-      <CardContainer>
-        <CardInnerContainer key={_id}>
+
+      <CardContainer key={_id}>
+        <CardInnerContainer>
           <InfoContainer>
-            <CardTitle>{serviceNames}</CardTitle>
-           
-            <CardBody>
-              <CardTitle tag="h5"> {category.category} </CardTitle>
-              <CardText>{description}</CardText>
-            </CardBody>
-            <CardTitle>Service</CardTitle>
+            <Card>
+              <CardHeader> {serviceNames} </CardHeader>
+              <CardBody>
+                <CardTitle tag="h5"> {category.category} </CardTitle>
+                <CardText>{description}</CardText>
+              </CardBody>
+              <CardFooter>Service</CardFooter>
+            </Card>
 
             <Action>
               <Button color="danger" onClick={ActionDelete}>

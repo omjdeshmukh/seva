@@ -4,7 +4,7 @@ import { Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 
 async function userRegistration(Credentials) {
-  return fetch("http://localhost:5000/register", {
+  return fetch("https://seva-backend1.herokuapp.com/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -50,12 +50,9 @@ function Signup() {
 
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
-    console.log(`${role} ${username} ${email} ${password}`);
-    const address = await getAddress(
-      sessionStorage.getItem("pincode")
-        ? sessionStorage.getItem("pincode")
-        : pincode
-    );
+    const userData = JSON.parse(sessionStorage.getItem("userData"));
+
+    const address = await getAddress(userData ? userData.pincode : pincode);
     const { District, State, Name, Pincode, Block } = address[0].PostOffice[0];
     const Credentials = {
       userName: username,
@@ -68,9 +65,15 @@ function Signup() {
       village: Block,
       pincode: Pincode,
     };
-
-    const response = await userRegistration(Credentials);
-    console.log(response);
+    try {
+      const response = await userRegistration(Credentials);
+      console.log(response.data);
+      userData.userId = response.data.userId;
+      userData.role = role;
+      sessionStorage.setItem("userData", JSON.stringify(userData));
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (

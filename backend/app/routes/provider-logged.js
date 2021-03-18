@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const service = require('../controllers/service.controller');
+const user = require("../controllers/user.controller");
 
 router.get("/", (req, res) => {
     res.json({
@@ -25,6 +26,12 @@ router.get('/my/service/:Id', service.findMyService);
 // router.get('/service', service.findAll);
 
 // router.get('/service/:pin', service.findWhere);
+
+router.get('/profile/:Id', user.findOne);
+
+router.put('/profile/:Id', user.update);
+
+router.delete('/profile/:Id', user.delete);
 
 
 module.exports = router;

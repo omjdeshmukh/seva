@@ -43,7 +43,7 @@ function Footer() {
         <FooterServices>
           <FooterServiceDiv>
             <ServiceIcon>
-              <img src="./Assets/Icons/Caresupporticon.png" />
+              <img src="/Assets/Icons/Caresupporticon.png" />
             </ServiceIcon>
             <ServiceInfo>
               <h4>24/7 Support:</h4>
@@ -52,7 +52,7 @@ function Footer() {
           </FooterServiceDiv>
           <FooterServiceDiv>
             <ServiceIcon>
-              <img src="./Assets/Icons/Messageicon.png" />
+              <img src="/Assets/Icons/Messageicon.png" />
             </ServiceIcon>
             <ServiceInfo>
               <h4>Say Hello To Us</h4>
@@ -61,7 +61,7 @@ function Footer() {
           </FooterServiceDiv>
           <FooterServiceDiv>
             <ServiceIcon>
-              <img src="./Assets/Icons/Locationicon.png" />
+              <img src="/Assets/Icons/Locationicon.png" />
             </ServiceIcon>
             <ServiceInfo>
               <h4>Our Active Location</h4>
