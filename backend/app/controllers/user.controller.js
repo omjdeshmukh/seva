@@ -56,6 +56,7 @@ exports.register = async (req, res) => {
   
     res.header("auth-token", token).json({
       error: null,
+      id: savedUser._id,
       role: savedUser.role,
       data: {
         token,
@@ -97,6 +98,7 @@ exports.login = async (req, res) => {
 
   res.header("auth-token", token).json({
     error: null,
+    id: user._id,
     role: user.role,
     data: {
       token,
