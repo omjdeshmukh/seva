@@ -20,7 +20,7 @@ function ADDCategroyCard() {
     setFormData({
       ...formData,
       [e.target.name]:
-        [e.target.name] == "file" ? e.target.files[0] : e.target.value,
+        [e.target.name] == "icon" ? e.target.files[0] : e.target.value,
     });
   };
 
@@ -53,6 +53,7 @@ function ADDCategroyCard() {
       })
       .catch(function (response) {
         //handle error
+        alert("Oppes! somthing wrong....");
         console.log(response);
       });
   };
@@ -92,7 +93,7 @@ function ADDCategroyCard() {
                 <Label for="exampleFile">Icon</Label>
                 <Input
                   type="file"
-                  name="file"
+                  name="icon"
                   id="exampleFile"
                   onChange={updateInput}
                 />
@@ -104,7 +105,7 @@ function ADDCategroyCard() {
 
               
 
-              <FormGroup>
+              {/* <FormGroup>
                 <Label for="icon">Icon</Label>
                 <Input
                   type="text"
@@ -113,7 +114,7 @@ function ADDCategroyCard() {
                   onChange={updateInput}
                   value={formData.icon || ""}
                 />
-              </FormGroup>
+              </FormGroup> */}
               <Button color="primary" size="lg" type="submit">
                 Submit
               </Button>
