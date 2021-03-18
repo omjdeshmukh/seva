@@ -1,23 +1,29 @@
 import React from "react";
-import { Button } from "reactstrap";
+import {
+  Card,
+  Button,
+  CardHeader,
+  CardFooter,
+  CardBody,
+  CardTitle,
+  CardText,
+} from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
-
 
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
 
 function ServiceCard(props) {
-  const { _id, category, icon, description } = props.category;
+  const { _id, serviceName, category, description } = props.service;
   // console.log(props.category);
 
   function ActionDelete() {
     axios({
       method: "DELETE",
       url:
-        "https://seva-backend1.herokuapp.com/provider/my/service/604d8695711ca305b4941102",
+        "https://seva-backend1.herokuapp.com/provider/my/service/60524ad1d4043f0022c86384",
       headers: {
-        // 'Content-Type': "application/json",
         "auth-token": `${api}`,
       },
     })
@@ -44,11 +50,14 @@ function ServiceCard(props) {
       <CardContainer>
         <CardInnerContainer>
           <InfoContainer>
-            <img src={icon} alt="" />
-            <Info>
-              <h4>{category}</h4>
-              <small>{category}</small>
-            </Info>
+            <Card>
+              <CardHeader> {serviceName} </CardHeader>
+              <CardBody>
+                <CardTitle tag="h5"> {category} </CardTitle>
+                <CardText>{description}</CardText>
+              </CardBody>
+              <CardFooter>Service</CardFooter>
+            </Card>
             <Action>
               <Button color="danger" onClick={ActionDelete}>
                 Delete
@@ -100,7 +109,7 @@ const Info = styled.div`
 
 const Action = styled.div`
   padding: 0 1rem;
-  align: right;
+  align-items: right;
   > button {
     padding: 12;
   }

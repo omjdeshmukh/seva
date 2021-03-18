@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-import {React, useState} from "react";
-import {Form ,Button , Card, Col} from 'react-bootstrap';
-=======
+import { React, useState } from "react";
+import { Form, Button, Card, Col } from "react-bootstrap";
+
 import { React, useState } from "react";
 // import {Form ,Button , Card, Col} from 'react-bootstrap';
 import { Card } from "react-bootstrap";
@@ -14,7 +13,7 @@ import {
   FormText,
   FormFeedback,
 } from "reactstrap";
->>>>>>> cc86629537ae675f79b646c6917335a6f15f8c35
+
 import axios from "axios";
 
 function ADDCategroyCard() {
@@ -28,36 +27,34 @@ function ADDCategroyCard() {
     });
   };
 
-<<<<<<< HEAD
-  const handleSubmit = event => {
-    event.preventDefault()
-    sendCategory()
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    sendCategory();
     console.log(formData);
     setFormData({
-      category: '',
-      description: '',
-      icon: '',
-    })
-    
-  }
+      category: "",
+      description: "",
+      icon: "",
+    });
+  };
 
-    const sendCategory = () => {
-        axios({
-            method: "POST",
-            url: "https://seva-backend1.herokuapp.com/admin/category",
-            data: formData,
-          })
-            .then(function (response) {
-              //handle success
-              console.log(response);
-            //   window.location.reload(false);
-            })
-            .catch(function (response) {
-              //handle error
-              console.log(response);
-            });
-      }
-=======
+  const sendCategory = () => {
+    axios({
+      method: "POST",
+      url: "https://seva-backend1.herokuapp.com/admin/category",
+      data: formData,
+    })
+      .then(function (response) {
+        //handle success
+        console.log(response);
+        //   window.location.reload(false);
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     sendCategory();
@@ -90,7 +87,6 @@ function ADDCategroyCard() {
         console.log(response);
       });
   };
->>>>>>> cc86629537ae675f79b646c6917335a6f15f8c35
 
   return (
     <>
@@ -137,45 +133,44 @@ function ADDCategroyCard() {
                 </FormText>
               </FormGroup>
 
-<<<<<<< HEAD
-<Card align="left">
-  <Card.Header as="h2" align="center">Add category</Card.Header>
-  <Card.Body>
-    {/* <Card.Title>Special title treatment</Card.Title> */}
-    <Card.Text>
+              <Card align="left">
+                <Card.Header as="h2" align="center">
+                  Add category
+                </Card.Header>
+                <Card.Body>
+                  {/* <Card.Title>Special title treatment</Card.Title> */}
+                  <Card.Text>
+                    <form onSubmit={handleSubmit}>
+                      <input
+                        type="text"
+                        name="category"
+                        placeholder="category"
+                        onChange={updateInput}
+                        value={formData.category || ""}
+                      />
+                      <br></br>
+                      <input
+                        type="text"
+                        name="description"
+                        placeholder="description"
+                        onChange={updateInput}
+                        value={formData.description || ""}
+                      />
+                      <br></br>
+                      <input
+                        type="text"
+                        name="icon"
+                        placeholder="icon"
+                        onChange={updateInput}
+                        value={formData.icon || ""}
+                      ></input>
+                      <br></br>
+                      <button type="submit">Submit</button>
+                    </form>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
 
-    <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="category"
-          placeholder="category"
-          onChange={updateInput}
-          value={formData.category || ''}
-        />
-         <br></br>
-        <input
-          type="text"
-          name="description"
-          placeholder="description"
-          onChange={updateInput}
-          value={formData.description || ''}
-        />
-        <br></br>
-        <input
-          type="text"
-          name="icon"
-          placeholder="icon"
-          onChange={updateInput}
-          value={formData.icon || ''}
-        ></input>
-        <br></br>
-        <button type="submit">Submit</button>
-      </form>
-    
-    </Card.Text>
-  </Card.Body>
-</Card>
-=======
               <FormGroup>
                 <Label for="icon">Icon</Label>
                 <Input
@@ -193,7 +188,6 @@ function ADDCategroyCard() {
           </Card.Text>
         </Card.Body>
       </Card>
->>>>>>> cc86629537ae675f79b646c6917335a6f15f8c35
     </>
   );
 }

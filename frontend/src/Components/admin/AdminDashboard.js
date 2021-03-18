@@ -68,8 +68,7 @@ function AdminDashboard() {
             </Tab.Pane>
             <Tab.Pane eventKey="#showCategory">
               <Button color="primary" onClick={refreshPage}>
-                {" "}
-                Reload{" "}
+                Reload
               </Button>
               {category &&
                 category.map((item, index) => {
