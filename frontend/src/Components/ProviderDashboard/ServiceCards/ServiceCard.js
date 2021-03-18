@@ -15,12 +15,12 @@ const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
 
 function ServiceCard(props) {
-  // console.log(props.service);
-  const { _id, serviceName, category, description } = props.service;
-  // console.log(category);
-  // console.log(serviceName);
-  // console.log(_id);
-  // console.log(description);
+  // console.log(props.data);
+  const { _id, serviceNames, category, description } = props.data;
+  console.log(category);
+  console.log(serviceNames);
+  console.log(_id);
+  console.log(description);
 
   function ActionDelete() {
     axios({
@@ -52,7 +52,7 @@ function ServiceCard(props) {
   return (
     <>
       <CardContainer>
-        <CardInnerContainer>
+        {/* <CardInnerContainer>
           <InfoContainer>
             <Card>
               <CardHeader> {serviceName} </CardHeader>
@@ -68,7 +68,7 @@ function ServiceCard(props) {
               </Button>
             </Action>
           </InfoContainer>
-        </CardInnerContainer>
+        </CardInnerContainer> */}
       </CardContainer>
     </>
   );

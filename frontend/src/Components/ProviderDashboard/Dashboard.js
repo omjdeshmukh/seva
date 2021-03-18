@@ -6,40 +6,61 @@ import { Button } from "reactstrap";
 import AddService from "./service/AddService";
 import ServiceCard from "./ServiceCards/ServiceCard";
 import Profile from "./profile/Profile";
-import Experiment from "./experiment";
 
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
 
 function ProviderDashboard() {
-  const [service, setService] = useState();
+  // const [service, setService] = useState();
+  const [data, setData] = useState();
+
+  // useEffect(() => {
+  //   // axios
+  //   //   .get("https://seva-backend1.herokuapp.com/admin/category")
+  //   //   .then((response) => setService(response.data))
+  //   //   .catch((err) => console.log(err));
+  //   axios({
+  //     method: "GET",
+  //     url:
+  //       "https://seva-backend1.herokuapp.com/provider/my/service/60524ad1d4043f0022c86384",
+  //     headers: {
+  //       "auth-token": `${api}`,
+  //     },
+  //   })
+  //     .then(function (response) {
+  //       //handle success
+  //       console.log(response.data);
+  //       setService([response.data]);
+  //       //  alert("woohh! Cateory Deleted..");
+  //       //  refreshPage();
+  //       // window.location.reload();
+  //     })
+  //     .catch(function (response) {
+  //       //handle error
+  //       console.log(response);
+  //     });
+  // }, []);
+
+  //-------------------Experiment-------------------------
 
   useEffect(() => {
-    // axios
-    //   .get("https://seva-backend1.herokuapp.com/admin/category")
-    //   .then((response) => setService(response.data))
-    //   .catch((err) => console.log(err));
-    axios({
-      method: "GET",
-      url:
-        "https://seva-backend1.herokuapp.com/provider/my/service/60524ad1d4043f0022c86384",
-      headers: {
-        "auth-token": `${api}`,
-      },
-    })
-      .then(function (response) {
-        //handle success
-        console.log(response.data);
-        setService([response.data]);
-        //  alert("woohh! Cateory Deleted..");
-        //  refreshPage();
-        // window.location.reload();
-      })
-      .catch(function (response) {
-        //handle error
-        console.log(response);
-      });
+    fetch(
+      "https://seva-backend1.herokuapp.com/provider/my/service/60524ad1d4043f0022c86384",
+      {
+        method: "GET",
+        headers: {
+          "auth-token": `${api}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((response) => setData([...response]))
+      .catch((err) => console.log(err.message));
+
+    console.log(data);
   }, []);
+
+  //-------------------Experiment-------------------------
 
   function refreshPage() {
     window.location.reload();
@@ -47,7 +68,6 @@ function ProviderDashboard() {
 
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#dashboard">
-      <Experiment />
       {/* <h1>Admin dashboard</h1> */}
       <br></br>
       <Row>
@@ -92,14 +112,25 @@ function ProviderDashboard() {
               <Button color="primary" onClick={refreshPage}>
                 Reload
               </Button>
-              {service &&
+              {/* {service &&
                 service.map((item, index) => {
                   return (
                     <>
                       <ServiceCard service={item} />
                     </>
                   );
+                })} */}
+
+              {/* --------------------Experiment------------------------ */}
+              {data &&
+                data.map((item, index) => {
+                  return (
+                    <>
+                      <ServiceCard data={item} />
+                    </>
+                  );
                 })}
+              {/* --------------------Experiment------------------------ */}
             </Tab.Pane>
           </Tab.Content>
         </Col>
