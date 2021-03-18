@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const category = require('../controllers/category.controller');
+const user = require("../controllers/user.controller");
 
 
 router.get("/", (req, res) => {
@@ -24,5 +25,11 @@ router.delete('/category/:Id', category.delete);
 router.get('/category', category.findAll);
 
 router.get('/category/:Id', category.findOne);
+
+
+//user 
+
+router.get('/alluser', user.findAll);
+
 
 module.exports = router;
