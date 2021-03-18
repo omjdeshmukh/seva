@@ -12,6 +12,7 @@ import UserDashboard from "./Components/UserDashboard/UserDashboard";
 import Login from "./Components/Login_Signup/Login";
 import Signup from "./Components/Login_Signup/Signup";
 import Services from "./Components/Services/Services";
+import ServicesPerPincode from "./Components/Services/ServicesPerPincode/ServicesPerPincode";
 
 //Main App
 function App() {
@@ -49,6 +50,11 @@ function App() {
           <Route path="/provider" exact component={ProviderDashboard} />
           <Route path="/userdashboard" exact component={UserDashboard} />
           <Route path="/services" exact component={Services} />
+          <Route
+            path="/services/:pincode"
+            exact
+            component={ServicesPerPincode}
+          />
         </Switch>
       </div>
       <Footer />
