@@ -16,7 +16,7 @@ const api =
 
 function ServiceCard(props) {
   const { _id, serviceName, category, description } = props.service;
-  // console.log(props.category);
+  console.log(props.category);
 
   function ActionDelete() {
     axios({

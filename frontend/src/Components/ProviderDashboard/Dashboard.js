@@ -95,6 +95,7 @@ function ProviderDashboard() {
               </Button>
               {service &&
                 service.map((item, index) => {
+                  console.log(item[index]);
                   return (
                     <>
                       <ServiceCard service={item} />
