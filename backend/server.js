@@ -11,6 +11,9 @@ const userRoutes = require("./app/routes/user-logged");
 const providerRoutes = require("./app/routes/provider-logged");
 const adminRoutes = require("./app/routes/admin");
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 const port = 5000
 
 
@@ -23,9 +26,9 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(express.json()); // for body parser
 
-app.get('/', (req, res) => {
-  res.send('welcome to Seva application api')
-})
+// app.get('/', (req, res) => {
+//   res.send('welcome to Seva application api')
+// })
 
 // public route anyone can access 
 // route middlewares
@@ -37,6 +40,9 @@ app.use("/admin", adminRoutes);
 // this route is protected with token
 app.use("/user", verifyTokenUser, userRoutes);
 app.use("/provider", checkprovider, providerRoutes);
+
+
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(process.env.PORT || 5000, () => {
   console.log(`Example app listening at http://localhost:${port}`)

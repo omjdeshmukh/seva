@@ -1,0 +1,157 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Seva Backend Application API",
+      "description": "Seva Backend Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "seva-backend1.herokuapp.com",
+    "basePath": "/",
+   
+    "schemes": [
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/admin/category": {
+        "post": {
+          "tags": [
+            "Admin"
+          ],
+          "description": "Create new category in system",
+          "parameters": [
+            {
+              "name": "category",
+              "in": "body",
+              "description": "category that we want to create",
+              "schema": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New Category is created",
+              "schema": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Get all category",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        }
+      },
+      "/admin/category/{categoryId}": {
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Category that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Get Category with given ID",
+          "responses": {
+            "200": {
+              "description": "Category is found",
+              "schema": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete Category with given ID",
+          "tags": [
+            "Admin"
+          ],
+          "responses": {
+            "200": {
+              "description": "Category is deleted",
+              "schema": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Update Category with give ID",
+          "tags": [
+            "Admin"
+          ],
+          "parameters": [
+            {
+              "name": "admin",
+              "in": "body",
+              "description": "Category with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Category is updated",
+              "schema": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Category": {
+        "required": [
+          "category",
+          "description"
+        ],
+        "properties": {
+          "icon": {
+            "type": "string",
+            "required": true
+        },
+        "category": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "string"
+        }
+        }
+      },
+      "category": {
+        "type": "array",
+        "$ref": "#/definitions/Category"
+      }
+    }
+  }
