@@ -1,9 +1,24 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Col, ListGroup, Tab ,Row } from 'react-bootstrap';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import ServiceCard from './Servicecard'
+import SuggestionsForm from './suggestionsForm'
+
 function UserDashboard(){
 const [service , setService] = useState();
+const [suggestions , setSuggestions] = useState("")
 
+    useEffect(()=>{
+        fetch("http://localhost:5000/admin/category")
+        .then((res) =>res.json())
+        .then((data) =>setSuggestions(data))
+        .catch((err) => console.log(err))    
+    },[])
+    console.log(suggestions)
+
+   
+      
 useEffect(()=>{
     fetch(" https://seva-backend1.herokuapp.com/service")
     .then((res) => res.json())
@@ -11,7 +26,7 @@ useEffect(()=>{
     .catch((err) => console.log(err))
 },[])
 
-console.log(service)
+//console.log(service)
 
 return(
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
@@ -29,10 +44,13 @@ return(
                     Profile
                 </ListGroup.Item>
                 <ListGroup.Item action href="#link2">
-                    service
+                   show service
                 </ListGroup.Item>
                 <ListGroup.Item action href="#link3">
-                    Suggestions
+                    Add Suggestions
+                </ListGroup.Item>
+                <ListGroup.Item action href="#link4">
+                    Feedback
                 </ListGroup.Item>
                 <ListGroup.Item action href="/">
                     Logout
@@ -52,7 +70,14 @@ return(
                     })}
                 </Tab.Pane>
                 <Tab.Pane eventKey="#link3">
-                    <h1>Suggestions</h1>
+                {suggestions && suggestions.map((item, i) =>{
+                     return  (
+                        <SuggestionsForm name={suggestions[i].category}/>
+                             )
+                 })}
+                </Tab.Pane>
+                <Tab.Pane eventKey="#link4">
+                    <h1>Feedback</h1>
                 </Tab.Pane>
             </Tab.Content>
             </Col>  
