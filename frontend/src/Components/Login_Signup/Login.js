@@ -13,7 +13,7 @@ async function loginUser(credentials) {
     body: JSON.stringify(credentials),
   })
     .then((data) => data.json())
-    .then((data) => data.data.token)
+    .then((data) => data)
     .catch((err) => console.log(err.message));
 }
 
@@ -35,9 +35,14 @@ function Login({ history, setToken }) {
       email,
       password,
     });
+
     if (token) {
+      const userData = JSON.parse(sessionStorage.getItem("userData"));
+      userData.token = token.data.token;
+      userData.role = token.role;
+      sessionStorage.setItem("userData", JSON.stringify(userData));
       setToken(token);
-      history.push("/");
+      history.push(`/:${userData.role}`);
     }
   };
 
