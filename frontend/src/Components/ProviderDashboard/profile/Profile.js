@@ -25,14 +25,14 @@ function Profile() {
       },
     })
       .then(function (response) {
-        // setData(response.data);
+        setData(response.data);
       })
       .catch(function (response) {
         console.log(response);
       });
   }, []);
 
-  console.log(data);
+  // console.log(data);
 
   const updateInput = (e) => {
     setFormData({

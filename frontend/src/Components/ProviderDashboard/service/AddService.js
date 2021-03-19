@@ -182,7 +182,7 @@ function AddService() {
               <FormGroup className="col">
                 <Label for="image">Image</Label>
                 <Input
-                  type="text"
+                  type="file"
                   name="image"
                   placeholder="Image"
                   onChange={updateInput}

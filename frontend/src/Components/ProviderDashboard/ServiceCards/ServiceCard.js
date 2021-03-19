@@ -8,7 +8,14 @@ const api =
 
 function ServiceCard(props) {
   // console.log(props);
-  const { _id, serviceNames, category, description } = props.data;
+  const {
+    _id,
+    serviceNames,
+    category,
+    description,
+    img,
+    map_location,
+  } = props.data;
   // console.log(category);
   // console.log(serviceNames);
   // console.log(_id);
@@ -44,12 +51,21 @@ function ServiceCard(props) {
   return (
     <>
       <CardContainer key={_id}>
+        <ServiceImage>
+          <CardTitle> {img} </CardTitle>
+        </ServiceImage>
         <CardInnerContainer>
           <InfoContainer>
             <Block>
-              <CardTitle tag="h5"> {serviceNames} </CardTitle>
-              <CardTitle tag="h5"> {category.category} </CardTitle>
-              <CardText>{description}</CardText>
+              <ItemInfo tag="h5"> {serviceNames} </ItemInfo>
+              <hr />
+              <ItemInfo tag="h5"> {category.category} </ItemInfo>
+              <hr />
+              <ItemInfo>{description}</ItemInfo>
+              <hr />
+              <ItemInfo>
+                <a href={map_location}> <h5> Map Location </h5> </a>
+              </ItemInfo>
             </Block>
           </InfoContainer>
         </CardInnerContainer>
@@ -96,7 +112,7 @@ const InfoContainer = styled.div`
   }
 `;
 
-const Info = styled.div`
+const ServiceImage = styled.div`
   display: flex;
   padding: 0 1rem;
   text-align: left;
@@ -118,4 +134,10 @@ const Action = styled.div`
 
 const Block = styled.div`
   align-items: right;
+`;
+
+const ItemInfo = styled.div`
+  display: flex;
+  font-weight: bold;
+  font-family: hindRegular;
 `;
