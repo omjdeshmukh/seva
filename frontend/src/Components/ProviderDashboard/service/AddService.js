@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 // import {Form ,Button , Card, Col} from 'react-bootstrap';
 import { Card } from "react-bootstrap";
 import {
@@ -15,7 +15,14 @@ import CategroyCard from "../../admin/categoryCard/catetoryCard";
 
 function AddService() {
   const [serviceformData, setFormData] = useState({});
-  const [category, setCategory] = useState({});
+  const [category, setCategory] = useState();
+
+  useEffect(() => {
+    axios
+      .get("https://seva-backend1.herokuapp.com/admin/category")
+      .then((response) => setCategory(response.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const updateInput = (e) => {
     setFormData({
@@ -59,7 +66,7 @@ function AddService() {
     })
       .then(function (response) {
         //handle success
-        console.log(response.data);
+        // console.log(response.data);
         alert("hurry! Service added..");
         afterPost();
       })
@@ -91,29 +98,29 @@ function AddService() {
                   />
                   <FormFeedback>You will not be able to see this</FormFeedback>
                 </FormGroup>
-                <FormGroup className="col">
-                  <Label for="category">category</Label>
-                  <Input
-                    type="text"
-                    name="category"
-                    placeholder="category"
-                    onChange={updateInput}
-                    value={serviceformData.category || ""}
-                  />
-                </FormGroup>
-                <FormGroup className="col">
-                  <Label for="exampleSelect">category</Label>
+              
+                <FormGroup>
+                  <Label for="exampleSelect">Service Category</Label>
                   <Input
                     type="select"
-                    name="select"
+                    name="category"
+                    value={FormData.category}
+                    onChange={updateInput}
                     id="exampleSelect"
-                    className="px-2"
+                    defaultValue
                   >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option>select category</option>
+
+                    {category &&
+                      category.map((item, index) => {
+                        // console.log(item)
+                        // {console.log(item.category)}
+                        return (
+                          <>
+                            <option value={item._id}>{item.category}</option>
+                          </>
+                        );
+                      })}
                   </Input>
                 </FormGroup>
               </FormGroup>

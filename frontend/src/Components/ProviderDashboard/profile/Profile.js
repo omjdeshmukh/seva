@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 // import {Form ,Button , Card, Col} from 'react-bootstrap';
 import { Card } from "react-bootstrap";
 import {
@@ -11,11 +11,35 @@ import {
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
-import CategroyCard from "../../admin/categoryCard/catetoryCard";
 
-function AddService() {
+function Profile() {
   const [serviceformData, setFormData] = useState({});
-  const [category, setCategory] = useState({});
+
+  const [data, setData] = useState({});
+
+//   const [category, setCategory] = useState({});
+
+  //onLoadData Fetching
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url:
+        "https://seva-backend1.herokuapp.com/provider/profile/60524ad1d4043f0022c86384",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": `${api}`,
+      },
+    })
+      .then(function (response) {
+        setData(response.data);
+      })
+      .catch(function (response) {
+        console.log(response);
+      });
+  }, []);
+
+  console.log(data);
 
   const updateInput = (e) => {
     setFormData({
@@ -30,18 +54,20 @@ function AddService() {
   };
 
   function afterPost() {
-    console.log(serviceformData);
+    // console.log(serviceformData);
     setFormData({
-      image: "",
-      serviceName: "",
-      serviceEmail: "",
-      servicePincode: "",
-      contactNo: "",
-      category: "",
-      map_location: "",
-      description: "",
+      img: "",
+      userName: "",
+      fullName: "",
+      email: "",
+      role: "",
+      state: "",
+      city: "",
+      village: "",
+      pincode: "",
+      password: "",
     });
-    window.location.reload();
+    // window.location.reload();
   }
 
   const api =
@@ -49,8 +75,9 @@ function AddService() {
 
   const sendService = () => {
     axios({
-      method: "POST",
-      url: "https://seva-backend1.herokuapp.com/provider/service",
+      method: "PATCH",
+      url:
+        "https://seva-backend1.herokuapp.com/provider/profile/60524ad1d4043f0022c86384",
       data: serviceformData,
       headers: {
         // 'Content-Type': "application/json",
@@ -60,8 +87,8 @@ function AddService() {
       .then(function (response) {
         //handle success
         console.log(response.data);
-        alert("hurry! Service added..");
-        afterPost();
+        alert("hurry! Profile Updated...");
+        // afterPost();
       })
       .catch(function (response) {
         //handle error
@@ -74,115 +101,122 @@ function AddService() {
     <>
       <Card align="left">
         <Card.Header as="h2" align="center">
-          Add category
+          Profile
         </Card.Header>
         <Card.Body>
           <Card.Text>
             <Form onSubmit={handleSubmit}>
               <FormGroup className="row">
                 <FormGroup className="col">
-                  <Label for="serviceName">serviceName</Label>
+                  <Label for="userName">userName</Label>
                   <Input
                     type="text"
-                    name="serviceNames"
-                    placeholder="serviceNames"
+                    name="userName"
+                    placeholder="userName"
                     onChange={updateInput}
-                    value={serviceformData.serviceNames || ""}
+                    value={serviceformData.userName || data.userName }
                   />
                   <FormFeedback>You will not be able to see this</FormFeedback>
                 </FormGroup>
                 <FormGroup className="col">
-                  <Label for="category">category</Label>
+                  <Label for="img">image</Label>
                   <Input
                     type="text"
-                    name="category"
-                    placeholder="category"
+                    name="img"
+                    placeholder="img"
                     onChange={updateInput}
-                    value={serviceformData.category || ""}
+                    value={serviceformData.img || data.img}
                   />
-                </FormGroup>
-                <FormGroup className="col">
-                  <Label for="exampleSelect">category</Label>
-                  <Input
-                    type="select"
-                    name="select"
-                    id="exampleSelect"
-                    className="px-2"
-                  >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </Input>
                 </FormGroup>
               </FormGroup>
 
               <FormGroup className="row">
                 <FormGroup className="col">
-                  <Label for="serviceEmail">serviceEmail</Label>
+                  <Label for="fullName">fullName</Label>
                   <Input
                     type="text"
-                    name="serviceEmail"
-                    placeholder="serviceEmail"
+                    name="fullName"
+                    placeholder="fullName"
                     onChange={updateInput}
-                    value={serviceformData.serviceEmail || ""}
+                    value={serviceformData.fullName || data.fullName}
                   />
                   <FormFeedback>You will not be able to see this</FormFeedback>
                 </FormGroup>
                 <FormGroup className="col">
-                  <Label for="servicePincode">servicePincode</Label>
+                  <Label for="email">email</Label>
                   <Input
                     type="text"
-                    name="servicePincode"
-                    placeholder="servicePincode"
+                    name="email"
+                    placeholder="email"
                     onChange={updateInput}
-                    value={serviceformData.servicePincode || ""}
+                    value={serviceformData.email || data.email}
                   />
                 </FormGroup>
               </FormGroup>
 
-              <FormGroup>
+              <FormGroup className="row">
                 <FormGroup className="col">
-                  <Label for="contactNo">contactNo</Label>
+                  <Label for="role">role</Label>
                   <Input
                     type="text"
-                    name="contactNo"
-                    placeholder="contactNo"
+                    name="role"
+                    placeholder="role"
                     onChange={updateInput}
-                    value={serviceformData.contactNo || ""}
+                    value={serviceformData.role || data.role}
                   />
                 </FormGroup>
                 <FormGroup className="col">
-                  <Label for="map_location">map_location</Label>
+                  <Label for="state">state</Label>
                   <Input
                     type="text"
-                    name="map_location"
-                    placeholder="map_location"
+                    name="state"
+                    placeholder="state"
                     onChange={updateInput}
-                    value={serviceformData.map_location || ""}
+                    value={serviceformData.state || data.state}
                   />
                 </FormGroup>
               </FormGroup>
 
-              <FormGroup className="col">
-                <Label for="description">description</Label>
-                <Input
-                  type="text"
-                  name="description"
-                  placeholder="description"
-                  onChange={updateInput}
-                  value={serviceformData.description || ""}
-                />
+              <FormGroup className="row">
+                <FormGroup className="col">
+                  <Label for="city">city</Label>
+                  <Input
+                    type="text"
+                    name="city"
+                    placeholder="city"
+                    onChange={updateInput}
+                    value={serviceformData.city || data.city}
+                  />
+                </FormGroup>
+                <FormGroup className="col">
+                  <Label for="village">village</Label>
+                  <Input
+                    type="text"
+                    name="village"
+                    placeholder="village"
+                    onChange={updateInput}
+                    value={serviceformData.village || data.village}
+                  />
+                </FormGroup>
+                <FormGroup className="col">
+                  <Label for="pincode">pincode</Label>
+                  <Input
+                    type="text"
+                    name="pincode"
+                    placeholder="pincode"
+                    onChange={updateInput}
+                    value={serviceformData.pincode || data.pincode}
+                  />
+                </FormGroup>
               </FormGroup>
               <FormGroup className="col">
-                <Label for="image">image</Label>
+                <Label for="password">password</Label>
                 <Input
                   type="text"
-                  name="image"
-                  placeholder="image"
+                  name="password"
+                  placeholder="password"
                   onChange={updateInput}
-                  value={serviceformData.image || ""}
+                  value={serviceformData.password || data.passsword}
                 />
               </FormGroup>
 
@@ -192,7 +226,7 @@ function AddService() {
                 type="submit"
                 // onClick={sendService}
               >
-                Submit
+                Update
               </Button>
             </Form>
           </Card.Text>
@@ -202,4 +236,4 @@ function AddService() {
   );
 }
 
-export default AddService;
+export default Profile;
