@@ -4,6 +4,9 @@ import {
   CardBody,
   CardTitle,
   CardText,
+  CardHeader,
+  Card,
+  CardFooter,
 } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
@@ -12,12 +15,12 @@ const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
 
 function ServiceCard(props) {
-  console.log(props.data);
+  console.log(props);
   const { _id, serviceNames, category, description } = props.data;
-  // console.log(category);
-  // console.log(serviceNames);
-  // console.log(_id);
-  // console.log(description);
+  console.log(category);
+  console.log(serviceNames);
+  console.log(_id);
+  console.log(description);
 
   function ActionDelete() {
     axios({
@@ -48,18 +51,17 @@ function ServiceCard(props) {
 
   return (
     <>
-
       <CardContainer key={_id}>
         <CardInnerContainer>
           <InfoContainer>
-            <Card>
-              <CardHeader> {serviceNames} </CardHeader>
+            {/* <Card> */}
               <CardBody>
+                <CardTitle> {serviceNames} </CardTitle>
                 <CardTitle tag="h5"> {category.category} </CardTitle>
                 <CardText>{description}</CardText>
+                <CardText>Service</CardText>
               </CardBody>
-              <CardFooter>Service</CardFooter>
-            </Card>
+            {/* </Card> */}
 
             <Action>
               <Button color="danger" onClick={ActionDelete}>

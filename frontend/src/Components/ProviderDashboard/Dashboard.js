@@ -5,7 +5,7 @@ import axios from "axios";
 import { Button } from "reactstrap";
 import AddService from "./service/AddService";
 import ServiceCard from "./ServiceCards/ServiceCard";
-import Profile from "./profile/Profile";
+// import Profile from "./profile/Profile";
 
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
@@ -57,7 +57,7 @@ function ProviderDashboard() {
       .then((response) => setData([...response]))
       .catch((err) => console.log(err.message));
 
-    console.log(data);
+    // console.log(data);
   }, []);
 
   //-------------------Experiment-------------------------
@@ -103,7 +103,7 @@ function ProviderDashboard() {
           <Tab.Content>
             <Tab.Pane eventKey="#dashboard"> </Tab.Pane>
             <Tab.Pane eventKey="#link2">
-              <Profile />
+              {/* <Profile /> */}
             </Tab.Pane>
             <Tab.Pane eventKey="#addService">
               <AddService />
@@ -112,19 +112,9 @@ function ProviderDashboard() {
               <Button color="primary" onClick={refreshPage}>
                 Reload
               </Button>
-              {/* {service &&
-                service.map((item, index) => {
-                  return (
-                    <>
-                      <ServiceCard service={item} />
-                    </>
-                  );
-                })} */}
-
               {/* --------------------Experiment------------------------ */}
               {data &&
                 data.map((item, index) => {
-                  // console.log(item);
                   return (
                     <>
                       <ServiceCard data={item} />
