@@ -5,6 +5,58 @@ import { Button, Form, FormGroup, Label, Input, FormText , FormFeedback} from 'r
 
 function SuggestionsForm() {
     const [category , setCategory] = useState();
+    const [FormData, setFormData] = useState({})
+    function PostData(){
+        // axios(" https://seva-backend1.herokuapp.com/suggestion",{
+        //     method:"post",
+        //     headers:{
+        //         "content-type":"application/json"
+        //     },
+        //     body:JSON.stringify(FormData)
+        // })
+        const api = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTQyNGIyZGFhNDAyMDAyMmY1OTIxZiIsImlhdCI6MTYxNjEyNzM2MH0.3spY3GXmlYNeT-xFMzTkTynf2N9gJT8v6EcBxbCwQoE"
+        axios({
+            method: "POST",
+            url: "https://seva-backend1.herokuapp.com/suggestion",
+            data: FormData,
+            headers: {
+              // 'Content-Type': "application/json",
+              "auth-token": `${api}`,
+            },
+          })
+          .then(function (response) {
+            //handle success
+            console.log(response);
+            alert("suggestion added");
+            afterPost();
+          })
+          .catch(function (response) {
+            //handle error
+            alert("something went wrong while adding suggestion");
+            console.log(response);
+          });
+    }
+
+    function afterPost() {
+        console.log(FormData);
+        setFormData({
+          Pincode:"",
+          textarea:""
+        });
+        window.location.reload();
+      }
+
+     function handleInput(e){
+         setFormData({
+             ...FormData,
+             [e.target.name]:e.target.value
+         })
+     }
+    
+    function handleSubmit(event){
+        event.preventDefault()
+        PostData()
+    }
 
     useEffect(() => {
         axios
@@ -12,26 +64,33 @@ function SuggestionsForm() {
         .then((response) => setCategory(response.data))
         .catch((err) => console.log(err));
     }, []);
-     console.log(category)
 
+console.log(FormData)
 return(
     <Card align="left">
         <Card.Header as="h2" align="center">Suggestions</Card.Header>
         <Card.Body>
 
             <Card.Text>
-               <Form>
+               <Form onSubmit={handleSubmit}>
 
                     <FormGroup>
                         <Label for="exampleSelect">Category</Label>
-                        <Input type="select" name="select" id="exampleSelect">
-                        {category &&
-                                category.map((item, index) => {
+                        <Input type="select" name="Category"
+                                            value={FormData.category}
+                                            onChange={handleInput} id="exampleSelect"
+                                            defaultValue
+                        >
+                             <option 
+                                    >select category</option>
+                                
+                       {category && category.map((item, index) => {
                                     // console.log(item)
                                     // {console.log(item.category)}
                                 return (
                                     <>
-                                    <option key={item._id}>{item.category}</option>
+                                    <option 
+                                    >{item.category}</option>
                                     </>
                                 );
                                 })}
@@ -43,24 +102,22 @@ return(
                        <Label for="pincode">Pincode</Label>
                        <Input type="text"
                               placeholder="pincode"
-                              value=""
+                              value={FormData.Pincode || ''}
                               name="Pincode"
-                              onChange=""/>
+                              onChange={handleInput}/>
                    </FormGroup>
                    <FormGroup>
-                   <div className="form-group">
                            <label htmlFor="exampleFormControlTextarea1">
                                   textarea
                                  </label>
                                   <textarea
                                   className="form-control"
                                   id="exampleFormControlTextarea1"
-                                  value=""
+                                  value={FormData.textarea}
                                   name="textarea"
-                                  onChange=""
+                                  onChange={handleInput}
                                   rows="4"
                              />
-                     </div>
                    </FormGroup>
                    <Button color="primary" size="lg" type="submit">Submit</Button>
                </Form>
