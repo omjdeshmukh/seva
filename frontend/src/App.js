@@ -34,6 +34,7 @@ function App() {
         <Switch>
           <Route path="/" exact render={(props) => <Homepage {...props} />} />
           <Protected path="/provider/:id" exact component={ProviderDashboard} />
+          <Protected path="/user/:id" exact component={UserDashboard} />
           <Route
             path="/login"
             exact
@@ -41,7 +42,6 @@ function App() {
           />
           <Route path="/signup" exact component={Signup} />
           <Route path="/admin" exact component={AdminDashboard} />
-          <Protected path="/user/:id" exact component={UserDashboard} />
           <Route path="/services" exact component={Services} />
           <Route
             path="/services/:_id/:pincode"

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Form, FormGroup, Label, Input } from "reactstrap";
+import { getCookieData } from "../userData";
 
 async function userRegistration(Credentials) {
   return fetch("https://seva-backend1.herokuapp.com/register", {
@@ -49,9 +50,12 @@ function Signup(props) {
 
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
-    const userData = JSON.parse(sessionStorage.getItem("userData"));
+    const cookieData = getCookieData();
+    console.log(cookieData);
 
-    const address = await getAddress(userData ? userData.pincode : pincode);
+    const address = await getAddress(
+      cookieData.pincode ? cookieData.pincode : pincode
+    );
     const { District, State, Name, Pincode, Block } = address[0].PostOffice[0];
     const Credentials = {
       userName: username,
@@ -66,12 +70,14 @@ function Signup(props) {
     };
     try {
       const response = await userRegistration(Credentials);
-      userData.userId = response.id;
-      userData.role = role.toLowerCase();
-      userData.token = response.data.token;
-      console.log(`${userData.userId} ${userData.role} ${userData.token}`);
-      sessionStorage.setItem("userData", JSON.stringify(userData));
-      props.history.push(`/${userData.role}/${userData.userId}`);
+      cookieData.userId = response.id;
+      cookieData.role = role.toLowerCase();
+      cookieData.token = response.data.token;
+      console.log(
+        `${cookieData.userId} ${cookieData.role} ${cookieData.token}`
+      );
+      document.cookie = JSON.stringify(cookieData);
+      props.history.push(`/${cookieData.role}/${cookieData.userId}`);
     } catch (err) {
       console.log(err.message);
     }
@@ -158,11 +164,6 @@ function Signup(props) {
                   id="examplePassword"
                   placeholder="Pincode"
                   autoComplete="off"
-                  value={
-                    sessionStorage.getItem("pincode")
-                      ? sessionStorage.getItem("pincode")
-                      : pincode
-                  }
                   onChange={handlePincodeChange}
                 />
               </FormGroup>
