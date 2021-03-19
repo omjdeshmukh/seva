@@ -41,7 +41,7 @@ function ServicesPerPincodeCards({
 export default ServicesPerPincodeCards;
 
 const ServiceCardContainer = styled.div`
-  width: 33%;
+  width: 30%;
   border-radius: 10px;
   padding: 0.5rem;
   margin: 0.5rem;
