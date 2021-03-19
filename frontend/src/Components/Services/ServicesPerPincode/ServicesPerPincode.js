@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ServicesPerPincodeCards from "./ServicePerPincodeCards/ServicePerPincodeCards";
 
 function ServicesPerPincode(props) {
-  const { category, pincode } = props.match.params;
+  const { _id, pincode } = props.match.params;
   const [services, setService] = useState();
 
   useEffect(() => {
@@ -14,10 +14,10 @@ function ServicesPerPincode(props) {
       .catch((err) => console.log(err.message));
   }, []);
 
-  console.log(services);
-
   const requiredService =
-    services && services.filter((item) => item.category.category === category);
+    services && services.filter((item) => item.category._id === _id);
+
+  console.log(requiredService);
 
   return (
     <>
@@ -26,6 +26,7 @@ function ServicesPerPincode(props) {
         <ServicePerPincodeInnerContainer>
           {/* {requiredService.length !== 0 ? (
             <> */}
+
           {requiredService &&
             requiredService.map((item, index) => {
               return (
@@ -34,6 +35,7 @@ function ServicesPerPincode(props) {
                 </>
               );
             })}
+
           {/* </>
           ) : (
             <>
