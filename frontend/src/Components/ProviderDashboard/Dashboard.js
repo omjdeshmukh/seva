@@ -6,6 +6,7 @@ import { Button } from "reactstrap";
 import AddService from "./service/AddService";
 import ServiceCard from "./ServiceCards/ServiceCard";
 import Profile from "./profile/Profile";
+import Dashboard from './Dashboard/Dashboard';
 
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
@@ -33,11 +34,6 @@ function ProviderDashboard() {
   }, []);
 
   
-
-  function refreshPage() {
-    window.location.reload();
-  }
-
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#dashboard">
       {/* <h1>Admin dashboard</h1> */}
@@ -48,8 +44,8 @@ function ProviderDashboard() {
             <ListGroup.Item>
               <img
                 src="https://res.cloudinary.com/drampnn2w/image/upload/v1615827809/Face-Profile-User-Man-Boy-Person-Avatar-512_ervo1s.png"
-                width="180px"
-                height="180px"
+                width="60%"
+                height="60%"
               />
               <h5>OM</h5>
               <p>Provider</p>
@@ -73,7 +69,9 @@ function ProviderDashboard() {
         </Col>
         <Col sm={9}>
           <Tab.Content>
-            <Tab.Pane eventKey="#dashboard"> </Tab.Pane>
+            <Tab.Pane eventKey="#dashboard">
+              <Dashboard/>
+            </Tab.Pane>
             <Tab.Pane eventKey="#link2">
               <Profile />
             </Tab.Pane>
@@ -81,9 +79,6 @@ function ProviderDashboard() {
               <AddService />
             </Tab.Pane>
             <Tab.Pane eventKey="#showMyService">
-              <Button color="primary" onClick={refreshPage}>
-                Reload
-              </Button>
              
               {data &&
                 data.map((item, index) => {

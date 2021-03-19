@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from "react";
-// import {Form ,Button , Card, Col} from 'react-bootstrap';
 import { Card } from "react-bootstrap";
 import {
   Button,
@@ -7,19 +6,13 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
 
 function Profile() {
   const [serviceformData, setFormData] = useState({});
-
   const [data, setData] = useState({});
-
-//   const [category, setCategory] = useState({});
-
-  //onLoadData Fetching
 
   useEffect(() => {
     axios({
@@ -32,7 +25,7 @@ function Profile() {
       },
     })
       .then(function (response) {
-        setData(response.data);
+        // setData(response.data);
       })
       .catch(function (response) {
         console.log(response);
@@ -50,48 +43,27 @@ function Profile() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    sendService();
+    UpdateProfile();
   };
-
-  function afterPost() {
-    // console.log(serviceformData);
-    setFormData({
-      img: "",
-      userName: "",
-      fullName: "",
-      email: "",
-      role: "",
-      state: "",
-      city: "",
-      village: "",
-      pincode: "",
-      password: "",
-    });
-    // window.location.reload();
-  }
 
   const api =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTI0YWQxZDQwNDNmMDAyMmM4NjM4NCIsImlhdCI6MTYxNjAwNTk1N30.p6OZnVyJEH20NfPbWed_UJEGJWNWs-FaJbD9e3Cfu70";
 
-  const sendService = () => {
+  const UpdateProfile = () => {
     axios({
-      method: "PATCH",
+      method: "PUT",
       url:
         "https://seva-backend1.herokuapp.com/provider/profile/60524ad1d4043f0022c86384",
       data: serviceformData,
       headers: {
-        // 'Content-Type': "application/json",
         "auth-token": `${api}`,
       },
     })
       .then(function (response) {
-        //handle success
-        console.log(response.data);
+        // console.log(response);
         alert("hurry! Profile Updated...");
-        // afterPost();
       })
       .catch(function (response) {
-        //handle error
         alert("Opppssss Somthing went wrong...");
         console.log(response);
       });
@@ -101,29 +73,29 @@ function Profile() {
     <>
       <Card align="left">
         <Card.Header as="h2" align="center">
-          Profile
+          Profile Info
         </Card.Header>
         <Card.Body>
           <Card.Text>
             <Form onSubmit={handleSubmit}>
               <FormGroup className="row">
                 <FormGroup className="col">
-                  <Label for="userName">userName</Label>
+                  <Label for="fullName"> Name </Label>
                   <Input
                     type="text"
-                    name="userName"
-                    placeholder="userName"
+                    name="fullName"
+                    placeholder="Full-Name"
                     onChange={updateInput}
-                    value={serviceformData.userName || data.userName }
+                    value={serviceformData.fullName || data.fullName}
                   />
                   <FormFeedback>You will not be able to see this</FormFeedback>
                 </FormGroup>
                 <FormGroup className="col">
-                  <Label for="img">image</Label>
+                  <Label for="img">Profile Image</Label>
                   <Input
                     type="text"
                     name="img"
-                    placeholder="img"
+                    placeholder="Image"
                     onChange={updateInput}
                     value={serviceformData.img || data.img}
                   />
@@ -132,100 +104,51 @@ function Profile() {
 
               <FormGroup className="row">
                 <FormGroup className="col">
-                  <Label for="fullName">fullName</Label>
+                  <Label for="village">Village/Town</Label>
                   <Input
                     type="text"
-                    name="fullName"
-                    placeholder="fullName"
+                    name="village"
+                    placeholder="Village"
                     onChange={updateInput}
-                    value={serviceformData.fullName || data.fullName}
+                    value={serviceformData.village || data.village}
                   />
-                  <FormFeedback>You will not be able to see this</FormFeedback>
                 </FormGroup>
                 <FormGroup className="col">
-                  <Label for="email">email</Label>
+                  <Label for="pincode">Pin-code</Label>
                   <Input
                     type="text"
-                    name="email"
-                    placeholder="email"
+                    name="pincode"
+                    placeholder="Pin-code"
                     onChange={updateInput}
-                    value={serviceformData.email || data.email}
+                    value={serviceformData.pincode || data.pincode}
                   />
                 </FormGroup>
               </FormGroup>
 
               <FormGroup className="row">
                 <FormGroup className="col">
-                  <Label for="role">role</Label>
+                  <Label for="city">City</Label>
                   <Input
                     type="text"
-                    name="role"
-                    placeholder="role"
+                    name="city"
+                    placeholder="City"
                     onChange={updateInput}
-                    value={serviceformData.role || data.role}
+                    value={serviceformData.city || data.city}
                   />
                 </FormGroup>
                 <FormGroup className="col">
-                  <Label for="state">state</Label>
+                  <Label for="state">State</Label>
                   <Input
                     type="text"
                     name="state"
-                    placeholder="state"
+                    placeholder="State"
                     onChange={updateInput}
                     value={serviceformData.state || data.state}
                   />
                 </FormGroup>
               </FormGroup>
 
-              <FormGroup className="row">
-                <FormGroup className="col">
-                  <Label for="city">city</Label>
-                  <Input
-                    type="text"
-                    name="city"
-                    placeholder="city"
-                    onChange={updateInput}
-                    value={serviceformData.city || data.city}
-                  />
-                </FormGroup>
-                <FormGroup className="col">
-                  <Label for="village">village</Label>
-                  <Input
-                    type="text"
-                    name="village"
-                    placeholder="village"
-                    onChange={updateInput}
-                    value={serviceformData.village || data.village}
-                  />
-                </FormGroup>
-                <FormGroup className="col">
-                  <Label for="pincode">pincode</Label>
-                  <Input
-                    type="text"
-                    name="pincode"
-                    placeholder="pincode"
-                    onChange={updateInput}
-                    value={serviceformData.pincode || data.pincode}
-                  />
-                </FormGroup>
-              </FormGroup>
-              <FormGroup className="col">
-                <Label for="password">password</Label>
-                <Input
-                  type="text"
-                  name="password"
-                  placeholder="password"
-                  onChange={updateInput}
-                  value={serviceformData.password || data.passsword}
-                />
-              </FormGroup>
-
-              <Button
-                color="primary"
-                size="lg"
-                type="submit"
-                // onClick={sendService}
-              >
+              <Button color="primary" size="lg" type="submit">
                 Update
               </Button>
             </Form>

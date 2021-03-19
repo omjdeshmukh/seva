@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Button,
-  CardBody,
-  CardTitle,
-  CardText,
-  CardHeader,
-  Card,
-  CardFooter,
-} from "reactstrap";
+import { Button, CardBody, CardTitle, CardText } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -54,22 +46,18 @@ function ServiceCard(props) {
       <CardContainer key={_id}>
         <CardInnerContainer>
           <InfoContainer>
-            {/* <Card> */}
-            <CardBody>
-              <CardTitle tag="h5" > {serviceNames} </CardTitle>
+            <Block>
+              <CardTitle tag="h5"> {serviceNames} </CardTitle>
               <CardTitle tag="h5"> {category.category} </CardTitle>
               <CardText>{description}</CardText>
-              <CardText>Service</CardText>
-            </CardBody>
-            {/* </Card> */}
-
-            <Action>
-              <Button color="danger" onClick={ActionDelete}>
-                Delete
-              </Button>
-            </Action>
+            </Block>
           </InfoContainer>
         </CardInnerContainer>
+        <Action>
+          <Button color="danger" onClick={ActionDelete}>
+            Delete
+          </Button>
+        </Action>
       </CardContainer>
     </>
   );
@@ -78,23 +66,28 @@ function ServiceCard(props) {
 export default ServiceCard;
 
 const CardContainer = styled.div`
+  display: flex;
   margin: 1rem 0;
-  padding: 0.5rem 0;
+  padding: 0.1rem 0.1rem;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   font-family: hindLight;
+  /* float: left; */
 `;
+
 const CardInnerContainer = styled.div`
   width: 95%;
   margin: 0 auto;
   padding: 2rem 0;
+  display: flex;
 `;
 
 const InfoContainer = styled.div`
+  margin-left: 20px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  // align-items: center;
+  /* align-items: center; */
   > img {
     width: 4rem;
     height: 4rem;
@@ -102,7 +95,9 @@ const InfoContainer = styled.div`
     border-radius: 10%;
   }
 `;
+
 const Info = styled.div`
+  display: flex;
   padding: 0 1rem;
   text-align: left;
   width: 85%;
@@ -114,8 +109,13 @@ const Info = styled.div`
 
 const Action = styled.div`
   padding: 0 1rem;
-  align-items: right;
+  margin-top: 20px;
+  align-items: left;
   > button {
     padding: 12;
   }
+`;
+
+const Block = styled.div`
+  align-items: right;
 `;

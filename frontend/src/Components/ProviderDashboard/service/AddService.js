@@ -86,108 +86,105 @@ function AddService() {
         <Card.Body>
           <Card.Text>
             <Form onSubmit={handleSubmit}>
-              <FormGroup className="row">
-                <FormGroup className="col">
-                  <Label for="serviceName">serviceName</Label>
-                  <Input
-                    type="text"
-                    name="serviceNames"
-                    placeholder="serviceNames"
-                    onChange={updateInput}
-                    value={serviceformData.serviceNames || ""}
-                  />
-                  <FormFeedback>You will not be able to see this</FormFeedback>
-                </FormGroup>
-              
-                <FormGroup>
-                  <Label for="exampleSelect">Service Category</Label>
-                  <Input
-                    type="select"
-                    name="category"
-                    value={FormData.category}
-                    onChange={updateInput}
-                    id="exampleSelect"
-                    defaultValue
-                  >
-                    <option>select category</option>
-
-                    {category &&
-                      category.map((item, index) => {
-                        // console.log(item)
-                        // {console.log(item.category)}
-                        return (
-                          <>
-                            <option value={item._id}>{item.category}</option>
-                          </>
-                        );
-                      })}
-                  </Input>
-                </FormGroup>
-              </FormGroup>
-
-              <FormGroup className="row">
-                <FormGroup className="col">
-                  <Label for="serviceEmail">serviceEmail</Label>
-                  <Input
-                    type="text"
-                    name="serviceEmail"
-                    placeholder="serviceEmail"
-                    onChange={updateInput}
-                    value={serviceformData.serviceEmail || ""}
-                  />
-                  <FormFeedback>You will not be able to see this</FormFeedback>
-                </FormGroup>
-                <FormGroup className="col">
-                  <Label for="servicePincode">servicePincode</Label>
-                  <Input
-                    type="text"
-                    name="servicePincode"
-                    placeholder="servicePincode"
-                    onChange={updateInput}
-                    value={serviceformData.servicePincode || ""}
-                  />
-                </FormGroup>
-              </FormGroup>
-
-              <FormGroup>
-                <FormGroup className="col">
-                  <Label for="contactNo">contactNo</Label>
-                  <Input
-                    type="text"
-                    name="contactNo"
-                    placeholder="contactNo"
-                    onChange={updateInput}
-                    value={serviceformData.contactNo || ""}
-                  />
-                </FormGroup>
-                <FormGroup className="col">
-                  <Label for="map_location">map_location</Label>
-                  <Input
-                    type="text"
-                    name="map_location"
-                    placeholder="map_location"
-                    onChange={updateInput}
-                    value={serviceformData.map_location || ""}
-                  />
-                </FormGroup>
+              <FormGroup className="col">
+                <Label for="serviceName">Service Name</Label>
+                <Input
+                  type="text"
+                  name="serviceNames"
+                  placeholder="Service Name"
+                  onChange={updateInput}
+                  value={serviceformData.serviceNames || ""}
+                />
+                <FormFeedback>You will not be able to see this</FormFeedback>
               </FormGroup>
 
               <FormGroup className="col">
-                <Label for="description">description</Label>
+                <Label for="exampleSelect">Service Category</Label>
+                <Input
+                  type="select"
+                  name="category"
+                  value={FormData.category}
+                  onChange={updateInput}
+                  id="exampleSelect"
+                  defaultValue
+                >
+                  <option>Select category</option>
+
+                  {category &&
+                    category.map((item, index) => {
+                      // console.log(item)
+                      // {console.log(item.category)}
+                      return (
+                        <>
+                          <option value={item._id}>{item.category}</option>
+                        </>
+                      );
+                    })}
+                </Input>
+              </FormGroup>
+
+              <FormGroup className="col">
+                <Label for="serviceEmail">Email</Label>
+                <Input
+                  type="text"
+                  name="serviceEmail"
+                  placeholder="Email"
+                  onChange={updateInput}
+                  value={serviceformData.serviceEmail || ""}
+                />
+                <FormFeedback>You will not be able to see this</FormFeedback>
+              </FormGroup>
+
+              <FormGroup className="col">
+                <Label for="servicePincode">Pincode</Label>
+                <Input
+                  type="text"
+                  name="servicePincode"
+                  placeholder="Pincode"
+                  onChange={updateInput}
+                  value={serviceformData.servicePincode || ""}
+                />
+              </FormGroup>
+
+              <FormGroup className="col">
+                <Label for="contactNo">Contact No.</Label>
+                <Input
+                  type="text"
+                  name="contactNo"
+                  placeholder="Contact No."
+                  onChange={updateInput}
+                  value={serviceformData.contactNo || ""}
+                />
+              </FormGroup>
+
+              <FormGroup className="col">
+                <Label for="map_location">Map Location</Label>
+                <Input
+                  type="text"
+                  name="map_location"
+                  placeholder="Link of Map Location"
+                  onChange={updateInput}
+                  value={serviceformData.map_location || ""}
+                />
+              </FormGroup>
+
+              <FormGroup className="col">
+                <Label for="description">Description</Label>
                 <Input
                   type="text"
                   name="description"
-                  placeholder="description"
+                  placeholder="Description"
                   onChange={updateInput}
                   value={serviceformData.description || ""}
                 />
               </FormGroup>
+
               <FormGroup className="col">
-                <Label for="image">image</Label>
+                <Label for="image">Image</Label>
                 <Input
                   type="text"
                   name="image"
-                  placeholder="image"
+                  placeholder="Image"
                   onChange={updateInput}
                   value={serviceformData.image || ""}
                 />
