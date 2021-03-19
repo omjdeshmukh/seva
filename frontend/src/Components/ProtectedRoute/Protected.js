@@ -16,7 +16,7 @@ function Protected({
       <Route
         {...rest}
         render={(props) => {
-          return computedMatch.params.id === userData.userId ? (
+          return computedMatch.params.id === userData && userData.userId ? (
             <Component {...rest} {...props} />
           ) : (
             <Redirect to="/" />

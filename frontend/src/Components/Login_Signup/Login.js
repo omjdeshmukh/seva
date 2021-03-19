@@ -39,16 +39,18 @@ function Login({ history, setToken }) {
 
     if (token) {
       //If user directly login
-      if (sessionStorage.getItem("userData") === undefined) {
-        sessionStorage.setItem("userData", userData);
+      if (document.cookie === undefined) {
+        document.cookie = userData;
       }
-      const userData = JSON.parse(sessionStorage.getItem("userData"));
-      userData.token = token.data.token;
-      userData.userId = token.id;
-      userData.role = token.role;
-      sessionStorage.setItem("userData", JSON.stringify(userData));
+      let cookieData = document.cookie;
+      cookieData = JSON.parse(cookieData);
+      console.log(cookieData);
+      cookieData.token = token.data.token;
+      cookieData.userId = token.id;
+      cookieData.role = token.role;
+      document.cookie = JSON.stringify(cookieData);
       setToken(token);
-      history.push(`/${userData.role}/${userData.userId}`);
+      history.push(`/${cookieData.role}/${cookieData.userId}`);
     }
   };
 

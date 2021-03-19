@@ -66,7 +66,6 @@ function Signup(props) {
     };
     try {
       const response = await userRegistration(Credentials);
-      console.log(response);
       userData.userId = response.id;
       userData.role = role.toLowerCase();
       userData.token = response.data.token;

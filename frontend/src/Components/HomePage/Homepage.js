@@ -9,13 +9,15 @@ function Homepage() {
   const [pincodeExist, setPincodeExist] = useState(false);
 
   useEffect(() => {
-    const userData = JSON.parse(sessionStorage.getItem("userData"));
-    if (userData) {
-      setPincodeExist(true);
-    }
-    if (pincodeExist) {
-      setCheckPincode(userData.pincode);
-    }
+    let userData = document.cookie;
+    console.log(userData);
+    // userData = JSON.parse(userData);
+    // if (userData) {
+    //   setPincodeExist(true);
+    // }
+    // if (pincodeExist) {
+    //   setCheckPincode(userData.pincode);
+    // }
   });
 
   return (
