@@ -14,6 +14,8 @@ function ServicesPerPincode(props) {
       .catch((err) => console.log(err.message));
   }, []);
 
+  console.log(services);
+
   const requiredService =
     services && services.filter((item) => item.category.category === category);
 
