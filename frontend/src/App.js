@@ -13,6 +13,7 @@ import Login from "./Components/Login_Signup/Login";
 import Signup from "./Components/Login_Signup/Signup";
 import Services from "./Components/Services/Services";
 import ServicesPerPincode from "./Components/Services/ServicesPerPincode/ServicesPerPincode";
+import Protected from "./Components/ProtectedRoute/Protected";
 
 //Main App
 function App() {
@@ -31,15 +32,8 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
-          {logStatus ? (
-            <Route
-              path="/:role"
-              exact
-              render={(props) => <AfterLogin {...props} />}
-            />
-          ) : (
-            <Route path="/" exact render={(props) => <Homepage {...props} />} />
-          )}
+          <Route path="/" exact render={(props) => <Homepage {...props} />} />
+          <Protected path="/provider/:id" exact component={ProviderDashboard} />
           <Route
             path="/login"
             exact
@@ -47,8 +41,7 @@ function App() {
           />
           <Route path="/signup" exact component={Signup} />
           <Route path="/admin" exact component={AdminDashboard} />
-          <Route path="/provider" exact component={ProviderDashboard} />
-          <Route path="/userdashboard" exact component={UserDashboard} />
+          <Protected path="/user/:id" exact component={UserDashboard} />
           <Route path="/services" exact component={Services} />
           <Route
             path="/services/:_id/:pincode"
