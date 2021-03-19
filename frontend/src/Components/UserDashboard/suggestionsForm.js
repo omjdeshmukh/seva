@@ -14,10 +14,10 @@ function SuggestionsForm() {
         //     },
         //     body:JSON.stringify(FormData)
         // })
-        const api = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTQyNGIyZGFhNDAyMDAyMmY1OTIxZiIsImlhdCI6MTYxNjEyNzM2MH0.3spY3GXmlYNeT-xFMzTkTynf2N9gJT8v6EcBxbCwQoE"
+        const api = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
         axios({
             method: "POST",
-            url: "https://seva-backend1.herokuapp.com/suggestion",
+            url: "https://seva-backend1.herokuapp.com/user/suggestion",
             data: FormData,
             headers: {
               // 'Content-Type': "application/json",
@@ -40,8 +40,10 @@ function SuggestionsForm() {
     function afterPost() {
         console.log(FormData);
         setFormData({
-          Pincode:"",
-          textarea:""
+          ServiceType:"",
+          category:"",
+          ServicePinCode:"",
+          ServiceDescription:"",
         });
         window.location.reload();
       }
@@ -74,9 +76,18 @@ return(
             <Card.Text>
                <Form onSubmit={handleSubmit}>
 
+               <FormGroup>
+                       <Label for="ServiceType">Service Type</Label>
+                       <Input type="text"
+                              placeholder="ServiceType"
+                              value={FormData.ServiceType || ''}
+                              name="ServiceType"
+                              onChange={handleInput}/>
+                   </FormGroup>
+
                     <FormGroup>
-                        <Label for="exampleSelect">Category</Label>
-                        <Input type="select" name="Category"
+                        <Label for="exampleSelect">Service Category</Label>
+                        <Input type="select" name="category"
                                             value={FormData.category}
                                             onChange={handleInput} id="exampleSelect"
                                             defaultValue
@@ -89,7 +100,7 @@ return(
                                     // {console.log(item.category)}
                                 return (
                                     <>
-                                    <option 
+                                    <option value={item._id} 
                                     >{item.category}</option>
                                     </>
                                 );
@@ -99,22 +110,22 @@ return(
                     </FormGroup>
                   
                    <FormGroup>
-                       <Label for="pincode">Pincode</Label>
+                       <Label for="ServicePinCode">Service Pincode</Label>
                        <Input type="text"
-                              placeholder="pincode"
-                              value={FormData.Pincode || ''}
-                              name="Pincode"
+                              placeholder="ServicePinCode"
+                              value={FormData.ServicePinCode || ''}
+                              name="ServicePinCode"
                               onChange={handleInput}/>
                    </FormGroup>
                    <FormGroup>
                            <label htmlFor="exampleFormControlTextarea1">
-                                  textarea
+                            Service Description
                                  </label>
                                   <textarea
                                   className="form-control"
                                   id="exampleFormControlTextarea1"
-                                  value={FormData.textarea}
-                                  name="textarea"
+                                  value={FormData.ServiceDescription}
+                                  name="ServiceDescription"
                                   onChange={handleInput}
                                   rows="4"
                              />

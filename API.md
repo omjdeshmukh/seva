@@ -216,6 +216,69 @@ Header :
 
 ```
 
+## user suggestiom(token requied)
+
+22. ``` GET``` http://localhost:5000/user/my/suggestion/:userId
+
+```
+
+```
+
+22. ``` GET``` http://localhost:5000/user/my/suggestion/:userId
+
+```
+https://seva-backend1.herokuapp.com/user/my/suggestion/604cc1fd43e82822a85786e6
+user id - 604cc1fd43e82822a85786e6
+```
+
+23. ``` POST``` http://localhost:5000/user/suggestion
+
+```
+{
+    "ServiceType": "chai`s shop",
+    "ServicePinCode": "411046",
+    "category": "604cdf8b0bc38c07e8a6fd94",
+    "ServiceDescription": "Service Description"
+}
+```
+
+
+24. ``` PUT``` http://localhost:5000/user/suggestion/:suggestionId
+
+```
+
+```
+
+25. ``` DELETE``` http://localhost:5000/user/suggestion/:suggestionId
+
+```
+
+```
+
+
+## user profile 
+
+26. ``` GET``` http://localhost:5000/user/profile/:profileId
+
+```
+
+```
+
+27. ``` PUT``` http://localhost:5000/user/profile/:profileId
+
+```
+
+```
+28. ``` DELETE``` http://localhost:5000/user/profile/:profileId
+
+```
+
+```
+
+
+
+
+
 
 
 
