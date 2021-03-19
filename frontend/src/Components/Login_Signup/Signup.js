@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Form, FormGroup, Label, Input } from "reactstrap";
-import axios from "axios";
 
 async function userRegistration(Credentials) {
   return fetch("https://seva-backend1.herokuapp.com/register", {
@@ -23,7 +22,7 @@ const getAddress = (Pincode) => {
     .catch((error) => console.log(error.message));
 };
 
-function Signup() {
+function Signup(props) {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [role, setRole] = useState();
@@ -67,10 +66,13 @@ function Signup() {
     };
     try {
       const response = await userRegistration(Credentials);
-      console.log(response.data);
-      userData.userId = response.data.userId;
-      userData.role = role;
+      console.log(response);
+      userData.userId = response.id;
+      userData.role = role.toLowerCase();
+      userData.token = response.data.token;
+      console.log(`${userData.userId} ${userData.role} ${userData.token}`);
       sessionStorage.setItem("userData", JSON.stringify(userData));
+      props.history.push(`/${userData.role}/${userData.userId}`);
     } catch (err) {
       console.log(err.message);
     }
