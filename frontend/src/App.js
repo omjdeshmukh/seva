@@ -51,9 +51,9 @@ function App() {
           <Route path="/userdashboard" exact component={UserDashboard} />
           <Route path="/services" exact component={Services} />
           <Route
-            path="/services/:pincode"
+            path="/services/:category/:pincode"
             exact
-            component={ServicesPerPincode}
+            render={(props) => <ServicesPerPincode {...props} />}
           />
         </Switch>
       </div>

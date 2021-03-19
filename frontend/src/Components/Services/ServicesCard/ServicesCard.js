@@ -4,11 +4,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 function ServicesCard(props) {
+  const userData = JSON.parse(sessionStorage.getItem("userData"));
+  const pincode = userData.pincode;
   const { _id, icon, category, description } = props.data;
   return (
     <>
       <ServiceCardContainer key={_id}>
-        <Link to="#">
+        <Link to={`/services/${category}/${pincode}`}>
           <ServiceImage>
             <img src={icon} alt={description} />
           </ServiceImage>
