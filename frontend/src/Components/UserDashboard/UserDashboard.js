@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Col, ListGroup, Tab ,Row } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import ServiceCard from './Servicecard'
+import ShowSuggetion from './ShowSuggetion';
 import SuggestionsForm from './suggestionsForm'
+
 
 function UserDashboard(){
 const [service , setService] = useState();
@@ -37,6 +39,9 @@ return(
                 <ListGroup.Item action href="#link3">
                     Add Suggestions
                 </ListGroup.Item>
+                <ListGroup.Item action href="#link5">
+                    ShowSuggetion
+                </ListGroup.Item>
                 <ListGroup.Item action href="#link4">
                     Feedback
                 </ListGroup.Item>
@@ -59,6 +64,9 @@ return(
                 </Tab.Pane>
                 <Tab.Pane eventKey="#link3">
                     <SuggestionsForm />
+                </Tab.Pane>
+                <Tab.Pane eventKey="#link5">
+                    <ShowSuggetion />
                 </Tab.Pane>
                 <Tab.Pane eventKey="#link4">
                     <h1>Feedback</h1>
