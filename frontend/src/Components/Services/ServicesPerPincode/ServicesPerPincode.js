@@ -17,36 +17,34 @@ function ServicesPerPincode(props) {
   const requiredService =
     services && services.filter((item) => item.category._id === _id);
 
-  console.log(requiredService);
+  console.log(Array.isArray(requiredService));
 
   return (
     <>
       <ServicePerPincodeContainer>
         <h1>Hello services as per pincode</h1>
         <ServicePerPincodeInnerContainer>
-          {/* {requiredService.length !== 0 ? (
-            <> */}
-
-          {requiredService &&
-            requiredService.map((item, index) => {
-              return (
-                <>
-                  <ServicesPerPincodeCards {...item} />
-                </>
-              );
-            })}
-
-          {/* </>
+          {requiredService && requiredService.length != 0 ? (
+            <>
+              {requiredService &&
+                requiredService.map((item, index) => {
+                  return (
+                    <>
+                      <ServicesPerPincodeCards {...item} />
+                    </>
+                  );
+                })}
+            </>
           ) : (
             <>
-              <div>
+              <NoServiceDiv>
                 <h6>
-                  Sorry! No service available yet, But you can login and Suggest
-                  Us
+                  Sorry! No service available yet, But you can{" "}
+                  <Link to={"/login"}>login</Link> and <span>Suggest Us.</span>
                 </h6>
-              </div>
+              </NoServiceDiv>
             </>
-          )} */}
+          )}
         </ServicePerPincodeInnerContainer>
       </ServicePerPincodeContainer>
     </>
@@ -54,11 +52,29 @@ function ServicesPerPincode(props) {
 }
 export default ServicesPerPincode;
 
-const ServicePerPincodeContainer = styled.div``;
+const ServicePerPincodeContainer = styled.div`
+  font-family: hindLight;
+`;
 const ServicePerPincodeInnerContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+`;
+
+const NoServiceDiv = styled.div`
+  > h6 > a {
+    font-family: hindMedium;
+    text-decoration: none;
+    color: #393232;
+    font-weight: 300;
+  }
+
+  h6 > span {
+    font-family: hindMedium;
+    text-decoration: none;
+    color: #5ab9ea;
+    font-weight: 300;
+  }
 `;
