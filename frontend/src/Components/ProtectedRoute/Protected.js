@@ -22,7 +22,6 @@ function Protected({
             <Component {...rest} {...props} />
           ) : (
             <Redirect to="/" />
-            // ""
           );
         }}
       />
