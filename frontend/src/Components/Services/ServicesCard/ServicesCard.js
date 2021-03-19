@@ -7,10 +7,11 @@ function ServicesCard(props) {
   const userData = JSON.parse(sessionStorage.getItem("userData"));
   const pincode = userData.pincode;
   const { _id, icon, category, description } = props.data;
+
   return (
     <>
       <ServiceCardContainer key={_id}>
-        <Link to={`/services/${category}/${pincode}`}>
+        <Link to={`/services/${_id}/${pincode}`}>
           <ServiceImage>
             <img src={icon} alt={description} />
           </ServiceImage>

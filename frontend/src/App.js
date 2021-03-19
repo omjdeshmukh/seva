@@ -51,7 +51,7 @@ function App() {
           <Route path="/userdashboard" exact component={UserDashboard} />
           <Route path="/services" exact component={Services} />
           <Route
-            path="/services/:category/:pincode"
+            path="/services/:_id/:pincode"
             exact
             render={(props) => <ServicesPerPincode {...props} />}
           />
