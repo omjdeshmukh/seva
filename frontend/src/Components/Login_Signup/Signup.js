@@ -53,7 +53,6 @@ function Signup({ history, setToken }) {
     if (!document.cookie) {
       document.cookie = JSON.stringify(userData);
     }
-    console.log(document.cookie);
     let cookieData = JSON.parse(document.cookie);
 
     const address = await getAddress(

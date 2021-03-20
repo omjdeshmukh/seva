@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { getCookieData } from "../userData";
+import { Link, useHistory } from "react-router-dom";
+import userData, { getCookieData } from "../userData";
 
 function Navbar() {
   const [tokenExist, setTokenExist] = useState(false);
   const cookieData = getCookieData();
 
   const handleLogOut = () => {
-    if (document.cookie) {
-      document.cookie = `${document.cookie};max-age=-60`;
-    }
+    document.cookie = JSON.stringify(userData);
     window.location.reload();
   };
   useEffect(() => {

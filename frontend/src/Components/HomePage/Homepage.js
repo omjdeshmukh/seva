@@ -6,6 +6,7 @@ import Prompt from "./Prompt/Prompt";
 import userData, { getCookieData } from "../userData";
 
 function Homepage() {
+  const [close, setClose] = useState(false);
   const [checkPincode, setCheckPincode] = useState();
   const [pincodeExist, setPincodeExist] = useState(false);
 
@@ -26,7 +27,11 @@ function Homepage() {
       <Main />
       <MostVisitedServices />
       <Feedback />
-      {checkPincode != null ? "" : <Prompt setPincodeExist={setPincodeExist} />}
+      {checkPincode != null || close ? (
+        ""
+      ) : (
+        <Prompt setClose={setClose} setPincodeExist={setPincodeExist} />
+      )}
     </>
   );
 }
