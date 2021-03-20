@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Form, FormGroup, Input } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import userData from "../userData";
+import userData, { getCookieData } from "../userData";
 
 async function loginUser(credentials) {
   return fetch("https://seva-backend1.herokuapp.com/login", {
@@ -37,18 +37,22 @@ function Login({ history, setToken }) {
       password,
     });
 
+    console.log(token);
+
     if (token) {
-      //If user directly login
-      if (sessionStorage.getItem("userData") === undefined) {
-        sessionStorage.setItem("userData", userData);
+      if (!document.cookie) {
+        document.cookie = JSON.stringify(userData);
       }
-      const userData = JSON.parse(sessionStorage.getItem("userData"));
-      userData.token = token.data.token;
-      userData.userId = token.id;
-      userData.role = token.role;
-      sessionStorage.setItem("userData", JSON.stringify(userData));
+      console.log(document.cookie);
+      let cookieData = JSON.parse(document.cookie);
+      console.log(cookieData);
+      cookieData.token = token.data.token;
+      cookieData.userId = token.id;
+      cookieData.role = token.role;
+      document.cookie = JSON.stringify(cookieData);
       setToken(token);
-      history.push(`/${userData.role}/${userData.userId}`);
+      console.log(`${cookieData.role} ${cookieData.userId}`);
+      history.push(`/${cookieData.role}/${cookieData.userId}`);
     }
   };
 

@@ -2,16 +2,16 @@ import { func } from "prop-types";
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { getCookieData } from "../../userData";
 
 function ServicesCard(props) {
-  const userData = JSON.parse(sessionStorage.getItem("userData"));
-  const pincode = userData.pincode;
+  const cookieData = getCookieData();
   const { _id, icon, category, description } = props.data;
 
   return (
     <>
       <ServiceCardContainer key={_id}>
-        <Link to={`/services/${_id}/${pincode}`}>
+        <Link to={`/services/${_id}/${cookieData.pincode}`}>
           <ServiceImage>
             <img src={icon} alt={description} />
           </ServiceImage>

@@ -20,7 +20,7 @@ function Prompt(props) {
       //Do Noting
     } else {
       userData.pincode = pincode;
-      sessionStorage.setItem("userData", JSON.stringify(userData));
+      document.cookie = JSON.stringify(userData);
       props.setPincodeExist(true);
     }
   };

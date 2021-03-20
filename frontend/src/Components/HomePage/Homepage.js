@@ -3,18 +3,21 @@ import Main from "./Tagline/Main";
 import MostVisitedServices from "./MostVisitedServices/MostVisitedServices";
 import Feedback from "./Testimonial/Feedback";
 import Prompt from "./Prompt/Prompt";
+import userData, { getCookieData } from "../userData";
 
 function Homepage() {
   const [checkPincode, setCheckPincode] = useState();
   const [pincodeExist, setPincodeExist] = useState(false);
 
   useEffect(() => {
-    const userData = JSON.parse(sessionStorage.getItem("userData"));
-    if (userData) {
-      setPincodeExist(true);
-    }
+    let cookieData = getCookieData();
+
     if (pincodeExist) {
-      setCheckPincode(userData.pincode);
+      setCheckPincode(cookieData.pincode);
+    }
+
+    if (cookieData.pincode) {
+      setCheckPincode(cookieData.pincode);
     }
   });
 
