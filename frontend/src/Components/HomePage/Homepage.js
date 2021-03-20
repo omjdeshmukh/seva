@@ -10,11 +10,6 @@ function Homepage() {
   const [pincodeExist, setPincodeExist] = useState(false);
 
   useEffect(() => {
-    if (!document.cookie) {
-      const cookieData = JSON.stringify(userData);
-      document.cookie = cookieData;
-    }
-
     let cookieData = getCookieData();
 
     if (pincodeExist) {
