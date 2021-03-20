@@ -1,8 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { getCookieData } from "../userData";
 
 function Navbar() {
+  const [tokenExist, setTokenExist] = useState(false);
+  const cookieData = getCookieData();
+
+  const handleLogOut = () => {
+    if (document.cookie) {
+      document.cookie = `${document.cookie};max-age=-60`;
+    }
+    window.location.reload();
+  };
+  useEffect(() => {
+    if (cookieData.userId != null && cookieData.role != null) {
+      setTokenExist(true);
+    }
+  }, []);
+
   return (
     <>
       <NavbarContainer>
@@ -18,12 +34,32 @@ function Navbar() {
           <Link to="#" type="button">
             Suggestions
           </Link>
-          <Link to="/login" type="button">
-            Log in
-          </Link>
-          <Link to="/signup" type="button">
-            Sign up
-          </Link>
+          {cookieData.userId != null && cookieData.role != null ? (
+            <>
+              <Link
+                to={
+                  cookieData.role == "provider"
+                    ? `/provider/${cookieData.userId}`
+                    : `/user/${cookieData.userId}`
+                }
+                type="button"
+              >
+                DashBoard
+              </Link>
+              <Link to="#" type="button" onClick={handleLogOut}>
+                Log Out
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login" type="button">
+                Log In
+              </Link>
+              <Link to="/signup" type="button">
+                Sign Up
+              </Link>
+            </>
+          )}
         </NavContainer>
       </NavbarContainer>
     </>
