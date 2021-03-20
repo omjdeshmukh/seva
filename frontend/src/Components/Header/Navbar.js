@@ -59,6 +59,11 @@ function Navbar() {
             </>
           )}
         </NavContainer>
+        <MobileViewNav>
+          <div className="Burger"></div>
+          <div className="Burger"></div>
+          <div className="Burger"></div>
+        </MobileViewNav>
       </NavbarContainer>
     </>
   );
@@ -66,11 +71,33 @@ function Navbar() {
 
 export default Navbar;
 
+const MobileViewNav = styled.nav`
+  display: none;
+
+  @media screen and (max-width: 414px) {
+    display: block;
+  }
+
+  > .Burger {
+    background-color: #5ab9ea;
+    width: 30px;
+    height: 3px;
+  }
+
+  > .Burger:nth-child(2) {
+    margin: 1.3px 0;
+  }
+`;
 const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--font-color);
+
+  @media screen and (max-width: 414px) {
+    padding: 1rem 0;
+    align-items: baseline;
+  }
 `;
 
 const BrandContainer = styled.div`
@@ -79,6 +106,10 @@ const BrandContainer = styled.div`
   }
   > a > h3 {
     color: var(--main-color);
+
+    @media screen and (max-width: 414px) {
+      font-size: 1rem;
+    }
   }
 `;
 const NavContainer = styled.div`
@@ -87,6 +118,10 @@ const NavContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+
+  @media screen and (max-width: 414px) {
+    display: none;
+  }
 
   > a {
     color: #393232;

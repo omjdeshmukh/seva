@@ -88,6 +88,10 @@ const CarousalContainer = styled.div``;
 const CarousalInnerContainer = styled.div`
   padding: 3rem;
 
+  @media screen and (max-width: 414px) {
+    padding: 1rem;
+  }
+
   .slick-slider {
     > button {
       width: 30px;

@@ -192,11 +192,22 @@ const SignupInnerContainer = styled.div`
   padding: 1rem;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+
+  @media screen and (max-width: 414px) {
+    width: 90%;
+  }
 `;
 
 const AuthLinks = styled.div`
   padding: 0.5rem 0;
   border-bottom: 1px solid #ddd;
+
+  @media screen and (max-width: 414px) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
   > button {
     margin: 2rem 0.5rem;
     width: 120px;
