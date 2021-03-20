@@ -8,6 +8,7 @@ const userData = {
 };
 
 export function getCookieData() {
+  // Check Wheather the is a data stored in a cookie
   if (!document.cookie) {
     document.cookie = JSON.stringify(userData);
   }
