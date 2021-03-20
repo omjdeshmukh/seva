@@ -58,7 +58,11 @@ function App() {
             exact
             render={(props) => <Login {...props} setToken={setToken} />}
           />
-          <Route path="/signup" exact component={Signup} />
+          <Route
+            path="/signup"
+            exact
+            render={(props) => <Signup {...props} setToken={setToken} />}
+          />
           <Route path="/admin" exact component={AdminDashboard} />
           <Route path="/services" exact component={Services} />
           <Route
