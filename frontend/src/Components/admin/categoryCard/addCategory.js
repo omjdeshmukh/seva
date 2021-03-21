@@ -20,7 +20,7 @@ function ADDCategroyCard() {
     setFormData({
       ...formData,
       [e.target.name]:
-        [e.target.name] == "icon" ? e.target.files[0] : e.target.value,
+        [e.target.name] == "file" ? e.target.files[0] : e.target.value,
     });
   };
 
