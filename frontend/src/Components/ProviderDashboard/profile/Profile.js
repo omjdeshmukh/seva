@@ -25,13 +25,14 @@ function Profile() {
     })
       .then(function (response) {
         setFormData(response.data);
+        console.log(response);
       })
       .catch(function (response) {
         console.log(response);
       });
   }, []);
 
-  // console.log(data);
+ 
 
   const updateInput = (e) => {
     setFormData({
@@ -59,7 +60,7 @@ function Profile() {
       },
     })
       .then(function (response) {
-        // console.log(response);
+        //console.log(response);
         alert("hurry! Profile Updated...");
       })
       .catch(function (response) {
@@ -78,6 +79,19 @@ function Profile() {
           <Card.Text>
             <Form onSubmit={handleSubmit}>
               {/* <FormGroup className="row"> */}
+
+              <FormGroup>
+                  <Label for="fullName"> User Name </Label>
+                  <Input
+                    type="text"
+                    name="username"
+                    placeholder="username"
+                    disabled
+                    onChange={updateInput}
+                    value={serviceformData.userName || ''}
+                  />
+                  <FormFeedback>You will not be able to see this</FormFeedback>
+                </FormGroup>
                 <FormGroup>
                   <Label for="fullName"> Name </Label>
                   <Input
@@ -89,6 +103,20 @@ function Profile() {
                   />
                   <FormFeedback>You will not be able to see this</FormFeedback>
                 </FormGroup>
+
+                <FormGroup>
+                  <Label for="fullName"> Email </Label>
+                  <Input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    disabled
+                    onChange={updateInput}
+                    value={serviceformData.email || ''}
+                  />
+                  <FormFeedback>You will not be able to see this</FormFeedback>
+                </FormGroup>
+                
                 {/* <FormGroup >
                   <Label for="img">Profile Image</Label>
                   <Input
@@ -112,6 +140,8 @@ function Profile() {
                     value={serviceformData.village || ''}
                   />
                 </FormGroup>
+
+                
                 <FormGroup className="col">
                   <Label for="pincode">Pin-code</Label>
                   <Input
