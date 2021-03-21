@@ -34,7 +34,7 @@ function Dashboard(props) {
               alt=""
             />
             <InfoSection>
-              <p>{totalServices && totalServices.length}</p>
+              <p>{totalServices && totalServices.length}</p><hr/>
               <small>Total Services</small>
             </InfoSection>
           </TotalServices>
@@ -47,13 +47,15 @@ function Dashboard(props) {
 export default Dashboard;
 
 const DashBoardContainer = styled.div`
+/* display:flex; */
   font-family: hindLight;
+
 `;
 
 const DashBoardInnerContainer = styled.div`
   width: 95%;
   margin: 0 auto;
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
@@ -81,9 +83,7 @@ const DashBoardInnerContainer = styled.div`
   }
 `;
 
-const CatagorySection = styled.div``;
-const SuggectionSection = styled.div``;
-const UserSection = styled.div``;
+
 const TotalServices = styled.div``;
 const InfoSection = styled.div`
   padding: 0.5rem;
@@ -93,7 +93,8 @@ const InfoSection = styled.div`
   align-items: center;
   text-align: left;
   line-height: 0.5rem;
-
+  font-size: 2rem;
+  height: 200px;
   > p {
     font-weight: 600;
   }
