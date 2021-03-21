@@ -1,16 +1,13 @@
 import React from "react";
-import { Button, CardBody, CardTitle, CardText } from "reactstrap";
+import { Button, CardTitle } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
-// import UpdateService from "../service/UpdateService";
 import { getCookieData } from "../../userData";
 
 const cookieData = getCookieData();
 
-console.log(cookieData.token);
-
 function ServiceCard(props) {
-  console.log(props);
+  // console.log(props);
 
   const {
     _id,
@@ -35,17 +32,14 @@ function ServiceCard(props) {
       },
     })
       .then(function (response) {
-        //handle success
         // console.log(response);
-        alert("woohh! Cateory Deleted..");
+        alert("Service Deleted Successfully...");
         refreshPage();
         // window.location.reload();
       })
       .catch(function (response) {
-        //handle error
         console.log(response);
       });
-    //alert("I'm an alert" + _id);
   }
 
   function refreshPage() {
@@ -56,7 +50,8 @@ function ServiceCard(props) {
     <>
       <CardContainer key={_id}>
         <ServiceImage>
-          <CardTitle> {img} </CardTitle>
+          <CardTitle>
+            <img src={img} />  </CardTitle>
         </ServiceImage>
         <CardInnerContainer>
           <InfoContainer>
