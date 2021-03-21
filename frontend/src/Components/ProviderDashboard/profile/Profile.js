@@ -12,7 +12,6 @@ import axios from "axios";
 
 function Profile() {
   const [serviceformData, setFormData] = useState({});
-  const [data, setData] = useState({});
 
   useEffect(() => {
     axios({
@@ -25,7 +24,7 @@ function Profile() {
       },
     })
       .then(function (response) {
-        setData(response.data);
+        setFormData(response.data);
       })
       .catch(function (response) {
         console.log(response);
@@ -86,7 +85,7 @@ function Profile() {
                     name="fullName"
                     placeholder="Full-Name"
                     onChange={updateInput}
-                    value={serviceformData.fullName || data.fullName}
+                    value={serviceformData.fullName || ''}
                   />
                   <FormFeedback>You will not be able to see this</FormFeedback>
                 </FormGroup>
@@ -97,7 +96,7 @@ function Profile() {
                     name="img"
                     placeholder="Image"
                     onChange={updateInput}
-                    value={serviceformData.img || data.img}
+                    value={serviceformData.img || ''}
                   />
                 </FormGroup>
               </FormGroup>
@@ -110,7 +109,7 @@ function Profile() {
                     name="village"
                     placeholder="Village"
                     onChange={updateInput}
-                    value={serviceformData.village || data.village}
+                    value={serviceformData.village || ''}
                   />
                 </FormGroup>
                 <FormGroup className="col">
@@ -120,7 +119,7 @@ function Profile() {
                     name="pincode"
                     placeholder="Pin-code"
                     onChange={updateInput}
-                    value={serviceformData.pincode || data.pincode}
+                    value={serviceformData.pincode || ''}
                   />
                 </FormGroup>
               </FormGroup>
@@ -133,7 +132,7 @@ function Profile() {
                     name="city"
                     placeholder="City"
                     onChange={updateInput}
-                    value={serviceformData.city || data.city}
+                    value={serviceformData.city || ''}
                   />
                 </FormGroup>
                 <FormGroup className="col">
@@ -143,7 +142,7 @@ function Profile() {
                     name="state"
                     placeholder="State"
                     onChange={updateInput}
-                    value={serviceformData.state || data.state}
+                    value={serviceformData.state || ''}
                   />
                 </FormGroup>
               </FormGroup>
