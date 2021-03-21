@@ -7,10 +7,15 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
+  // FormText,
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
+import {getCookieData} from '../../userData';
+
+const cookieData = getCookieData();
+const token = cookieData.token;
+const _id = cookieData.userId;
 
 
 function AddService() {
@@ -51,9 +56,7 @@ function AddService() {
     window.location.reload();
   }
 
-  const api =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTI0YWQxZDQwNDNmMDAyMmM4NjM4NCIsImlhdCI6MTYxNjAwNTk1N30.p6OZnVyJEH20NfPbWed_UJEGJWNWs-FaJbD9e3Cfu70";
-
+  
   const sendService = () => {
     axios({
       method: "POST",
@@ -61,7 +64,7 @@ function AddService() {
       data: serviceformData,
       headers: {
         // 'Content-Type': "application/json",
-        "auth-token": `${api}`,
+        "auth-token": `${token}`,
       },
     })
       .then(function (response) {
