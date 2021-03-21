@@ -43,6 +43,22 @@ exports.findAll = (req, res) => {
 };
 
 
+exports.findMyFeedback = (req, res) => {
+
+    Feedback.find({ user: req.params.Id})
+        .populate("user") 
+        .then(feedback => {
+            res.send(feedback);
+            //console.log(feedback);
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
+
 exports.findOne = (req, res) => {
     Feedback.findById(req.params.Id)
         .populate("user")
