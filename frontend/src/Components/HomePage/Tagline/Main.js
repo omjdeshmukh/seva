@@ -30,20 +30,36 @@ function Main() {
 export default Main;
 
 const TaglineContainer = styled.main`
-  heignt: 100vh;
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media screen and (max-width: 414px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
 `;
 const TaglineSection = styled.main`
   flex: 2;
   text-align: left;
   padding: 20vh 0;
 
+  @media screen and (max-width: 414px) {
+    padding: 10vh 0;
+    text-align: center;
+    flex: 1;
+  }
+
   > h3 {
     font-size: 25px;
     font-family: hindLight;
     font-weight: 200;
+
+    @media screen and (max-width: 414px) {
+      font-size: 20px;
+    }
   }
 
   > h1 {
@@ -52,6 +68,13 @@ const TaglineSection = styled.main`
     font-weight: 300;
     font-size: 50px;
     width: 80%;
+
+    @media screen and (max-width: 414px) {
+      line-height: 3rem;
+      font-size: 40px;
+      margin: 0 auto;
+    }
+
     > span {
       color: var(--main-color);
     }
@@ -89,6 +112,10 @@ const TaglineSection = styled.main`
 
 const VectorSection = styled.div`
   flex: 1;
+
+  @media screen and (max-width: 414px) {
+    display: none;
+  }
 
   > svg {
     width: 100%;

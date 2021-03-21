@@ -48,6 +48,10 @@ const ServiceCardContainer = styled.div`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 414px) {
+    width: 90%;
+  }
 `;
 const ServiceImage = styled.div`
   min-width: 90%;

@@ -51,4 +51,8 @@ const CategorySection = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+
+  @media screen and (max-width: 414px) {
+    flex-direction: column;
+  }
 `;

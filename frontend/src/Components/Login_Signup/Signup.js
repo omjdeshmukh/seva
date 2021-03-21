@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Form, FormGroup, Label, Input } from "reactstrap";
-import { getCookieData } from "../userData";
+import userData from "../userData";
 
 async function userRegistration(Credentials) {
   return fetch("https://seva-backend1.herokuapp.com/register", {
@@ -23,7 +23,7 @@ const getAddress = (Pincode) => {
     .catch((error) => console.log(error.message));
 };
 
-function Signup(props) {
+function Signup({ history, setToken }) {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [role, setRole] = useState();
@@ -50,8 +50,10 @@ function Signup(props) {
 
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
-    const cookieData = getCookieData();
-    console.log(cookieData);
+    if (!document.cookie) {
+      document.cookie = JSON.stringify(userData);
+    }
+    let cookieData = JSON.parse(document.cookie);
 
     const address = await getAddress(
       cookieData.pincode ? cookieData.pincode : pincode
@@ -70,14 +72,14 @@ function Signup(props) {
     };
     try {
       const response = await userRegistration(Credentials);
-      cookieData.userId = response.id;
-      cookieData.role = role.toLowerCase();
-      cookieData.token = response.data.token;
-      console.log(
-        `${cookieData.userId} ${cookieData.role} ${cookieData.token}`
-      );
-      document.cookie = JSON.stringify(cookieData);
-      props.history.push(`/${cookieData.role}/${cookieData.userId}`);
+      if (response.data.token) {
+        cookieData.userId = response.id;
+        cookieData.role = role.toLowerCase();
+        cookieData.token = response.data.token;
+        document.cookie = JSON.stringify(cookieData);
+        setToken(response.data.token);
+        history.push(`/${cookieData.role}/${cookieData.userId}`);
+      }
     } catch (err) {
       console.log(err.message);
     }
@@ -190,11 +192,22 @@ const SignupInnerContainer = styled.div`
   padding: 1rem;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+
+  @media screen and (max-width: 414px) {
+    width: 90%;
+  }
 `;
 
 const AuthLinks = styled.div`
   padding: 0.5rem 0;
   border-bottom: 1px solid #ddd;
+
+  @media screen and (max-width: 414px) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
   > button {
     margin: 2rem 0.5rem;
     width: 120px;

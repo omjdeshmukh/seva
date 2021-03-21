@@ -37,19 +37,6 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
-          {/* {console.log(cookieData.userId != null && cookieData.role == "user")}
-          {cookieData.userId != null && cookieData.role == "provider" ? (
-            <ProviderDashboard />
-          ) : (
-            <Route path="/" exact render={(props) => <Homepage {...props} />} />
-          )}
-
-          {cookieData.userId != null && cookieData.role == "user" ? (
-            <UserDashboard />
-          ) : (
-            <Route path="/" exact render={(props) => <Homepage {...props} />} />
-          )} */}
-
           <Route path="/" exact render={(props) => <Homepage {...props} />} />
           <Protected path="/provider/:id" exact component={ProviderDashboard} />
           <Protected path="/user/:id" exact component={UserDashboard} />
@@ -58,7 +45,11 @@ function App() {
             exact
             render={(props) => <Login {...props} setToken={setToken} />}
           />
-          <Route path="/signup" exact component={Signup} />
+          <Route
+            path="/signup"
+            exact
+            render={(props) => <Signup {...props} setToken={setToken} />}
+          />
           <Route path="/admin" exact component={AdminDashboard} />
           <Route path="/services" exact component={Services} />
           <Route

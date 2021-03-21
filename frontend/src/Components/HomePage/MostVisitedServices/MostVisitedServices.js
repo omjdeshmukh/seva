@@ -34,7 +34,10 @@ function MostVisitedServices() {
 
 export default MostVisitedServices;
 
-const MostVisitedServicesContainer = styled.div``;
+const MostVisitedServicesContainer = styled.div`
+  font-family: hindRegular;
+  font-size: 1.1rem;
+`;
 const MostVisitedServicesSection = styled.div`
   margin: 0 auto;
   padding: 3rem 0;
