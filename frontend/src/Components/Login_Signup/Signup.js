@@ -29,6 +29,7 @@ function Signup({ history, setToken }) {
   const [role, setRole] = useState();
   const [password, setPassword] = useState();
   const [pincode, setPincode] = useState();
+  const [error, setError] = useState();
 
   const handleUserNameChange = (event) => {
     setUsername(event.target.value);
@@ -56,7 +57,7 @@ function Signup({ history, setToken }) {
     let cookieData = JSON.parse(document.cookie);
 
     const address = await getAddress(
-      cookieData.pincode ? cookieData.pincode : pincode
+      cookieData.pincode != null ? cookieData.pincode : pincode
     );
     const { District, State, Name, Pincode, Block } = address[0].PostOffice[0];
     const Credentials = {
@@ -72,13 +73,17 @@ function Signup({ history, setToken }) {
     };
     try {
       const response = await userRegistration(Credentials);
-      if (response.data.token) {
-        cookieData.userId = response.id;
-        cookieData.role = role.toLowerCase();
-        cookieData.token = response.data.token;
-        document.cookie = JSON.stringify(cookieData);
-        setToken(response.data.token);
-        history.push(`/${cookieData.role}/${cookieData.userId}`);
+      if (response.error === null) {
+        if (response.data.token) {
+          cookieData.userId = response.id;
+          cookieData.role = role.toLowerCase();
+          cookieData.token = response.data.token;
+          document.cookie = JSON.stringify(cookieData);
+          setToken(response.data.token);
+          history.push(`/${cookieData.role}/${cookieData.userId}`);
+        }
+      } else {
+        setError(response.error);
       }
     } catch (err) {
       console.log(err.message);
@@ -169,6 +174,9 @@ function Signup({ history, setToken }) {
                   onChange={handlePincodeChange}
                 />
               </FormGroup>
+              <FormGroup>
+                <Label className="error">{error}</Label>
+              </FormGroup>
               <button type="submit">Sign Up</button>
             </Form>
           </CredentialSection>
@@ -251,6 +259,10 @@ const CredentialSection = styled.div`
     padding: 0.5rem 0;
 
     .form-group {
+      .error {
+        color: red;
+        font-size: 15px;
+      }
       > input {
         border: none;
         box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);

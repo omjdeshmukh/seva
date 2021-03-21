@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Form, FormGroup, Input } from "reactstrap";
+import { Form, FormGroup, Input, Label } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import userData, { getCookieData } from "../userData";
@@ -20,6 +20,7 @@ async function loginUser(credentials) {
 
 function Login({ history, setToken }) {
   const [email, setEmail] = useState();
+  const [error, setError] = useState();
   const [password, setPassword] = useState();
 
   const handleEmailChange = (event) => {
@@ -38,21 +39,28 @@ function Login({ history, setToken }) {
     });
 
     console.log(token);
+    console.log(token == "Failed to fetch");
 
-    if (token) {
-      if (!document.cookie) {
-        document.cookie = JSON.stringify(userData);
+    try {
+      if (token.error === null) {
+        if (!document.cookie) {
+          document.cookie = JSON.stringify(userData);
+        }
+        console.log(document.cookie);
+        let cookieData = JSON.parse(document.cookie);
+        console.log(cookieData);
+        cookieData.token = token.data.token;
+        cookieData.userId = token.id;
+        cookieData.role = token.role;
+        document.cookie = JSON.stringify(cookieData);
+        setToken(token);
+        console.log(`${cookieData.role} ${cookieData.userId}`);
+        history.push(`/${cookieData.role}/${cookieData.userId}`);
+      } else {
+        setError(token.error);
       }
-      console.log(document.cookie);
-      let cookieData = JSON.parse(document.cookie);
-      console.log(cookieData);
-      cookieData.token = token.data.token;
-      cookieData.userId = token.id;
-      cookieData.role = token.role;
-      document.cookie = JSON.stringify(cookieData);
-      setToken(token);
-      console.log(`${cookieData.role} ${cookieData.userId}`);
-      history.push(`/${cookieData.role}/${cookieData.userId}`);
+    } catch (err) {
+      console.group(err);
     }
   };
 
@@ -95,6 +103,9 @@ function Login({ history, setToken }) {
                     autoComplete="off"
                     onChange={handlePasswordChange}
                   />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="exampleEmail">{error}</Label>
                 </FormGroup>
                 <button type="submit">Login</button>
               </Form>
@@ -197,6 +208,10 @@ const CredentialSection = styled.div`
     padding: 0.5rem 0;
 
     .form-group {
+      > label {
+        font-size: 15px;
+        color: red;
+      }
       > input {
         border: none;
         box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);

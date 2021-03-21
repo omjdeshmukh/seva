@@ -13,8 +13,11 @@ function MobieNavBar(props) {
   };
 
   const handleLogOut = () => {
-    document.cookie = JSON.stringify(userData);
-    window.location.reload();
+    if (document.cookie) {
+      document.cookie = JSON.stringify(userData);
+    }
+
+    // window.location.reload();
   };
   useEffect(() => {
     if (cookieData.userId != null && cookieData.role != null) {
