@@ -1,7 +1,5 @@
-import { func } from "prop-types";
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { FcOk } from "react-icons/fc";
 
 function ServicesPerPincodeCards({

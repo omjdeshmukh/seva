@@ -2,13 +2,24 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import userData, { getCookieData } from "../userData";
+import MobieNavBar from "./MobileNavbar";
 
 function Navbar() {
   const [tokenExist, setTokenExist] = useState(false);
   const cookieData = getCookieData();
+  const [sideNavData, setSideNavData] = useState(false);
+
+  const handleMobileNav = () => {
+    setSideNavData(true);
+  };
 
   const handleLogOut = () => {
-    document.cookie = JSON.stringify(userData);
+    if (document.cookie) {
+      document.cookie = "expires=-300";
+    }
+    if (!document.cookie) {
+      document.cookie = JSON.stringify(userData);
+    }
     window.location.reload();
   };
   useEffect(() => {
@@ -59,22 +70,30 @@ function Navbar() {
             </>
           )}
         </NavContainer>
-        <MobileViewNav>
+        <MobileViewNav
+          sideNavData={sideNavData}
+          type="button"
+          onClick={handleMobileNav}
+        >
           <div className="Burger"></div>
           <div className="Burger"></div>
           <div className="Burger"></div>
         </MobileViewNav>
       </NavbarContainer>
+      <MobieNavBar sideNavData={sideNavData} setSideNavData={setSideNavData} />
     </>
   );
 }
 
 export default Navbar;
 
-const MobileViewNav = styled.nav`
+const MobileViewNav = styled.button`
+  transition: all 1.5s ease-in-out;
+  visibility: ${(props) => (props.sideNavData ? "hidden" : "visible")};
   display: none;
 
   @media screen and (max-width: 414px) {
+    border: none;
     display: block;
   }
 
