@@ -15,7 +15,7 @@ const cookieData = getCookieData();
 const token = cookieData.token;
 const _id = cookieData.userId;
 
-console.log(_id);
+// console.log(_id);
 
 function ProviderDashboard() {
   const [data, setData] = useState();
@@ -32,7 +32,7 @@ function ProviderDashboard() {
       .catch((err) => console.log(err.message));
   }, []);
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#dashboard">
