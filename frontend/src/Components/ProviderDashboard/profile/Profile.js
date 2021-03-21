@@ -77,8 +77,8 @@ function Profile() {
         <Card.Body>
           <Card.Text>
             <Form onSubmit={handleSubmit}>
-              <FormGroup className="row">
-                <FormGroup className="col">
+              {/* <FormGroup className="row"> */}
+                <FormGroup>
                   <Label for="fullName"> Name </Label>
                   <Input
                     type="text"
@@ -89,7 +89,7 @@ function Profile() {
                   />
                   <FormFeedback>You will not be able to see this</FormFeedback>
                 </FormGroup>
-                <FormGroup className="col">
+                {/* <FormGroup >
                   <Label for="img">Profile Image</Label>
                   <Input
                     type="text"
@@ -98,8 +98,8 @@ function Profile() {
                     onChange={updateInput}
                     value={serviceformData.img || ''}
                   />
-                </FormGroup>
-              </FormGroup>
+                </FormGroup> */}
+              {/* </FormGroup> */}
 
               <FormGroup className="row">
                 <FormGroup className="col">
