@@ -22,7 +22,7 @@ function SuggestionsForm() {
     //     },
     //     body:JSON.stringify(FormData)
     // })
-    const api =
+    const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
     axios({
       method: "POST",
@@ -30,7 +30,7 @@ function SuggestionsForm() {
       data: FormData,
       headers: {
         // 'Content-Type': "application/json",
-        "auth-token": `${api}`,
+        "auth-token": `${token}`,
       },
     })
       .then(function (response) {
