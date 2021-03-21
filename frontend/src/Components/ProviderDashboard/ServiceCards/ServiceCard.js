@@ -2,9 +2,10 @@ import React from "react";
 import { Button, CardBody, CardTitle, CardText } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
+// import UpdateService from "../service/UpdateService";
 
 const api =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNlZjI0MWQwN2I5MGE5Y2FlZDA0MiIsImlhdCI6MTYxNjMyMDEwMX0.32Jfk5cKTwHMDJsdrW1fttG-Ye17ZDeZhrackm4gBuk";
 
 function ServiceCard(props) {
   // console.log(props);
@@ -24,8 +25,7 @@ function ServiceCard(props) {
   function ActionDelete() {
     axios({
       method: "DELETE",
-      url:
-        "https://seva-backend1.herokuapp.com/provider/my/service/60524ad1d4043f0022c86384",
+      url: "https://seva-backend1.herokuapp.com/provider/service/" + _id,
       headers: {
         "auth-token": `${api}`,
       },
@@ -64,16 +64,25 @@ function ServiceCard(props) {
               <ItemInfo>{description}</ItemInfo>
               <hr />
               <ItemInfo>
-                <a href={map_location}> <h5> Map Location </h5> </a>
+                <a href={map_location}>
+                  <h5> Map Location </h5>
+                </a>
               </ItemInfo>
             </Block>
           </InfoContainer>
         </CardInnerContainer>
-        <Action>
-          <Button color="danger" onClick={ActionDelete}>
-            Delete
-          </Button>
-        </Action>
+        <ButtonContainer>
+          <Action>
+            <Button color="danger" onClick={ActionDelete}>
+              Delete
+            </Button>
+          </Action>
+          <Action>
+            <Button color="warning">
+              Update 
+            </Button>
+          </Action>
+        </ButtonContainer>
       </CardContainer>
     </>
   );
@@ -141,3 +150,5 @@ const ItemInfo = styled.div`
   font-weight: bold;
   font-family: hindRegular;
 `;
+
+const ButtonContainer = styled.div``;

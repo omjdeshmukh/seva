@@ -11,7 +11,7 @@ import {
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
-import CategroyCard from "../../admin/categoryCard/catetoryCard";
+
 
 function AddService() {
   const [serviceformData, setFormData] = useState({});
@@ -81,7 +81,7 @@ function AddService() {
     <>
       <Card align="left">
         <Card.Header as="h2" align="center">
-          Add category
+          Add Service
         </Card.Header>
         <Card.Body>
           <Card.Text>
