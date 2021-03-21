@@ -3,12 +3,15 @@ import { Button, CardBody, CardTitle, CardText } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
 // import UpdateService from "../service/UpdateService";
+import { getCookieData } from "../../userData";
 
-const api =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNlZjI0MWQwN2I5MGE5Y2FlZDA0MiIsImlhdCI6MTYxNjMyMDEwMX0.32Jfk5cKTwHMDJsdrW1fttG-Ye17ZDeZhrackm4gBuk";
+const cookieData = getCookieData();
+
+console.log(cookieData.token);
 
 function ServiceCard(props) {
-  // console.log(props);
+  console.log(props);
+
   const {
     _id,
     serviceNames,
@@ -17,6 +20,7 @@ function ServiceCard(props) {
     img,
     map_location,
   } = props.data;
+
   // console.log(category);
   // console.log(serviceNames);
   // console.log(_id);
@@ -27,7 +31,7 @@ function ServiceCard(props) {
       method: "DELETE",
       url: "https://seva-backend1.herokuapp.com/provider/service/" + _id,
       headers: {
-        "auth-token": `${api}`,
+        "auth-token": `${cookieData.token}`,
       },
     })
       .then(function (response) {
@@ -78,9 +82,7 @@ function ServiceCard(props) {
             </Button>
           </Action>
           <Action>
-            <Button color="warning">
-              Update 
-            </Button>
+            <Button color="warning">Update</Button>
           </Action>
         </ButtonContainer>
       </CardContainer>
