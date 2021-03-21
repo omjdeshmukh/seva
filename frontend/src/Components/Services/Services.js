@@ -22,11 +22,7 @@ function Services() {
           <CategorySection>
             {category &&
               category.map((item, index) => {
-                return (
-                  <>
-                    <ServicesCard key={index} data={item} />
-                  </>
-                );
+                return <>{<ServicesCard key={index} data={item} />}</>;
               })}
           </CategorySection>
         </ServicesInnerContainer>
@@ -51,4 +47,9 @@ const CategorySection = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 414px) {
+    flex-direction: column;
+  }
 `;

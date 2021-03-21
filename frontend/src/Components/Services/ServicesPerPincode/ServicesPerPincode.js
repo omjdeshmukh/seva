@@ -54,6 +54,12 @@ export default ServicesPerPincode;
 
 const ServicePerPincodeContainer = styled.div`
   font-family: hindLight;
+
+  > h1 {
+    @media screen and (max-width: 414px) {
+      font-size: 1.5rem;
+    }
+  }
 `;
 const ServicePerPincodeInnerContainer = styled.div`
   display: flex;
@@ -61,6 +67,10 @@ const ServicePerPincodeInnerContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+
+  @media screen and (max-width: 414px) {
+    flex-direction: column;
+  }
 `;
 
 const NoServiceDiv = styled.div`

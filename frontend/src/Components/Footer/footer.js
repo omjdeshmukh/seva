@@ -99,12 +99,6 @@ function Footer() {
 
 export default Footer;
 
-const media = {
-  desktop: "@media only screen and(min-width:1000px)",
-  tablet: "@media only screen and(min-width:768px)",
-  mobile: "@media only screen and(min-width:414px)",
-};
-
 const FooterContainer = styled.footer`
   background-color: #393232;
   font-family: hindLight;
@@ -119,22 +113,45 @@ const FooterInnerContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 414px) {
+    flex-direction: column;
+  }
 `;
 
 const FooterAboutUs = styled.div`
   flex: 2;
   padding: 0 0.5rem 0 0;
 
+  @media screen and (max-width: 414px) {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
   > h3 {
     padding: 0.5rem 0;
     font-family: hindMedium;
     color: #5ab9ea;
+
+    @media screen and (max-width: 414px) {
+      font-family: hindRegular;
+      padding: 0;
+    }
   }
   > p {
     width: 95%;
     font-size: 0.9rem;
     padding: 0.5rem 0;
     color: #ffffff;
+
+    @media screen and (max-width: 414px) {
+      padding: 0.4rem 0;
+      font-size: 0.7rem;
+    }
   }
 `;
 
@@ -166,6 +183,14 @@ const FooterServices = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  @media screen and (max-width: 414px) {
+    align-items: center;
+    text-align: center;
+    border-top: 1px solid #5ab9ea;
+    border-bottom: 1px solid #5ab9ea;
+    margin: 1rem 0;
+  }
 `;
 
 const FooterServiceDiv = styled.div`
@@ -174,13 +199,29 @@ const FooterServiceDiv = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 414px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 const ServiceIcon = styled.div`
   width: 15px;
   height: 15px;
 
+  @media screen and (max-width: 414px) {
+    width: 25px;
+    height: 25px;
+    margin: 0.4rem 0;
+  }
+
   > img {
     width: 100%;
+
+    @media screen and (max-width: 414px) {
+      width: 100%;
+    }
   }
 `;
 const ServiceInfo = styled.div`
@@ -205,6 +246,11 @@ const FooterFormSection = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  @media screen and (max-width: 414px) {
+    justify-content: space-between;
+    align-items: center;
+  }
 
   > h4 {
     font-weight: 300;
@@ -244,6 +290,10 @@ const FooterCopyrightInnerContainer = styled.div`
     font-weight: 300;
     color: #ffffff;
     font-size: 0.8rem;
+
+    @media screen and (max-width: 414px) {
+      text-align: center;
+    }
 
     > span {
       color: #5ab9ea;

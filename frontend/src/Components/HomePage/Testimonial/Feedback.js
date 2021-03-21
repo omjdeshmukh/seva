@@ -31,4 +31,9 @@ const FeedbackInnerContainer = styled.div`
   width: 90%;
   margin: 0 auto;
   padding: 3rem 0;
+
+  @media screen and (max-width: 414px) {
+    margin: 0 auto;
+    width: 100%;
+  }
 `;

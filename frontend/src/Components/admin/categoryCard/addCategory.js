@@ -89,7 +89,7 @@ function ADDCategroyCard() {
                 />
               </FormGroup>
 
-              <FormGroup>
+              {/* <FormGroup>
                 <Label for="exampleFile">Icon</Label>
                 <Input
                   type="file"
@@ -101,9 +101,9 @@ function ADDCategroyCard() {
                   This is some placeholder block-level help text for the above
                   input. It's a bit lighter and easily wraps to a new line.
                 </FormText>
-              </FormGroup>
+              </FormGroup> */}
 
-              {/* <FormGroup>
+              <FormGroup>
                 <Label for="icon">Icon</Label>
                 <Input
                   type="text"
@@ -112,7 +112,7 @@ function ADDCategroyCard() {
                   onChange={updateInput}
                   value={formData.icon || ""}
                 />
-              </FormGroup> */}
+              </FormGroup>
               <Button color="primary" size="lg" type="submit">
                 Submit
               </Button>

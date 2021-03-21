@@ -7,21 +7,22 @@ import ShowSuggestion from './ShowSuggestion';
 import AddFeedbackForm from './AddFeedbackForm';
 import ShowFeedback from './showFeedback';
 
-function UserDashboard(){
-const [service , setService] = useState();
-      
-useEffect(()=>{
+
+function UserDashboard() {
+  const [service, setService] = useState();
+
+
+  useEffect(() => {
     fetch(" https://seva-backend1.herokuapp.com/service")
-    .then((res) => res.json())
-    .then((data) =>setService(data))
-    .catch((err) => console.log(err))
-},[])
+      .then((res) => res.json())
+      .then((data) => setService(data))
+      .catch((err) => console.log(err));
+  }, []);
 
-//console.log(service)
+  //console.log(service)
 
-return(
+  return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
-        <h1>User Dashboard</h1>
         <br></br>
         <Row>
             <Col sm={4}>
@@ -81,7 +82,8 @@ return(
             </Tab.Content>
             </Col>  
         </Row>
+
     </Tab.Container>
-)
+  );
 }
 export default UserDashboard;

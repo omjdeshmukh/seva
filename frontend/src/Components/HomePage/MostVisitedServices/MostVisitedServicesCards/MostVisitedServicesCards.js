@@ -27,6 +27,12 @@ const ServicesCardContainer = styled.div`
   align-items: center;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 
+  @media screen and (max-width: 414px) {
+    width: 80%;
+    padding: 0.5rem;
+    margin: 0.6rem auto;
+  }
+
   > h4 {
     font-size: 1rem;
     font-weight: 200;
