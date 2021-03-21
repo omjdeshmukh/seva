@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Col, ListGroup, Tab ,Row } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import ServiceCard from './Servicecard'
-import ShowSuggetion from './ShowSuggetion';
 import SuggestionsForm from './suggestionsForm'
-
+import ShowSuggestion from './ShowSuggestion';
+import AddFeedbackForm from './AddFeedbackForm';
+import ShowFeedback from './showFeedback';
 
 function UserDashboard(){
 const [service , setService] = useState();
@@ -39,11 +40,14 @@ return(
                 <ListGroup.Item action href="#link3">
                     Add Suggestions
                 </ListGroup.Item>
-                <ListGroup.Item action href="#link5">
-                    ShowSuggetion
-                </ListGroup.Item>
                 <ListGroup.Item action href="#link4">
-                    Feedback
+                    Show My Suggestion
+                </ListGroup.Item>
+                <ListGroup.Item action href="#link5">
+                   Add Feedback
+                </ListGroup.Item>
+                <ListGroup.Item action href="#link6">
+                   show feedback
                 </ListGroup.Item>
                 <ListGroup.Item action href="/">
                     Logout
@@ -65,11 +69,14 @@ return(
                 <Tab.Pane eventKey="#link3">
                     <SuggestionsForm />
                 </Tab.Pane>
-                <Tab.Pane eventKey="#link5">
-                    <ShowSuggetion />
-                </Tab.Pane>
                 <Tab.Pane eventKey="#link4">
-                    <h1>Feedback</h1>
+                    <ShowSuggestion />
+                </Tab.Pane>
+                <Tab.Pane eventKey="#link5">
+                    <AddFeedbackForm />
+                </Tab.Pane>
+                <Tab.Pane eventKey="#link6">
+                    <ShowFeedback />
                 </Tab.Pane>
             </Tab.Content>
             </Col>  
