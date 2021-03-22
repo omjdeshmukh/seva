@@ -30,14 +30,13 @@ const ServiceCardContainer = styled.div`
   min-width: 25%;
   max-width: 100%;
   border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 
   @media screen and (max-width: 414px) {
     width: 90%;
   }
-
-  padding: 0.5rem;
-  margin: 0.5rem;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 
   > a {
     display: flex;

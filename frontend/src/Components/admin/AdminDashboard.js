@@ -6,6 +6,7 @@ import axios from "axios";
 import ADDCategroyCard from "./categoryCard/addCategory";
 import { Button } from "reactstrap";
 import Dashboard from "./Dashboard/adminDashboard";
+// import Chart from "./Chart/Chart";
 
 function AdminDashboard() {
   const [category, setCategory] = useState();
@@ -50,6 +51,9 @@ function AdminDashboard() {
             <ListGroup.Item action href="#showCategory">
               Show Category
             </ListGroup.Item>
+            {/* <ListGroup.Item action href="#Chart">
+              Statistics
+            </ListGroup.Item> */}
             <ListGroup.Item action href="/">
               log out
             </ListGroup.Item>
@@ -80,6 +84,9 @@ function AdminDashboard() {
                 })}
             </Tab.Pane>
           </Tab.Content>
+          {/* <Tab.Pane eventKey="#Chart">
+            <Chart />
+          </Tab.Pane> */}
         </Col>
       </Row>
     </Tab.Container>

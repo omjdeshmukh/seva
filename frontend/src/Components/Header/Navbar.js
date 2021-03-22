@@ -15,18 +15,15 @@ function Navbar() {
 
   const handleLogOut = () => {
     if (document.cookie) {
-      document.cookie = "expires=-300";
-    }
-    if (!document.cookie) {
       document.cookie = JSON.stringify(userData);
     }
-    window.location.reload();
   };
+
   useEffect(() => {
     if (cookieData.userId != null && cookieData.role != null) {
       setTokenExist(true);
     }
-  }, []);
+  });
 
   return (
     <>

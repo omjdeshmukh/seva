@@ -18,11 +18,6 @@ const cookieData = getCookieData();
 const token = cookieData.token;
 const _id = cookieData.userId;
 
-
-const cookieData = getCookieData();
-const token = cookieData.token;
-const _id = cookieData.userId;
-
 function AddService() {
   const [serviceformData, setFormData] = useState({});
   const [category, setCategory] = useState();
@@ -60,7 +55,6 @@ function AddService() {
     });
     window.location.reload();
   }
-
 
   const sendService = () => {
     axios({
