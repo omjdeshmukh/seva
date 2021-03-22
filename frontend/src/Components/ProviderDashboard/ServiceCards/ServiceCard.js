@@ -1,23 +1,25 @@
 import React from "react";
-import { Button, CardBody, CardTitle, CardText } from "reactstrap";
+import { Button, CardTitle } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
-// import UpdateService from "../service/UpdateService";
+import { getCookieData } from "../../userData";
 
-const api =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNlZjI0MWQwN2I5MGE5Y2FlZDA0MiIsImlhdCI6MTYxNjMyMDEwMX0.32Jfk5cKTwHMDJsdrW1fttG-Ye17ZDeZhrackm4gBuk";
+const cookieData = getCookieData();
 
 function ServiceCard(props) {
   // console.log(props);
+
   const {
     _id,
     serviceNames,
     category,
     description,
-    img,
+    image,
     map_location,
   } = props.data;
+
   // console.log(category);
+  // console.log(image);
   // console.log(serviceNames);
   // console.log(_id);
   // console.log(description);
@@ -27,21 +29,18 @@ function ServiceCard(props) {
       method: "DELETE",
       url: "https://seva-backend1.herokuapp.com/provider/service/" + _id,
       headers: {
-        "auth-token": `${api}`,
+        "auth-token": `${cookieData.token}`,
       },
     })
       .then(function (response) {
-        //handle success
         // console.log(response);
-        alert("woohh! Cateory Deleted..");
+        alert("Service Deleted Successfully...");
         refreshPage();
         // window.location.reload();
       })
       .catch(function (response) {
-        //handle error
         console.log(response);
       });
-    //alert("I'm an alert" + _id);
   }
 
   function refreshPage() {
@@ -52,7 +51,9 @@ function ServiceCard(props) {
     <>
       <CardContainer key={_id}>
         <ServiceImage>
-          <CardTitle> {img} </CardTitle>
+    
+          <img src={image} key={image} />
+
         </ServiceImage>
         <CardInnerContainer>
           <InfoContainer>
@@ -78,9 +79,7 @@ function ServiceCard(props) {
             </Button>
           </Action>
           <Action>
-            <Button color="warning">
-              Update 
-            </Button>
+            <Button color="warning">Update</Button>
           </Action>
         </ButtonContainer>
       </CardContainer>
@@ -125,10 +124,12 @@ const ServiceImage = styled.div`
   display: flex;
   padding: 0 1rem;
   text-align: left;
-  width: 85%;
+  align-items: center;
+  width: 250px;
   color: black;
-  > h4 {
-    padding: 0;
+  > img {
+    height: 200px;
+    width: 200px;
   }
 `;
 

@@ -19,6 +19,8 @@ router.post('/feedback', feedback.create);
 
 router.put('/feedback/:Id', feedback.update);
 
+router.put('/my/feedback/:Id', feedback.findMyFeedback);
+
 router.delete('/feedback/:Id', feedback.delete);
 
 // router.get('/feedback', feedback.findAll);

@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Card } from "react-bootstrap";
-import { Container, Row, Col } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
+import { getCookieData } from "../../userData";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
 
-function Dashboard(props) {
+const cookieData = getCookieData();
+const _id = cookieData.userId;
+// console.log(cookieData);
+
+function Dashboard() {
   const [totalServices, setTotalServices] = useState();
 
   useEffect(() => {
     axios({
       method: "get",
       url:
-        "https://seva-backend1.herokuapp.com/provider/my/service/60524ad1d4043f0022c86384",
+        "https://seva-backend1.herokuapp.com/provider/my/service/"+ _id,
       headers: {
-        "auth-token": `${token}`,
+        "auth-token": `${cookieData.token}`,
       },
     })
       .then((response) => setTotalServices(response.data))
@@ -34,7 +35,8 @@ function Dashboard(props) {
               alt=""
             />
             <InfoSection>
-              <p>{totalServices && totalServices.length}</p><hr/>
+              <p>{totalServices && totalServices.length}</p>
+              <hr />
               <small>Total Services</small>
             </InfoSection>
           </TotalServices>
@@ -47,9 +49,8 @@ function Dashboard(props) {
 export default Dashboard;
 
 const DashBoardContainer = styled.div`
-/* display:flex; */
+  /* display:flex; */
   font-family: hindLight;
-
 `;
 
 const DashBoardInnerContainer = styled.div`
@@ -82,7 +83,6 @@ const DashBoardInnerContainer = styled.div`
     }
   }
 `;
-
 
 const TotalServices = styled.div``;
 const InfoSection = styled.div`

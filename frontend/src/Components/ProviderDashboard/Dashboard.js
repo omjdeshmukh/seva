@@ -1,34 +1,39 @@
 import React, { useState, useEffect } from "react";
 import Col from "react-bootstrap/Col";
 import { Form, Row, ListGroup, Tab } from "react-bootstrap";
-import axios from "axios";
-import { Button } from "reactstrap";
+// import axios from "axios";
+// import { Button } from "reactstrap";
 import AddService from "./service/AddService";
 import ServiceCard from "./ServiceCards/ServiceCard";
 import Profile from "./profile/Profile";
 import Dashboard from "./Dashboard/Dashboard";
 import styled from "styled-components";
+import { getCookieData } from "../userData";
 
-const api =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGQ4Njk1NzExY2EzMDViNDk0MTEwMiIsImlhdCI6MTYxNTk5NzM1OH0.B0GgYG3lphhYaqm3nSWuecxMoU2DV4M_EDywDGybVNo";
+const cookieData = getCookieData();
+
+const token = cookieData.token;
+const _id = cookieData.userId;
+
+// console.log(_id);
 
 function ProviderDashboard() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    fetch(
-      "https://seva-backend1.herokuapp.com/provider/my/service/60524ad1d4043f0022c86384",
-      {
-        method: "GET",
-        headers: {
-          "auth-token": `${api}`,
-        },
-      }
-    )
+    fetch("https://seva-backend1.herokuapp.com/provider/my/service/" + _id, {
+      method: "GET",
+      headers: {
+        "auth-token": `${token}`,
+      },
+    })
       .then((response) => response.json())
       .then((response) => setData([...response]))
       .catch((err) => console.log(err.message));
   }, []);
+
+  // console.log(data)
+
 
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#dashboard">
@@ -74,16 +79,18 @@ function ProviderDashboard() {
             <Tab.Pane eventKey="#addService">
               <AddService />
             </Tab.Pane>
-            <Tab.Pane eventKey="#showMyService">
-              {data &&
-                data.map((item, index) => {
-                  return (
-                    <>
-                      <ServiceCard data={item} />
-                    </>
-                  );
-                })}
-            </Tab.Pane>
+            <ServiceCardContainer>
+              <Tab.Pane eventKey="#showMyService">
+                {data &&
+                  data.map((item, index) => {
+                    return (
+                      <>
+                        <ServiceCard data={item} />
+                      </>
+                    );
+                  })}
+              </Tab.Pane>
+            </ServiceCardContainer>
           </Tab.Content>
         </Col>
       </Row>
@@ -92,3 +99,10 @@ function ProviderDashboard() {
 }
 
 export default ProviderDashboard;
+
+const ServiceCardContainer = styled.div`
+max-height:500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  white-space: nowrap;
+`;

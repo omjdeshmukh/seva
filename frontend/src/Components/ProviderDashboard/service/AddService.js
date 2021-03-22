@@ -7,11 +7,16 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
+  // FormText,
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
 
+import { getCookieData } from "../../userData";
+
+const cookieData = getCookieData();
+const token = cookieData.token;
+const _id = cookieData.userId;
 
 function AddService() {
   const [serviceformData, setFormData] = useState({});
@@ -51,9 +56,6 @@ function AddService() {
     window.location.reload();
   }
 
-  const api =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTI0YWQxZDQwNDNmMDAyMmM4NjM4NCIsImlhdCI6MTYxNjAwNTk1N30.p6OZnVyJEH20NfPbWed_UJEGJWNWs-FaJbD9e3Cfu70";
-
   const sendService = () => {
     axios({
       method: "POST",
@@ -61,7 +63,7 @@ function AddService() {
       data: serviceformData,
       headers: {
         // 'Content-Type': "application/json",
-        "auth-token": `${api}`,
+        "auth-token": `${token}`,
       },
     })
       .then(function (response) {
@@ -182,7 +184,7 @@ function AddService() {
               <FormGroup className="col">
                 <Label for="image">Image</Label>
                 <Input
-                  type="file"
+                  type="link"
                   name="image"
                   placeholder="Image"
                   onChange={updateInput}
