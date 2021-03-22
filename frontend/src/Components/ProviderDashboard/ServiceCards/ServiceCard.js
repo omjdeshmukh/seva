@@ -14,11 +14,12 @@ function ServiceCard(props) {
     serviceNames,
     category,
     description,
-    img,
+    image,
     map_location,
   } = props.data;
 
   // console.log(category);
+  // console.log(image);
   // console.log(serviceNames);
   // console.log(_id);
   // console.log(description);
@@ -50,8 +51,9 @@ function ServiceCard(props) {
     <>
       <CardContainer key={_id}>
         <ServiceImage>
-          <CardTitle>
-            <img src={img} />  </CardTitle>
+    
+          <img src={image} key={image} />
+
         </ServiceImage>
         <CardInnerContainer>
           <InfoContainer>
@@ -122,10 +124,12 @@ const ServiceImage = styled.div`
   display: flex;
   padding: 0 1rem;
   text-align: left;
-  width: 85%;
+  align-items: center;
+  width: 250px;
   color: black;
-  > h4 {
-    padding: 0;
+  > img {
+    height: 200px;
+    width: 200px;
   }
 `;
 
