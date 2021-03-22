@@ -11,7 +11,13 @@ import {
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
+
 import { getCookieData } from "../../userData";
+
+const cookieData = getCookieData();
+const token = cookieData.token;
+const _id = cookieData.userId;
+
 
 const cookieData = getCookieData();
 const token = cookieData.token;
@@ -54,6 +60,7 @@ function AddService() {
     });
     window.location.reload();
   }
+
 
   const sendService = () => {
     axios({

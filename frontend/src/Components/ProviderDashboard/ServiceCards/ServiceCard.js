@@ -51,7 +51,9 @@ function ServiceCard(props) {
     <>
       <CardContainer key={_id}>
         <ServiceImage>
+    
           <img src={image} key={image} />
+
         </ServiceImage>
         <CardInnerContainer>
           <InfoContainer>
