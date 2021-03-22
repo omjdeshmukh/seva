@@ -78,6 +78,7 @@ function Signup({ history, setToken }) {
           cookieData.userId = response.id;
           cookieData.role = role.toLowerCase();
           cookieData.token = response.data.token;
+          cookieData.pincode = pincode;
           document.cookie = JSON.stringify(cookieData);
           setToken(response.data.token);
           history.push(`/${cookieData.role}/${cookieData.userId}`);

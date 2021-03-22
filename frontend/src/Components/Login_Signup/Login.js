@@ -38,23 +38,17 @@ function Login({ history, setToken }) {
       password,
     });
 
-    console.log(token);
-    console.log(token == "Failed to fetch");
-
     try {
       if (token.error === null) {
         if (!document.cookie) {
           document.cookie = JSON.stringify(userData);
         }
-        console.log(document.cookie);
         let cookieData = JSON.parse(document.cookie);
-        console.log(cookieData);
         cookieData.token = token.data.token;
         cookieData.userId = token.id;
         cookieData.role = token.role;
         document.cookie = JSON.stringify(cookieData);
         setToken(token);
-        console.log(`${cookieData.role} ${cookieData.userId}`);
         history.push(`/${cookieData.role}/${cookieData.userId}`);
       } else {
         setError(token.error);

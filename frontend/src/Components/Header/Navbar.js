@@ -18,11 +18,12 @@ function Navbar() {
       document.cookie = JSON.stringify(userData);
     }
   };
+
   useEffect(() => {
     if (cookieData.userId != null && cookieData.role != null) {
       setTokenExist(true);
     }
-  }, []);
+  });
 
   return (
     <>

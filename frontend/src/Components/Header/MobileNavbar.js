@@ -16,14 +16,12 @@ function MobieNavBar(props) {
     if (document.cookie) {
       document.cookie = JSON.stringify(userData);
     }
-
-    // window.location.reload();
   };
   useEffect(() => {
     if (cookieData.userId != null && cookieData.role != null) {
       setTokenExist(true);
     }
-  }, []);
+  });
 
   return (
     <>
