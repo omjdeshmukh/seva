@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { FcOk } from "react-icons/fc";
+import { BiMap } from "react-icons/bi";
+import { BiPhone } from "react-icons/bi";
 
 function ServicesPerPincodeCards({
   category,
@@ -24,11 +26,19 @@ function ServicesPerPincodeCards({
             <h5>{serviceNames}</h5>
             {isVerify ? <FcOk /> : ""}
           </ServiceTitle>
-          <small>{category.category}</small>
-          <small>{serviceEmail}</small>
+          <OtherDetails>
+            <small>{category.category}</small>
+            <small>{serviceEmail}</small>
+          </OtherDetails>
           <ContactDetails>
-            <button>{map_location}</button>
-            <button>{contactNo}</button>
+            <button>
+              <BiMap />
+              {map_location}
+            </button>
+            <button>
+              <BiPhone />
+              {contactNo}
+            </button>
           </ContactDetails>
         </ServiceInfo>
       </ServiceCardContainer>
@@ -45,15 +55,26 @@ const ServiceCardContainer = styled.div`
   margin: 0.5rem;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   display: flex;
+  border-radius: 10px;
   flex-direction: column;
+  min-height: 15rem;
 
   @media screen and (max-width: 414px) {
     width: 90%;
   }
 `;
+const OtherDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+`;
 const ServiceImage = styled.div`
   min-width: 90%;
   margin: 0.5rem auto;
+  border: 1px solid #000;
+  min-height: 11rem;
   > img {
     width: 85%;
   }
@@ -75,6 +96,9 @@ const ContactDetails = styled.div`
   align-items: baseline;
 
   > button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     margin: 0.5rem;
     width: 120px;
     height: 35px;

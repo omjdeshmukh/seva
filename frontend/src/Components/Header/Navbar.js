@@ -17,6 +17,7 @@ function Navbar() {
     if (document.cookie) {
       document.cookie = JSON.stringify(userData);
     }
+    setTokenExist(false);
   };
 
   useEffect(() => {
