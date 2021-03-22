@@ -1,26 +1,22 @@
-// import React from "react";
-// import CanvasReact from "";
+import React from "react";
+import { Line } from "react-chartjs-2";
 
-// function Chart() {
-//   var chart = new CanvasJS.Chart("chartContainer", {
-//     data: [
-//       {
-//         type: "column",
-//         dataPoints: [
-//           { x: 10, y: 10 },
-//           { x: 20, y: 15 },
-//           { x: 30, y: 25 },
-//           { x: 40, y: 30 },
-//           { x: 50, y: 28 },
-//         ],
-//       },
-//     ],
-//   });
-//   return (
-//     <>
-//       <h1>Hello Chart</h1>
-//     </>
-//   );
-// }
+function Chart() {
+  const data = {
+    labels: ["Jan", "Feb", "Mar", "April", "May"],
+    datasets: [
+      {
+        label: "Number of users (100) }",
+        data: [1, 5, 8, 6, 9],
+        fill: false,
+      },
+    ],
+  };
+  return (
+    <>
+      <Line data={data} />
+    </>
+  );
+}
 
-// export default Chart;
+export default Chart;

@@ -9,6 +9,7 @@ import Profile from "./profile/Profile";
 import Dashboard from "./Dashboard/Dashboard";
 import styled from "styled-components";
 import { getCookieData } from "../userData";
+import axios from "axios";
 
 const cookieData = getCookieData();
 
@@ -19,6 +20,7 @@ const _id = cookieData.userId;
 
 function ProviderDashboard() {
   const [data, setData] = useState();
+  const [profile, setProfile] = useState();
 
   useEffect(() => {
     fetch("https://seva-backend1.herokuapp.com/provider/my/service/" + _id, {
@@ -34,6 +36,26 @@ function ProviderDashboard() {
 
   // console.log(data)
 
+  useEffect(()=>{
+    axios({
+      method: "GET",
+      url: "https://seva-backend1.herokuapp.com/provider/profile/" + _id,
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": `${token}`,
+      },
+    })
+      .then(function (response) {
+        setProfile(response.data.fullName);
+        // console.log(response.data.fullName);
+      })
+      .catch(function (response) {
+        console.log(response);
+      });
+  }, [])
+
+    // console.log(profile);
+
 
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#dashboard">
@@ -48,7 +70,7 @@ function ProviderDashboard() {
                 width="60%"
                 height="60%"
               />
-              <h5>OM</h5>
+              <h5>{profile}</h5>
               <p>Provider</p>
             </ListGroup.Item>
             <ListGroup.Item action href="#dashboard">
@@ -79,8 +101,8 @@ function ProviderDashboard() {
             <Tab.Pane eventKey="#addService">
               <AddService />
             </Tab.Pane>
-            <ServiceCardContainer>
-              <Tab.Pane eventKey="#showMyService">
+            <Tab.Pane eventKey="#showMyService">
+              <ServiceCardContainer>
                 {data &&
                   data.map((item, index) => {
                     return (
@@ -89,8 +111,8 @@ function ProviderDashboard() {
                       </>
                     );
                   })}
-              </Tab.Pane>
-            </ServiceCardContainer>
+              </ServiceCardContainer>
+            </Tab.Pane>
           </Tab.Content>
         </Col>
       </Row>
@@ -101,7 +123,7 @@ function ProviderDashboard() {
 export default ProviderDashboard;
 
 const ServiceCardContainer = styled.div`
-max-height:500px;
+  max-height: 500px;
   overflow-y: scroll;
   overflow-x: hidden;
   white-space: nowrap;

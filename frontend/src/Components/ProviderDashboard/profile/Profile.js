@@ -30,10 +30,10 @@ function Profile() {
     })
       .then(function (response) {
         setFormData(response.data);
-        // console.log(response);
-      })
-      .catch(function (response) {
         console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   }, []);
 
@@ -48,12 +48,7 @@ function Profile() {
     event.preventDefault();
     UpdateProfile();
   };
-
-  const api =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTI0YWQxZDQwNDNmMDAyMmM4NjM4NCIsImlhdCI6MTYxNjAwNTk1N30.p6OZnVyJEH20NfPbWed_UJEGJWNWs-FaJbD9e3Cfu70";
-
-  
-
+ 
   const UpdateProfile = () => {
     axios({
       method: "PUT",
