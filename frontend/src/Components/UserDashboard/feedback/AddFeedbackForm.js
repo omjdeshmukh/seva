@@ -43,7 +43,7 @@ function AddFeedbackForm(){
           event.preventDefault();
           PostFeedbackdata()
      }
-     console.log(feedbackData)
+    // console.log(feedbackData)
     return(
       <Card  align="left">
         <Card.Header as="h2" align="center">
