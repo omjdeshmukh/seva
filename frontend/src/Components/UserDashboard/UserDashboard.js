@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Col, ListGroup, Tab ,Row } from 'react-bootstrap';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import ServiceCard from './Servicecard'
-import SuggestionsForm from './suggestionsForm'
-import ShowSuggestion from './ShowSuggestion';
-import AddFeedbackForm from './AddFeedbackForm';
-import ShowFeedback from './showFeedback';
+import SuggestionsForm from './suggestion/suggestionsForm'
+import ShowSuggestion from './suggestion/ShowSuggestion';
+import AddFeedbackForm from './feedback/AddFeedbackForm';
+import ShowFeedback from './feedback/showFeedback';
 
 
 function UserDashboard() {
