@@ -16,7 +16,7 @@ function UpdateSuggestion(props) {
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
     axios({
       method: "PUT",
-      url: "http://localhost:5000/user/suggestion/"+id,
+      url: "https://seva-backend1.herokuapp.com/user/suggestion/"+id,
       data: FormData,
       headers: {
         // 'Content-Type': "application/json",
@@ -57,6 +57,13 @@ function UpdateSuggestion(props) {
         event.preventDefault();
         DataPost()
       }
+
+      useEffect(() => {
+        axios
+          .get("https://seva-backend1.herokuapp.com/suggestion/"+id)
+          .then((response) => setFormData(response.data))
+          .catch((err) => console.log(err));
+      }, []);
 
       useEffect(() => {
         axios
