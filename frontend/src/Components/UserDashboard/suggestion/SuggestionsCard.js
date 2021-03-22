@@ -75,7 +75,7 @@ function SuggestionCard(props){
 
        <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title>Update Suggestion</Modal.Title>
+          <Modal.Title>Update Suggestion- {props.suggestionid}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form onSubmit={handleClose}>
