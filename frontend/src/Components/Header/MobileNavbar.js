@@ -16,6 +16,8 @@ function MobieNavBar(props) {
     if (document.cookie) {
       document.cookie = JSON.stringify(userData);
     }
+    setTokenExist(false);
+    handleClose();
   };
   useEffect(() => {
     if (cookieData.userId != null && cookieData.role != null) {

@@ -47,6 +47,7 @@ function Login({ history, setToken }) {
         cookieData.token = token.data.token;
         cookieData.userId = token.id;
         cookieData.role = token.role;
+        cookieData.pincode = token.pincode;
         document.cookie = JSON.stringify(cookieData);
         setToken(token);
         history.push(`/${cookieData.role}/${cookieData.userId}`);
