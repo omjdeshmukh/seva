@@ -57,6 +57,7 @@ exports.register = async (req, res) => {
     res.header("auth-token", token).json({
       error: null,
       id: savedUser._id,
+      pincode: savedUser.pincode,
       role: savedUser.role,
       data: {
         token,
@@ -99,6 +100,7 @@ exports.login = async (req, res) => {
   res.header("auth-token", token).json({
     error: null,
     id: user._id,
+    pincode: user.pincode,
     role: user.role,
     data: {
       token,

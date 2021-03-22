@@ -56,7 +56,6 @@ function AddService() {
     window.location.reload();
   }
 
-
   const sendService = () => {
     axios({
       method: "POST",
