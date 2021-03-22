@@ -9,6 +9,11 @@ import {
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
+import { getCookieData } from "../../userData";
+
+const cookieData = getCookieData();
+const token = cookieData.token;
+const _id = cookieData.userId;
 
 function Profile() {
 
@@ -17,23 +22,20 @@ function Profile() {
   useEffect(() => {
     axios({
       method: "GET",
-      url:
-        "https://seva-backend1.herokuapp.com/provider/profile/60524ad1d4043f0022c86384",
+      url: "https://seva-backend1.herokuapp.com/provider/profile/" + _id,
       headers: {
         "Content-Type": "application/json",
-        "auth-token": `${api}`,
+        "auth-token": `${token}`,
       },
     })
       .then(function (response) {
         setFormData(response.data);
-        console.log(response);
+        // console.log(response);
       })
       .catch(function (response) {
         console.log(response);
       });
   }, []);
-
- 
 
   const updateInput = (e) => {
     setFormData({
@@ -55,11 +57,10 @@ function Profile() {
   const UpdateProfile = () => {
     axios({
       method: "PUT",
-      url:
-        "https://seva-backend1.herokuapp.com/provider/profile/60524ad1d4043f0022c86384",
+      url: "https://seva-backend1.herokuapp.com/provider/profile/" + _id,
       data: serviceformData,
       headers: {
-        "auth-token": `${api}`,
+        "auth-token": `${token}`,
       },
     })
       .then(function (response) {
@@ -84,53 +85,41 @@ function Profile() {
               {/* <FormGroup className="row"> */}
 
               <FormGroup>
-                  <Label for="fullName"> User Name </Label>
-                  <Input
-                    type="text"
-                    name="username"
-                    placeholder="username"
-                    disabled
-                    onChange={updateInput}
-                    value={serviceformData.userName || ''}
-                  />
-                  <FormFeedback>You will not be able to see this</FormFeedback>
-                </FormGroup>
-                <FormGroup>
-                  <Label for="fullName"> Name </Label>
-                  <Input
-                    type="text"
-                    name="fullName"
-                    placeholder="Full-Name"
-                    onChange={updateInput}
-                    value={serviceformData.fullName || ''}
-                  />
-                  <FormFeedback>You will not be able to see this</FormFeedback>
-                </FormGroup>
+                <Label for="fullName"> User Name </Label>
+                <Input
+                  type="text"
+                  name="username"
+                  placeholder="username"
+                  disabled
+                  onChange={updateInput}
+                  value={serviceformData.userName || ""}
+                />
+                <FormFeedback>You will not be able to see this</FormFeedback>
+              </FormGroup>
+              <FormGroup>
+                <Label for="fullName"> Name </Label>
+                <Input
+                  type="text"
+                  name="fullName"
+                  placeholder="Full-Name"
+                  onChange={updateInput}
+                  value={serviceformData.fullName || ""}
+                />
+                <FormFeedback>You will not be able to see this</FormFeedback>
+              </FormGroup>
 
-                <FormGroup>
-                  <Label for="fullName"> Email </Label>
-                  <Input
-                    type="text"
-                    name="email"
-                    placeholder="Email"
-                    disabled
-                    onChange={updateInput}
-                    value={serviceformData.email || ''}
-                  />
-                  <FormFeedback>You will not be able to see this</FormFeedback>
-                </FormGroup>
-                
-                {/* <FormGroup >
-                  <Label for="img">Profile Image</Label>
-                  <Input
-                    type="text"
-                    name="img"
-                    placeholder="Image"
-                    onChange={updateInput}
-                    value={serviceformData.img || ''}
-                  />
-                </FormGroup> */}
-              {/* </FormGroup> */}
+              <FormGroup>
+                <Label for="fullName"> Email </Label>
+                <Input
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  disabled
+                  onChange={updateInput}
+                  value={serviceformData.email || ""}
+                />
+                <FormFeedback>You will not be able to see this</FormFeedback>
+              </FormGroup>
 
               <FormGroup className="row">
                 <FormGroup className="col">
@@ -140,11 +129,10 @@ function Profile() {
                     name="village"
                     placeholder="Village"
                     onChange={updateInput}
-                    value={serviceformData.village || ''}
+                    value={serviceformData.village || ""}
                   />
                 </FormGroup>
 
-                
                 <FormGroup className="col">
                   <Label for="pincode">Pin-code</Label>
                   <Input
@@ -152,7 +140,7 @@ function Profile() {
                     name="pincode"
                     placeholder="Pin-code"
                     onChange={updateInput}
-                    value={serviceformData.pincode || ''}
+                    value={serviceformData.pincode || ""}
                   />
                 </FormGroup>
               </FormGroup>
@@ -165,7 +153,7 @@ function Profile() {
                     name="city"
                     placeholder="City"
                     onChange={updateInput}
-                    value={serviceformData.city || ''}
+                    value={serviceformData.city || ""}
                   />
                 </FormGroup>
                 <FormGroup className="col">
@@ -175,7 +163,7 @@ function Profile() {
                     name="state"
                     placeholder="State"
                     onChange={updateInput}
-                    value={serviceformData.state || ''}
+                    value={serviceformData.state || ""}
                   />
                 </FormGroup>
               </FormGroup>

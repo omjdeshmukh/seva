@@ -11,12 +11,17 @@ import {
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
-import {getCookieData} from '../../userData';
+
+import { getCookieData } from "../../userData";
 
 const cookieData = getCookieData();
 const token = cookieData.token;
 const _id = cookieData.userId;
 
+
+const cookieData = getCookieData();
+const token = cookieData.token;
+const _id = cookieData.userId;
 
 function AddService() {
   const [serviceformData, setFormData] = useState({});
@@ -56,7 +61,7 @@ function AddService() {
     window.location.reload();
   }
 
-  
+
   const sendService = () => {
     axios({
       method: "POST",
@@ -185,7 +190,7 @@ function AddService() {
               <FormGroup className="col">
                 <Label for="image">Image</Label>
                 <Input
-                  type="file"
+                  type="link"
                   name="image"
                   placeholder="Image"
                   onChange={updateInput}
