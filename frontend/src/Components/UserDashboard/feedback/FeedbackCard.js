@@ -2,13 +2,17 @@ import React from "react";
 import axios from 'axios'
 import styled from 'styled-components'
 import {Button} from 'reactstrap'
+import { getCookieData } from '../../userData'
 
+const cookieData=getCookieData()
+const token=cookieData.token
+const _id=cookieData.userId
 
 function FeedbackCard(props){
 
   const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
   function ActionDelete(){
-    axios(' http://localhost:5000/user/feedback/'+`${props.feedbackid}`,{
+    axios(' http://localhost:5000/user/feedback/'+_id,{
       method:"DELETE",
       headers:{
          "content-type":"application/json",

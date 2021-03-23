@@ -10,23 +10,24 @@ import {
   FormText,
   FormFeedback,
 } from "reactstrap";
+import { getCookieData } from '../../userData'
+
+const cookieData=getCookieData()
+const token=cookieData.token
+const _id=cookieData.userid
 
 function SuggestionsForm() {
   const [category, setCategory] = useState();
   const [FormData, setFormData] = useState({});
   function PostData() {
-    // axios(" https://seva-backend1.herokuapp.com/suggestion",{
-    //     method:"post",
-    //     headers:{
-    //         "content-type":"application/json"
-    //     },
-    //     body:JSON.stringify(FormData)
-    // })
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
+    
+    // const token =
+    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
+
+
     axios({
       method: "POST",
-      url: "https://seva-backend1.herokuapp.com/user/suggestion",
+      url: "https://seva-backend1.herokuapp.com/user/my/suggestion/"+_id,
       data: FormData,
       headers: {
         // 'Content-Type': "application/json",
@@ -54,7 +55,7 @@ function SuggestionsForm() {
       ServicePinCode: "",
       ServiceDescription: "",
     });
-    window.location.reload();
+    //window.location.reload();
   }
 
   function handleInput(e) {

@@ -43,7 +43,7 @@ function UpdateSuggestion(props) {
           ServicePinCode: "",
           ServiceDescription: "",
         });
-        window.location.reload();
+       // window.location.reload();
       }
 
       function handleInput(e) {
@@ -72,7 +72,7 @@ function UpdateSuggestion(props) {
           .catch((err) => console.log(err));
       }, []);
 
-      console.log(FormData)
+    //  console.log(FormData)
     return(
        
       <Modal show={open} onHide={close} animation={false}>

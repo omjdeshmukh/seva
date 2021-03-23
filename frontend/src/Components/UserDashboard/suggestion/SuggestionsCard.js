@@ -14,6 +14,12 @@ import {
   FormFeedback,
 } from "reactstrap";
 import UpdateSuggestions from './UpdateSuggestions'
+import { getCookieData } from '../../userData'
+
+const cookieData=getCookieData()
+const token=cookieData.token
+const _id=cookieData.userId
+
 function SuggestionCard(props) {
   const[open , setOpen] =useState(false)
   const { servicetype, categoryName, servicedescription ,suggestionid} = props
@@ -22,9 +28,11 @@ function SuggestionCard(props) {
 
   
 
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA"
+  // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA"
+
+
   function ActionDelete() {
-    axios('http://localhost:5000/user/suggestion/' + `${suggestionid}`, {
+    axios('http://localhost:5000/user/suggestion/'+_id, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -34,7 +42,7 @@ function SuggestionCard(props) {
       .then((data) => {
         console.log(data)
         alert("user suggestion deleted succesfully")
-        refreshPage()
+       // refreshPage()
       })
       .catch((err) => {
         console.log(err)
@@ -42,9 +50,9 @@ function SuggestionCard(props) {
       })
   }
 
-  function refreshPage() {
-    window.location.reload()
-  }
+  // function refreshPage() {
+  //   window.location.reload()
+  // }
 
   
 
