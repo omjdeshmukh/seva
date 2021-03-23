@@ -7,6 +7,8 @@ import ADDCategroyCard from "./categoryCard/addCategory";
 import { Button } from "reactstrap";
 import Dashboard from "./Dashboard/adminDashboard";
 import Chart from "./Chart/Chart";
+import SuggestionTable from "./table/suggestionTable"
+
 
 function AdminDashboard() {
   const [category, setCategory] = useState();
