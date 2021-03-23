@@ -3,6 +3,7 @@ import { Form, Button, Card } from "react-bootstrap";
 import { Container, Row, Col } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
+import PieChart from "../Chart/ChartPie";
 
 function Dashboard(props) {
   const [user, setUser] = useState();
@@ -69,6 +70,10 @@ function Dashboard(props) {
               <small>Total Services</small>
             </InfoSection>
           </TotalServices>
+          {/* graph */}
+
+          <PieChart/>
+
         </DashBoardInnerContainer>
       </DashBoardContainer>
     </>
