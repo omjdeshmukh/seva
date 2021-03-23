@@ -17,7 +17,6 @@ function CategroyCard(props) {
       //handle success
       console.log(response);
       alert("woohh! Cateory Deleted.." );
-      refreshPage()
       // window.location.reload();
     })
     .catch(function (response) {
