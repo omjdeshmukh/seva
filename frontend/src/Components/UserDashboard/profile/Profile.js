@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+
 import {
   Button,
   Form,
@@ -13,19 +15,18 @@ import { getCookieData } from "../../userData";
 
 const cookieData = getCookieData();
 // const token = cookieData.token;
-const token =
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
+const token = cookieData.token;
+
 const _id = cookieData.userId;
 
-function UseProfile() {
-
+function UseProfile(props) {
   const [serviceformData, setFormData] = useState({});
 
   // console.log(token);
   useEffect(() => {
     axios({
       method: "GET",
-      url: "https://seva-backend1.herokuapp.com/user/profile/604f7ffdf1acad0643111afa",
+      url: `https://seva-backend1.herokuapp.com/user/profile/${_id}`,
       headers: {
         "Content-Type": "application/json",
         "auth-token": `${token}`,
@@ -33,7 +34,6 @@ function UseProfile() {
     })
       .then(function (response) {
         setFormData(response.data);
-        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -51,7 +51,7 @@ function UseProfile() {
     event.preventDefault();
     UpdateProfile();
   };
- 
+
   const UpdateProfile = () => {
     axios({
       method: "PUT",
@@ -62,7 +62,7 @@ function UseProfile() {
       },
     })
       .then(function (response) {
-        //console.log(response);
+        setFormData(response.data);
         alert("hurry! Profile Updated...");
       })
       .catch(function (response) {
