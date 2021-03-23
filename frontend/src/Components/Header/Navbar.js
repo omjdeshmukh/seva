@@ -38,7 +38,7 @@ function Navbar() {
         {/* Navigation Options */}
         <NavContainer>
           <Link to="/services">Services</Link>
-          <Link to="/suggestions" type="button">
+          <Link to="#" type="button">
             Suggestions
           </Link>
           {cookieData.userId != null && cookieData.role != null ? (
