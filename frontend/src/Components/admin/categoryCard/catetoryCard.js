@@ -17,7 +17,6 @@ function CategroyCard(props) {
       //handle success
       console.log(response);
       alert("woohh! Cateory Deleted.." );
-      refreshPage()
       // window.location.reload();
     })
     .catch(function (response) {
@@ -27,9 +26,6 @@ function CategroyCard(props) {
   //alert("I'm an alert" + _id);
 }
 
-function refreshPage(){ 
-  window.location.reload(); 
-}
 
   return (
     <>
