@@ -2,22 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from "react-bootstrap";
 import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback,} from "reactstrap";
 import axios from 'axios'
-import { getCookieData } from '../../userData'
-
-const cookieData=getCookieData()
-const token=cookieData.token
-const _id=cookieData.userId
 
 function AddFeedbackForm(){
     const [feedbackData, SetFeedbackData] = useState({})
 
     function PostFeedbackdata(){  
-      //  const token =
-      // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
+       const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
 
         axios({
           method:"POST",
-          url:"https://seva-backend1.herokuapp.com/user/my/feedback"+_id,
+          url:"https://seva-backend1.herokuapp.com/user/feedback",
           data:feedbackData,
           headers:{
             "content-type":"application/json",
@@ -34,7 +29,7 @@ function AddFeedbackForm(){
         })
     }
       function afterPost(){
-         // window.location.reload();
+          window.location.reload();
           feedbackData=""
       }
 

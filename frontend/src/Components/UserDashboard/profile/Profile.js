@@ -9,15 +9,13 @@ import {
   FormFeedback,
 } from "reactstrap";
 import axios from "axios";
-import UserDashboard from '../UserDashboard'
 import { getCookieData } from "../../userData";
 
 const cookieData = getCookieData();
- const token = cookieData.token;
+// const token = cookieData.token;
+const token =
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
 const _id = cookieData.userId;
-// const token =
-// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
-
 
 function UseProfile() {
 
@@ -27,7 +25,7 @@ function UseProfile() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "https://seva-backend1.herokuapp.com/user/profile/"+_id,
+      url: "https://seva-backend1.herokuapp.com/user/profile/604f7ffdf1acad0643111afa",
       headers: {
         "Content-Type": "application/json",
         "auth-token": `${token}`,

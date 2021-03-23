@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import SuggestionCard from './SuggestionsCard'
-import { getCookieData } from '../../userData'
-
-const cookieData=getCookieData()
-const token=cookieData.token
-const id=cookieData.userId
-console.log(id)
-
-
 
 function ShowSuggestion() {
     const [suggestions, setSuggestions] = useState()
 
-    // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
-   
-
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
     useEffect(() => {
-        fetch("https://seva-backend1.herokuapp.com/user/my/suggestion/"+id, {
+        fetch("https://seva-backend1.herokuapp.com/user/my/suggestion/604cc1fd43e82822a85786e6", {
             method: "get",
-            data: suggestions,
+            suggestions: suggestions,
             headers: {
                 "content-type": "application/json",
                 "auth-token": `${token}`
@@ -28,10 +18,8 @@ function ShowSuggestion() {
             .then((data) => setSuggestions(data))
             .catch((err) => console.log(err))
     }, [])
-    if(id===undefined){
-        console.log("suggestions are not added by the user")
-    }
-     //  console.log(suggestions)
+
+    //   console.log(suggestions)
     return (
         <div>
             {suggestions && suggestions.map((item, i) => {
