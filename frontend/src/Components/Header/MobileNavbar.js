@@ -32,7 +32,7 @@ function MobieNavBar(props) {
           <Link to="/services" type="button" onClick={handleClose}>
             Services
           </Link>
-          <Link to="#" type="button" onClick={handleClose}>
+          <Link to="/suggestions" type="button" onClick={handleClose}>
             Suggestions
           </Link>
           {cookieData.userId != null && cookieData.role != null ? (
