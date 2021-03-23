@@ -36,7 +36,6 @@ function ADDCategroyCard() {
       description: "",
       icon: "",
     });
-    window.location.reload();
   }
 
   const sendCategory = () => {

@@ -54,6 +54,9 @@ function AdminDashboard() {
             <ListGroup.Item action href="#Chart">
               Statistics
             </ListGroup.Item>
+            <ListGroup.Item action href="#showSuggestionRequest">
+              Show Suggestion Request
+            </ListGroup.Item>
             <ListGroup.Item action href="/">
               log out
             </ListGroup.Item>
@@ -84,6 +87,9 @@ function AdminDashboard() {
                 })}
             </Tab.Pane>
           </Tab.Content>
+          <Tab.Pane eventKey="#showSuggestionRequest">
+              <SuggestionTable />
+            </Tab.Pane>
           <Tab.Pane eventKey="#Chart">
             <Chart />
           </Tab.Pane>

@@ -27,9 +27,6 @@ function CategroyCard(props) {
   //alert("I'm an alert" + _id);
 }
 
-function refreshPage(){ 
-  window.location.reload(); 
-}
 
   return (
     <>
