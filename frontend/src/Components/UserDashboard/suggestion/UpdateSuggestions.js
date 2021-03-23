@@ -1,32 +1,22 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Card, Col, Row } from "react-bootstrap";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-  FormFeedback,
-} from "reactstrap";
+import React,{useState , useEffect ,} from 'react' 
+import axios from 'axios'
+import {Modal} from 'react-bootstrap'
+import {Form , FormGroup , Input , Button , Label} from 'reactstrap' 
+import Feedback from 'react-bootstrap/esm/Feedback';
+function UpdateSuggestion(props) {
+  const {open , close , id} = props;
 
-function SuggestionsForm() {
   const [category, setCategory] = useState();
   const [FormData, setFormData] = useState({});
-  function PostData() {
-    // axios(" https://seva-backend1.herokuapp.com/suggestion",{
-    //     method:"post",
-    //     headers:{
-    //         "content-type":"application/json"
-    //     },
-    //     body:JSON.stringify(FormData)
-    // })
-    const token =
+
+
+    function DataPost(){
+
+      const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
     axios({
-      method: "POST",
-      url: "https://seva-backend1.herokuapp.com/user/suggestion",
+      method: "PUT",
+      url: "https://seva-backend1.herokuapp.com/user/suggestion/"+id,
       data: FormData,
       headers: {
         // 'Content-Type': "application/json",
@@ -44,46 +34,52 @@ function SuggestionsForm() {
         alert("something went wrong while adding suggestion");
         console.log(response);
       });
-  }
+    }
+      function afterPost() {
+        console.log(FormData);
+        setFormData({
+          ServiceType: "",
+          category: "",
+          ServicePinCode: "",
+          ServiceDescription: "",
+        });
+        window.location.reload();
+      }
 
-  function afterPost() {
-    console.log(FormData);
-    setFormData({
-      ServiceType: "",
-      category: "",
-      ServicePinCode: "",
-      ServiceDescription: "",
-    });
-    window.location.reload();
-  }
+      function handleInput(e) {
+        setFormData({
+          ...FormData,
+          [e.target.name]: e.target.value,
+        });
+      }
 
-  function handleInput(e) {
-    setFormData({
-      ...FormData,
-      [e.target.name]: e.target.value,
-    });
-  }
+      function handleSubmit(event) {
+        event.preventDefault();
+        DataPost()
+      }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    PostData();
-  }
+      useEffect(() => {
+        axios
+          .get("https://seva-backend1.herokuapp.com/suggestion/"+id)
+          .then((response) => setFormData(response.data))
+          .catch((err) => console.log(err));
+      }, []);
 
-  useEffect(() => {
-    axios
-      .get("https://seva-backend1.herokuapp.com/admin/category")
-      .then((response) => setCategory(response.data))
-      .catch((err) => console.log(err));
-  }, []);
+      useEffect(() => {
+        axios
+          .get("https://seva-backend1.herokuapp.com/admin/category")
+          .then((response) => setCategory(response.data))
+          .catch((err) => console.log(err));
+      }, []);
 
-  //console.log(FormData);
-  return (
-    <Card align="left">
-      <Card.Header as="h2" align="center">
-        Suggestions
-      </Card.Header>
-      <Card.Body>
-        <Card.Text>
+      console.log(FormData)
+    return(
+       
+      <Modal show={open} onHide={close} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update Suggestion- {id}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Label for="ServiceType">Service Type</Label>
@@ -131,6 +127,7 @@ function SuggestionsForm() {
                 onChange={handleInput}
               />
             </FormGroup>
+
             <FormGroup>
               <label htmlFor="exampleFormControlTextarea1">
                 Service Description
@@ -144,13 +141,14 @@ function SuggestionsForm() {
                 rows="4"
               />
             </FormGroup>
-            <Button color="primary" size="lg" type="submit">
-              Submit
-            </Button>
+            <Button variant="primary" color="primary">
+            Save Changes
+          </Button>
           </Form>
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  );
+        </Modal.Body>
+        <Modal.Footer>
+        </Modal.Footer>
+      </Modal>
+    )
 }
-export default SuggestionsForm;
+export default UpdateSuggestion;

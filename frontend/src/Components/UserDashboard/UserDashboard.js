@@ -5,6 +5,7 @@ import SuggestionsForm from './suggestion/suggestionsForm'
 import ShowSuggestion from './suggestion/ShowSuggestion';
 import AddFeedbackForm from './feedback/AddFeedbackForm';
 import ShowFeedback from './feedback/showFeedback';
+import UseProfile from './profile/Profile';
 
 
 function UserDashboard() {
@@ -34,9 +35,9 @@ function UserDashboard() {
                 <ListGroup.Item action href="#link1">
                     Profile
                 </ListGroup.Item>
-                <ListGroup.Item action href="#link2">
+                {/* <ListGroup.Item action href="#link2">
                    show service
-                </ListGroup.Item>
+                </ListGroup.Item> */}
                 <ListGroup.Item action href="#link3">
                     Add Suggestions
                 </ListGroup.Item>
@@ -57,15 +58,15 @@ function UserDashboard() {
             <Col sm={8}>
             <Tab.Content>
                 <Tab.Pane eventKey="#link1">
-                    <h1>Profile</h1>
+                    <UseProfile/>
                 </Tab.Pane>
-                <Tab.Pane eventKey="#link2">
+                {/* <Tab.Pane eventKey="#link2">
                     {service && service.map((item ,i) =>{
                         return(
                             <ServiceCard service={item}/>
                         )
                     })}
-                </Tab.Pane>
+                </Tab.Pane> */}
                 <Tab.Pane eventKey="#link3">
                     <SuggestionsForm />
                 </Tab.Pane>
