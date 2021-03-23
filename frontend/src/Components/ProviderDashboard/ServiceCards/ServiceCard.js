@@ -88,6 +88,7 @@ function ServiceCard(props) {
       })
         .then((response) => {
           setCardData(response.data);
+          console.log(response.data);
         })
         .catch((err) => {
           console.log(err);
