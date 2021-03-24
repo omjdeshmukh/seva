@@ -9,10 +9,9 @@ function Homepage() {
   const [close, setClose] = useState(false);
   const [checkPincode, setCheckPincode] = useState();
   const [pincodeExist, setPincodeExist] = useState(false);
+  let cookieData = getCookieData();
 
   useEffect(() => {
-    let cookieData = getCookieData();
-
     if (pincodeExist) {
       setCheckPincode(cookieData.pincode);
     }

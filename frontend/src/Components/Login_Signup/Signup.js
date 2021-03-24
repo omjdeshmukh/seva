@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Form, FormGroup, Label, Input } from "reactstrap";
-import userData from "../userData";
+import { getCookieData, setCookieData } from "../userData";
 
 async function userRegistration(Credentials) {
   return fetch("https://seva-backend1.herokuapp.com/register", {
@@ -51,10 +51,8 @@ function Signup({ history, setToken }) {
 
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
-    if (!document.cookie) {
-      document.cookie = JSON.stringify(userData);
-    }
-    let cookieData = JSON.parse(document.cookie);
+
+    let cookieData = getCookieData();
 
     const address = await getAddress(
       cookieData.pincode != null ? cookieData.pincode : pincode
@@ -65,7 +63,7 @@ function Signup({ history, setToken }) {
       fullName: username,
       email: email,
       password: password,
-      role: role,
+      role: role.toLowerCase(),
       state: State,
       city: Name,
       village: Block,
@@ -73,13 +71,14 @@ function Signup({ history, setToken }) {
     };
     try {
       const response = await userRegistration(Credentials);
+      console.log(response);
       if (response.error === null) {
         if (response.data.token) {
           cookieData.userId = response.id;
           cookieData.role = role.toLowerCase();
           cookieData.token = response.data.token;
           cookieData.pincode = pincode;
-          document.cookie = JSON.stringify(cookieData);
+          setCookieData(cookieData);
           setToken(response.data.token);
           history.push(`/${cookieData.role}/${cookieData.userId}`);
         }

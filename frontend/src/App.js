@@ -18,13 +18,12 @@ import Signup from "./Components/Login_Signup/Signup";
 import Services from "./Components/Services/Services";
 import ServicesPerPincode from "./Components/Services/ServicesPerPincode/ServicesPerPincode";
 import Protected from "./Components/ProtectedRoute/Protected";
-import userData, { getCookieData } from "./Components/userData";
+// import Suggestions from "./Components/Suggestions/Suggestions";
 
 //Main App
 function App() {
   const [token, setToken] = useState();
   const [logStatus, setLogStatus] = useState(false);
-  const cookieData = getCookieData();
   // Rerender based on session Token
   useEffect(() => {
     if (token) {
@@ -51,6 +50,7 @@ function App() {
             render={(props) => <Signup {...props} setToken={setToken} />}
           />
           <Route path="/admin" exact component={AdminDashboard} />
+          {/* <Route path="/suggestions" exact component={Suggestions} /> */}
           <Route path="/services" exact component={Services} />
           <Route
             path="/services/:_id/:pincode"
@@ -60,7 +60,6 @@ function App() {
         </Switch>
       </div>
       <Footer />
-      {/* <Dashboard/>  */}
     </Router>
   );
 }

@@ -15,7 +15,7 @@ function Protected({
       <Route
         {...rest}
         render={(props) => {
-          return cookieData &&
+          return cookieData.token != null &&
             cookieData.userId != null &&
             computedMatch.params.id === cookieData.userId ? (
             <Component {...rest} {...props} />

@@ -29,7 +29,6 @@ function SuggestionsForm() {
       url: "https://seva-backend1.herokuapp.com/user/suggestion",
       data: FormData,
       headers: {
-        // 'Content-Type': "application/json",
         "auth-token": `${token}`,
       },
     })
