@@ -21,11 +21,11 @@ import Protected from "./Components/ProtectedRoute/Protected";
 import Suggestions from "./Components/Suggestions/Suggestions";
 import userData, { getCookieData } from "./Components/userData";
 
+
 //Main App
 function App() {
   const [token, setToken] = useState();
   const [logStatus, setLogStatus] = useState(false);
-  const cookieData = getCookieData();
   // Rerender based on session Token
   useEffect(() => {
     if (token) {
@@ -52,7 +52,9 @@ function App() {
             render={(props) => <Signup {...props} setToken={setToken} />}
           />
           <Route path="/admin" exact component={AdminDashboard} />
+
           <Route path="/suggestions" exact component={Suggestions} />
+
           <Route path="/services" exact component={Services} />
           <Route
             path="/services/:_id/:pincode"
@@ -62,7 +64,6 @@ function App() {
         </Switch>
       </div>
       <Footer />
-      {/* <Dashboard/>  */}
     </Router>
   );
 }

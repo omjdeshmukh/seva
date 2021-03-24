@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FiX } from "react-icons/fi";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import userData from "../../userData";
+import { getCookieData, setCookieData } from "../../userData";
 
 function Prompt(props) {
   const [pincode, setPincode] = useState();
@@ -24,8 +24,9 @@ function Prompt(props) {
     if (pincode == undefined || pincode == null) {
       //Do Noting
     } else {
-      userData.pincode = pincode;
-      document.cookie = JSON.stringify(userData);
+      let cookieData = getCookieData();
+      cookieData.pincode = pincode;
+      setCookieData(cookieData);
       props.setPincodeExist(true);
     }
   };

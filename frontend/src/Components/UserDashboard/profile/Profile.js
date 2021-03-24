@@ -26,7 +26,9 @@ function UseProfile(props) {
   useEffect(() => {
     axios({
       method: "GET",
+
       url: `https://seva-backend1.herokuapp.com/user/profile/${_id}`,
+
       headers: {
         "Content-Type": "application/json",
         "auth-token": `${token}`,
@@ -62,7 +64,9 @@ function UseProfile(props) {
       },
     })
       .then(function (response) {
+
         setFormData(response.data);
+
         alert("hurry! Profile Updated...");
       })
       .catch(function (response) {

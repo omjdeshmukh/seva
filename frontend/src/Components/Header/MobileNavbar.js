@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import userData, { getCookieData } from "../userData";
+import { getCookieData, clearCookie } from "../userData";
 import { FiX } from "react-icons/fi";
 
 function MobieNavBar(props) {
@@ -13,9 +13,7 @@ function MobieNavBar(props) {
   };
 
   const handleLogOut = () => {
-    if (document.cookie) {
-      document.cookie = JSON.stringify(userData);
-    }
+    clearCookie();
     setTokenExist(false);
     handleClose();
   };

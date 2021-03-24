@@ -4,30 +4,30 @@ import SuggestionCard from "./SuggestionsCard";
 
 function ShowSuggestion() {
   const [suggestions, setSuggestions] = useState();
-
   const cookieData = getCookieData();
+  console.log(cookieData.token);
+  console.log(cookieData.userId);
   const token = cookieData.token;
-  const _id = cookieData.userId;
-
   useEffect(() => {
-    fetch(`https://seva-backend1.herokuapp.com/user/my/suggestion/${_id}`, {
-      method: "get",
-      suggestions: suggestions,
-      headers: {
-        "content-type": "application/json",
-        "auth-token": `${token}`,
-      },
-    })
+    fetch(
+      `https://seva-backend1.herokuapp.com/user/my/suggestion/${cookieData.userId}`,
+      {
+        method: "GET",
+        headers: {
+          "auth-token": `${token}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setSuggestions(data))
       .catch((err) => console.log(err));
-  });
+  }, []);
 
-  //   console.log(suggestions)
   return (
     <div>
       {suggestions &&
         suggestions.map((item, i) => {
+
           return (
             <SuggestionCard
               key={item._id}

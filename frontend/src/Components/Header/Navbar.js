@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import userData, { getCookieData } from "../userData";
 import MobieNavBar from "./MobileNavbar";
+import { clearCookie } from "../userData";
 
 function Navbar() {
   const [tokenExist, setTokenExist] = useState(false);
@@ -14,9 +15,7 @@ function Navbar() {
   };
 
   const handleLogOut = () => {
-    if (document.cookie) {
-      document.cookie = JSON.stringify(userData);
-    }
+    clearCookie();
     setTokenExist(false);
   };
 

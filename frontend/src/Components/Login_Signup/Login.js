@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import userData, { getCookieData } from "../userData";
+import { getCookieData, setCookieData } from "../userData";
 
 async function loginUser(credentials) {
   return fetch("https://seva-backend1.herokuapp.com/login", {
@@ -40,15 +40,14 @@ function Login({ history, setToken }) {
 
     try {
       if (token.error === null) {
-        if (!document.cookie) {
-          document.cookie = JSON.stringify(userData);
-        }
-        let cookieData = JSON.parse(document.cookie);
+        let cookieData = getCookieData();
+        console.log("Before login cookie");
         cookieData.token = token.data.token;
         cookieData.userId = token.id;
         cookieData.role = token.role;
         cookieData.pincode = token.pincode;
-        document.cookie = JSON.stringify(cookieData);
+        setCookieData(cookieData);
+        console.log("after login cookie");
         setToken(token);
         history.push(`/${cookieData.role}/${cookieData.userId}`);
       } else {
