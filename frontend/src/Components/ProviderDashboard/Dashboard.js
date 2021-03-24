@@ -36,7 +36,7 @@ function ProviderDashboard() {
 
   // console.log(data)
 
-  useEffect(()=>{
+  useEffect(() => {
     axios({
       method: "GET",
       url: "https://seva-backend1.herokuapp.com/provider/profile/" + _id,
@@ -52,10 +52,9 @@ function ProviderDashboard() {
       .catch(function (response) {
         console.log(response);
       });
-  }, [])
+  }, []);
 
-    // console.log(profile);
-
+  // console.log(profile);
 
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#dashboard">
@@ -105,6 +104,7 @@ function ProviderDashboard() {
               <ServiceCardContainer>
                 {data &&
                   data.map((item, index) => {
+                    // console.log(item);
                     return (
                       <>
                         <ServiceCard data={item} />

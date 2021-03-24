@@ -10,6 +10,7 @@ import {
   FormText,
   FormFeedback,
 } from "reactstrap";
+import { getCookieData } from "../../userData";
 
 function SuggestionsForm() {
   const [category, setCategory] = useState();
@@ -22,8 +23,9 @@ function SuggestionsForm() {
     //     },
     //     body:JSON.stringify(FormData)
     // })
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
+    const cookieData = getCookieData();
+    const token = cookieData.token;
+
     axios({
       method: "POST",
       url: "https://seva-backend1.herokuapp.com/user/suggestion",
@@ -35,7 +37,7 @@ function SuggestionsForm() {
       .then(function (response) {
         //handle success
         console.log(response);
-        alert("suggestion added");
+        alert(response.data.message);
         afterPost();
       })
       .catch(function (response) {
@@ -53,7 +55,6 @@ function SuggestionsForm() {
       ServicePinCode: "",
       ServiceDescription: "",
     });
-    window.location.reload();
   }
 
   function handleInput(e) {

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal } from "react-bootstrap";
 import { Form, FormGroup, Input, Button, Label } from "reactstrap";
-import Feedback from "react-bootstrap/esm/Feedback";
+import { getCookieData } from "../../userData";
+
 function UpdateSuggestion(props) {
   const { open, close, id } = props;
 
@@ -10,8 +11,10 @@ function UpdateSuggestion(props) {
   const [FormData, setFormData] = useState({});
 
   function DataPost() {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNGNjMWZkNDNlODI4MjJhODU3ODZlNiIsImlhdCI6MTYxNTk5MDc1NH0.fjlkDknRnl1MBC2gJMLFRpo4pZdQJADO5DGe3OGY1oA";
+
+    const cookieData = getCookieData();
+    const token = cookieData.token;
+
     axios({
       method: "PUT",
       url: "https://seva-backend1.herokuapp.com/user/suggestion/" + id,
@@ -41,7 +44,7 @@ function UpdateSuggestion(props) {
       ServicePinCode: "",
       ServiceDescription: "",
     });
-    window.location.reload();
+
   }
 
   function handleInput(e) {
@@ -73,7 +76,7 @@ function UpdateSuggestion(props) {
   return (
     <Modal show={open} onHide={close} animation={false}>
       <Modal.Header closeButton>
-        <Modal.Title>Update Suggestion- {id}</Modal.Title>
+        <Modal.Title>Update Suggestion</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
@@ -137,7 +140,13 @@ function UpdateSuggestion(props) {
               rows="4"
             />
           </FormGroup>
-          <Button variant="primary" color="primary">
+
+          <Button
+            variant="primary"
+            type="submit"
+            // onClick={}
+            color="primary"
+          >
             Save Changes
           </Button>
         </Form>

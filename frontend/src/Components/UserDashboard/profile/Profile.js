@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+
 import {
   Button,
   Form,
@@ -24,8 +26,9 @@ function UseProfile(props) {
   useEffect(() => {
     axios({
       method: "GET",
-      url:
-        "https://seva-backend1.herokuapp.com/user/profile/604f7ffdf1acad0643111afa",
+
+      url: `https://seva-backend1.herokuapp.com/user/profile/${_id}`,
+
       headers: {
         "Content-Type": "application/json",
         "auth-token": `${token}`,
@@ -61,7 +64,9 @@ function UseProfile(props) {
       },
     })
       .then(function (response) {
-        props.setUpdate((prevState) => !prevState);
+
+        setFormData(response.data);
+
         alert("hurry! Profile Updated...");
       })
       .catch(function (response) {

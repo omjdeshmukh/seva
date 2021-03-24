@@ -22,11 +22,12 @@ function ShowSuggestion() {
       .then((data) => setSuggestions(data))
       .catch((err) => console.log(err));
   }, []);
+
   return (
     <div>
       {suggestions &&
         suggestions.map((item, i) => {
-          //  console.log(item)
+
           return (
             <SuggestionCard
               key={item._id}

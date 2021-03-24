@@ -15,8 +15,28 @@ const cookieData = getCookieData();
 const token = cookieData.token;
 const _id = cookieData.userId;
 
-function Profile() {
+function ActionDelete() {
+  axios({
+    method: "DELETE",
+    url: "https://seva-backend1.herokuapp.com/" + _id,
+    headers: {
+      "auth-token": `${token}`,
+    },
+  })
+    .then(function (response) {
+      alert("Service Deleted Successfully...");
+      refreshPage();
+    })
+    .catch(function (response) {
+      console.log(response);
+    });
+}
 
+function refreshPage() {
+  window.location.reload();
+}
+
+function Profile() {
   const [serviceformData, setFormData] = useState({});
 
   useEffect(() => {
@@ -30,7 +50,7 @@ function Profile() {
     })
       .then(function (response) {
         setFormData(response.data);
-        console.log(response);
+        // console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -48,7 +68,7 @@ function Profile() {
     event.preventDefault();
     UpdateProfile();
   };
- 
+
   const UpdateProfile = () => {
     axios({
       method: "PUT",
@@ -163,8 +183,22 @@ function Profile() {
                 </FormGroup>
               </FormGroup>
 
-              <Button color="primary" size="lg" type="submit">
+              <Button
+                color="primary"
+                size="lg"
+                type="submit"
+                style={{ marginRight: "20px" }}
+              >
                 Update
+              </Button>
+
+              <Button
+                color="danger"
+                size="lg"
+                type="submit"
+                onClick={ActionDelete}
+              >
+                Delete
               </Button>
             </Form>
           </Card.Text>
