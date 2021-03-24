@@ -3,21 +3,6 @@ import { Button, CardTitle } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
 import { getCookieData } from "../../userData";
-import TextField from "@material-ui/core/TextField";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import { Card } from "react-bootstrap";
-import {
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  // FormText,
-  FormFeedback,
-} from "reactstrap";
 import UpdateService from "./UpdateService";
 
 const cookieData = getCookieData();
@@ -69,26 +54,49 @@ function ServiceCard(props) {
   return (
     <>
       <CardContainer key={_id}>
-        <ServiceImage>
-          <img src={image} key={image} />
-        </ServiceImage>
-        <CardInnerContainer>
-          <InfoContainer>
+        <TwoCol>
+          <ServiceImage>
+            <img src={image} key={image} />
+          </ServiceImage>
+          <CardInnerContainer>
+            {/* <InfoContainer> */}
             <Block>
-              <ItemInfo tag="h5"> {serviceNames} </ItemInfo>
+              <ItemInfo
+                tag="h5"
+                style={{
+                  color: "#0066ff",
+                  fontWeight: "bold",
+                  textTransform: " uppercase",
+                }}
+              >
+                {serviceNames}
+              </ItemInfo>
               <hr />
-              <ItemInfo tag="h5"> {category.category} </ItemInfo>
+              <ItemInfo
+                tag="h5"
+                style={{ color: "#800000", fontWeight: "bold" }}
+              >
+                {category.category}
+              </ItemInfo>
               <hr />
-              <ItemInfo>{description}</ItemInfo>
+              <ItemInfo style={{ color: "#595959" }}>{description}</ItemInfo>
               <hr />
               <ItemInfo>
-                <a href={map_location}>
-                  <h5> Map Location </h5>
-                </a>
+                <Button
+                  outline
+                  color="primary"
+                  style={{ paddingTop: "10px", paddingBottom: "0" }}
+                >
+                  <a href={map_location} style={{ textDecoration: "none" }}>
+                    <h5 > Map Location </h5>
+                  </a>
+                </Button>
               </ItemInfo>
             </Block>
-          </InfoContainer>
-        </CardInnerContainer>
+            {/* </InfoContainer> */}
+          </CardInnerContainer>
+        </TwoCol>
+
         <ButtonContainer>
           <Action>
             <Button color="danger" onClick={ActionDelete}>
@@ -107,6 +115,7 @@ function ServiceCard(props) {
 export default ServiceCard;
 
 const CardContainer = styled.div`
+  position: relative;
   display: flex;
   margin: 1rem 0;
   padding: 0.1rem 0.1rem;
@@ -114,28 +123,39 @@ const CardContainer = styled.div`
   border-radius: 10px;
   font-family: hindLight;
   /* float: left; */
+  /* @media (max-width: 786px) {
+    display: grid;
+  } */
+  @media (max-width: 800px) {
+    padding-bottom: 40px;
+    transition: 0.3s;
+  }
 `;
 
 const CardInnerContainer = styled.div`
-  width: 95%;
+  line-height: 1;
+  min-width: 100%;
   margin: 0 auto;
   padding: 2rem 0;
   display: flex;
-`;
-
-const InfoContainer = styled.div`
-  margin-left: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  /* align-items: center; */
-  > img {
-    width: 4rem;
-    height: 4rem;
-    border: none;
-    border-radius: 10%;
+  @media (max-width: 786px) {
+    min-width: 100%;
   }
 `;
+
+// const InfoContainer = styled.div`
+//   margin-left: 20px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: flex-start;
+//   /* align-items: center; */
+//   > img {
+//     width: 4rem;
+//     height: 4rem;
+//     border: none;
+//     border-radius: 10%;
+//   }
+// `;
 
 const ServiceImage = styled.div`
   display: flex;
@@ -145,6 +165,7 @@ const ServiceImage = styled.div`
   width: 250px;
   color: black;
   > img {
+    border-radius: 10px;
     height: 200px;
     width: 200px;
   }
@@ -159,6 +180,14 @@ const Action = styled.div`
   }
 `;
 
+const TwoCol = styled.div`
+  display: flex;
+  @media (max-width: 450px){
+    display:grid;
+    
+  }
+`;
+
 const Block = styled.div`
   align-items: right;
 `;
@@ -169,5 +198,11 @@ const ItemInfo = styled.div`
   font-family: hindRegular;
 `;
 
-const ButtonContainer = styled.div``;
-
+const ButtonContainer = styled.div`
+  position: absolute;
+  bottom: 16px;
+  right: 10px;
+  @media (max-width: 786px) {
+    display: flex;
+  }
+`;
