@@ -24,12 +24,16 @@ export function setCookieData(cookie) {
 }
 
 export function clearCookie() {
+  console.log(document.cookie);
   let cookieData = getCookieData();
+  console.log(cookieData);
   cookieData.pincode = null;
   cookieData.token = null;
   cookieData.userId = null;
   cookieData.role = null;
+  console.log(cookieData);
   setCookieData(cookieData);
+  console.log(document.cookie);
 }
 
 export default userData;

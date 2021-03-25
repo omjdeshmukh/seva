@@ -11,7 +11,6 @@ function UpdateSuggestion(props) {
   const [FormData, setFormData] = useState({});
 
   function DataPost() {
-
     const cookieData = getCookieData();
     const token = cookieData.token;
 
@@ -44,7 +43,6 @@ function UpdateSuggestion(props) {
       ServicePinCode: "",
       ServiceDescription: "",
     });
-
   }
 
   function handleInput(e) {

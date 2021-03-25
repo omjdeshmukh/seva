@@ -14,12 +14,9 @@ function UserDashboard() {
   const [service, setService] = useState();
   const [profileData, setProfileData] = useState();
   const cookieData = getCookieData();
-  // const token = cookieData.token;
+
   const token = cookieData.token;
-
   const _id = cookieData.userId;
-
-  console.log(cookieData.token);
 
   const handleLogOut = () => {
     if (document.cookie) {
@@ -97,7 +94,7 @@ function UserDashboard() {
         <Col sm={8}>
           <Tab.Content>
             <Tab.Pane eventKey="#profile">
-              <UseProfile />
+              <UseProfile {...cookieData} />
             </Tab.Pane>
             {/* <Tab.Pane eventKey="#link2">
                     {service && service.map((item ,i) =>{
@@ -107,16 +104,16 @@ function UserDashboard() {
                     })}
                 </Tab.Pane> */}
             <Tab.Pane eventKey="#link3">
-              <SuggestionsForm />
+              <SuggestionsForm {...cookieData} />
             </Tab.Pane>
             <Tab.Pane eventKey="#link4">
-              <ShowSuggestion />
+              <ShowSuggestion {...cookieData} />
             </Tab.Pane>
             <Tab.Pane eventKey="#link5">
-              <AddFeedbackForm />
+              <AddFeedbackForm {...cookieData} />
             </Tab.Pane>
             <Tab.Pane eventKey="#link6">
-              <ShowFeedback />
+              <ShowFeedback {...cookieData} />
             </Tab.Pane>
           </Tab.Content>
         </Col>

@@ -2,18 +2,11 @@ import React, { useEffect, useState } from "react";
 import FeedbackCard from "./FeedbackCard";
 import { getCookieData } from "../../userData";
 
-function ShowFeedback() {
+function ShowFeedback({ token, userId, pincode, role }) {
   const [feedback, setFeedback] = useState();
 
-  const cookieData = getCookieData();
-
-  const _id = cookieData.userId;
-  const token = cookieData.token;
-
-  console.log(token);
-
   useEffect(() => {
-    fetch(`https://seva-backend1.herokuapp.com/user/my/feedback/${_id}`, {
+    fetch(`https://seva-backend1.herokuapp.com/user/my/feedback/${userId}`, {
       method: "get",
       feedback: feedback,
       headers: {
