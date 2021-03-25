@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, CardTitle } from "reactstrap";
+import { Button, CardTitle, Media } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
 import { getCookieData } from "../../userData";
@@ -14,11 +14,11 @@ const __id = cookieData.userId;
 
 function UpdateService(props) {
   // console.log(props.data._id)
-    const _id  = props.data._id
-    // console.log(_id)
+  const _id = props.data._id;
+  // console.log(_id)
 
   const [open, setOpen] = useState(false);
-  const [cardData, setCardData] = useState('');
+  const [cardData, setCardData] = useState("");
   const [category, setCategory] = useState();
 
   const handleClickOpen = () => {
@@ -33,8 +33,7 @@ function UpdateService(props) {
     axios({
       method: "GET",
       url: `https://seva-backend1.herokuapp.com/provider/service/${_id}`,
-     
- 
+
       headers: {
         "auth-token": `${cookieData.token}`,
       },
@@ -48,7 +47,7 @@ function UpdateService(props) {
       });
   }, []);
 
-//  console.log(cardData);
+  //  console.log(cardData);
 
   const updateInput = (e) => {
     setCardData({
@@ -102,7 +101,8 @@ function UpdateService(props) {
       >
         <DialogTitle id="form-dialog-title">Update Service</DialogTitle>
         <Card align="left">
-          <Card.Body style={{ width: "600px" }}>
+          {/* <Card.Body  > */}
+          <FormField>
             <Card.Text>
               <Form onSubmit={handleSubmit}>
                 <FormGroup className="col">
@@ -205,7 +205,7 @@ function UpdateService(props) {
                     name="image"
                     placeholder="Image"
                     onChange={updateInput}
-                    style={{borderRadius:'10px'}}
+                    style={{ borderRadius: "10px" }}
                     value={cardData.image || ""}
                   />
                 </FormGroup>
@@ -220,7 +220,8 @@ function UpdateService(props) {
                 </DialogActions>
               </Form>
             </Card.Text>
-          </Card.Body>
+          </FormField>
+          {/* </Card.Body> */}
         </Card>
       </Dialog>
     </div>
@@ -228,3 +229,15 @@ function UpdateService(props) {
 }
 
 export default UpdateService;
+
+const FormField = styled.div`
+  width: 50vw;
+  padding: 40px;
+  @media (max-width: 700px) {
+    width: 70vw;
+  }
+  @media (max-width: 500px) {
+    width: 90vw;
+    padding-left: 5%;
+  }
+`;
