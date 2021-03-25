@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const service = require('../controllers/service.controller');
 const user = require("../controllers/user.controller");
+const upload = require('../middleware/multer');
 
 router.get("/", (req, res) => {
     res.json({
@@ -13,7 +14,7 @@ router.get("/", (req, res) => {
     });
 });
 
- router.post('/service', service.create);
+ router.post('/service', upload.imageUpload.any(),  service.create);
 
 router.put('/service/:Id', service.update);
 

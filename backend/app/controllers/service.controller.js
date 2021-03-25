@@ -1,13 +1,16 @@
 const Service = require('../model/service.model');
 const User = require('../model/user.model');
 const { valid } = require('@hapi/joi');
+path = require("path");
 
 exports.create = (req, res) => {
 
     // creat a notes
+    if (!req.files[0].paths) return res.send('Please upload a file')
+    console.log(req.files[0].path)
     const service = new Service({
         user: req.user.id,
-        image: req.body.image,
+        image: req.files[0].path,
         serviceNames: req.body.serviceNames,
         serviceEmail: req.body.serviceEmail,
         servicePincode: req.body.servicePincode,
