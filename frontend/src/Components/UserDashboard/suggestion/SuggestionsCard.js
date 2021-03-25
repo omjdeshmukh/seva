@@ -25,7 +25,7 @@ function SuggestionCard(props) {
   const token = cookieData.token;
 
   function ActionDelete() {
-    axios("http://localhost:5000/user/suggestion/" + `${suggestionid}`, {
+    axios("https://seva-backend1.herokuapp.com/user/suggestion/" + `${suggestionid}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

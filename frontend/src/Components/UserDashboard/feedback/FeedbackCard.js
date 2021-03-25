@@ -9,7 +9,7 @@ function FeedbackCard(props) {
   const token = cookieData.token;
 
   function ActionDelete() {
-    axios(" http://localhost:5000/user/feedback/" + `${props.feedbackid}`, {
+    axios("https://seva-backend1.herokuapp.com/user/feedback/" + `${props.feedbackid}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
