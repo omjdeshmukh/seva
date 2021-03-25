@@ -61,7 +61,7 @@ function ProviderDashboard() {
       {/* <h1>Admin dashboard</h1> */}
       <br></br>
       <Row>
-        <Col sm={3}>
+        <Col sm={3} style={{marginBottom:'20px'}} >
           <ListGroup>
             <ListGroup.Item>
               <img

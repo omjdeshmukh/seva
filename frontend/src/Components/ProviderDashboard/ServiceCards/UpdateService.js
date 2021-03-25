@@ -17,8 +17,8 @@ function UpdateService(props) {
     const _id  = props.data._id
     // console.log(_id)
 
-  const [open, setOpen] = React.useState(false);
-  const [cardData, setCardData] = useState();
+  const [open, setOpen] = useState(false);
+  const [cardData, setCardData] = useState('');
   const [category, setCategory] = useState();
 
   const handleClickOpen = () => {
@@ -40,7 +40,7 @@ function UpdateService(props) {
       },
     })
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         setCardData(response.data);
       })
       .catch((err) => {
@@ -205,15 +205,16 @@ function UpdateService(props) {
                     name="image"
                     placeholder="Image"
                     onChange={updateInput}
+                    style={{borderRadius:'10px'}}
                     value={cardData.image || ""}
                   />
                 </FormGroup>
 
                 <DialogActions>
                   <Button color="primary" type="submit">
-                    Submit
+                    Update
                   </Button>
-                  <Button onClick={handleClose} color="primary">
+                  <Button onClick={handleClose} color="success">
                     Cancel
                   </Button>
                 </DialogActions>
