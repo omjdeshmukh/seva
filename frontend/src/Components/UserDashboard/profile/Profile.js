@@ -68,6 +68,8 @@ function UseProfile({ token, userId }) {
       });
   };
 
+  console.log(serviceformData && serviceformData.userName);
+
   return (
     <>
       <Card align="left">
@@ -87,7 +89,7 @@ function UseProfile({ token, userId }) {
                   placeholder="username"
                   disabled
                   onChange={updateInput}
-                  value={(serviceformData && serviceformData.userName) || ""}
+                  value={serviceformData && serviceformData.userName}
                 />
                 <FormFeedback>You will not be able to see this</FormFeedback>
               </FormGroup>
@@ -98,7 +100,7 @@ function UseProfile({ token, userId }) {
                   name="fullName"
                   placeholder="Full-Name"
                   onChange={updateInput}
-                  value={(serviceformData && serviceformData.fullName) || ""}
+                  value={serviceformData && serviceformData.fullName}
                 />
                 <FormFeedback>You will not be able to see this</FormFeedback>
               </FormGroup>
@@ -111,7 +113,7 @@ function UseProfile({ token, userId }) {
                   placeholder="Email"
                   disabled
                   onChange={updateInput}
-                  value={(serviceformData.email && serviceformData.email) || ""}
+                  value={serviceformData.email && serviceformData.email}
                 />
                 <FormFeedback>You will not be able to see this</FormFeedback>
               </FormGroup>
@@ -124,9 +126,7 @@ function UseProfile({ token, userId }) {
                     name="village"
                     placeholder="Village"
                     onChange={updateInput}
-                    value={
-                      serviceformData.village ? serviceformData.village : ""
-                    }
+                    value={serviceformData.village && serviceformData.village}
                   />
                 </FormGroup>
 
@@ -137,9 +137,7 @@ function UseProfile({ token, userId }) {
                     name="pincode"
                     placeholder="Pin-code"
                     onChange={updateInput}
-                    value={
-                      (serviceformData.pincode && serviceformData.pincode) || ""
-                    }
+                    value={serviceformData.pincode && serviceformData.pincode}
                   />
                 </FormGroup>
               </FormGroup>
@@ -152,7 +150,7 @@ function UseProfile({ token, userId }) {
                     name="city"
                     placeholder="City"
                     onChange={updateInput}
-                    value={(serviceformData.city && serviceformData.city) || ""}
+                    value={serviceformData.city && serviceformData.city}
                   />
                 </FormGroup>
                 <FormGroup className="col">
@@ -162,9 +160,7 @@ function UseProfile({ token, userId }) {
                     name="state"
                     placeholder="State"
                     onChange={updateInput}
-                    value={
-                      (serviceformData.state && serviceformData.state) || ""
-                    }
+                    value={serviceformData.state && serviceformData.state}
                   />
                 </FormGroup>
               </FormGroup>

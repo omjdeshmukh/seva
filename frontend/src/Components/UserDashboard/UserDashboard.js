@@ -86,9 +86,9 @@ function UserDashboard() {
             <ListGroup.Item action href="#link6">
               show feedback
             </ListGroup.Item>
-            <ListGroup.Item action href="/" onClick={handleLogOut}>
+            {/* <ListGroup.Item action href="/" onClick={handleLogOut}>
               Log Out
-            </ListGroup.Item>
+            </ListGroup.Item> */}
           </ListGroup>
         </Col>
         <Col sm={8}>
