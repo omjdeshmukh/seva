@@ -27,7 +27,6 @@ function UserDashboard() {
     }
   };
 
-
   useEffect(() => {
     fetch(" https://seva-backend1.herokuapp.com/service")
       .then((res) => res.json())
@@ -70,6 +69,9 @@ function UserDashboard() {
               <p>User</p>
             </ListGroup.Item>
             <ListGroup.Item action href="#link1">
+              DashBoard
+            </ListGroup.Item>
+            <ListGroup.Item action href="#profile">
               Profile
             </ListGroup.Item>
             {/* <ListGroup.Item action href="#link2">
@@ -94,7 +96,7 @@ function UserDashboard() {
         </Col>
         <Col sm={8}>
           <Tab.Content>
-            <Tab.Pane eventKey="#link1">
+            <Tab.Pane eventKey="#profile">
               <UseProfile />
             </Tab.Pane>
             {/* <Tab.Pane eventKey="#link2">

@@ -64,7 +64,6 @@ function UseProfile(props) {
       },
     })
       .then(function (response) {
-
         setFormData(response.data);
 
         alert("hurry! Profile Updated...");
@@ -94,7 +93,7 @@ function UseProfile(props) {
                   placeholder="username"
                   disabled
                   onChange={updateInput}
-                  value={serviceformData.userName || ""}
+                  value={(serviceformData && serviceformData.userName) || ""}
                 />
                 <FormFeedback>You will not be able to see this</FormFeedback>
               </FormGroup>
@@ -105,7 +104,7 @@ function UseProfile(props) {
                   name="fullName"
                   placeholder="Full-Name"
                   onChange={updateInput}
-                  value={serviceformData.fullName || ""}
+                  value={(serviceformData && serviceformData.fullName) || ""}
                 />
                 <FormFeedback>You will not be able to see this</FormFeedback>
               </FormGroup>
@@ -118,7 +117,7 @@ function UseProfile(props) {
                   placeholder="Email"
                   disabled
                   onChange={updateInput}
-                  value={serviceformData.email || ""}
+                  value={(serviceformData.email && serviceformData.email) || ""}
                 />
                 <FormFeedback>You will not be able to see this</FormFeedback>
               </FormGroup>
@@ -131,7 +130,9 @@ function UseProfile(props) {
                     name="village"
                     placeholder="Village"
                     onChange={updateInput}
-                    value={serviceformData.village || ""}
+                    value={
+                      serviceformData.village ? serviceformData.village : ""
+                    }
                   />
                 </FormGroup>
 
@@ -142,7 +143,9 @@ function UseProfile(props) {
                     name="pincode"
                     placeholder="Pin-code"
                     onChange={updateInput}
-                    value={serviceformData.pincode || ""}
+                    value={
+                      (serviceformData.pincode && serviceformData.pincode) || ""
+                    }
                   />
                 </FormGroup>
               </FormGroup>
@@ -155,7 +158,7 @@ function UseProfile(props) {
                     name="city"
                     placeholder="City"
                     onChange={updateInput}
-                    value={serviceformData.city || ""}
+                    value={(serviceformData.city && serviceformData.city) || ""}
                   />
                 </FormGroup>
                 <FormGroup className="col">
@@ -165,7 +168,9 @@ function UseProfile(props) {
                     name="state"
                     placeholder="State"
                     onChange={updateInput}
-                    value={serviceformData.state || ""}
+                    value={
+                      (serviceformData.state && serviceformData.state) || ""
+                    }
                   />
                 </FormGroup>
               </FormGroup>
