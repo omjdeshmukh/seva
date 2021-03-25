@@ -1,7 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Chart from "react-google-charts";
 
 function PieChart() {
+  const [data, setData] = useState();
+  const [category, setCategory] = useState();
+
+  useEffect(() => {
+    fetch(" https://seva-backend1.herokuapp.com/admin/category", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((response) => setCategory(response))
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    fetch(" https://seva-backend1.herokuapp.com/service", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((response) => setData(response))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const categories = category && category.map((item) => item.category);
+
+  const statistic =
+    categories &&
+    categories.map(
+      (_category) =>
+        data && data.filter((item) => item.category.category === _category)
+    );
+
   const pieOptions = {
     title: "",
     pieHole: 0.6,
@@ -44,11 +76,11 @@ function PieChart() {
         chartType="PieChart"
         data={[
           ["cateory", "number"],
-          ["Education", 10],
-          ["Rental", 5.5],
-          ["Local", 1],
-          ["food", 1],
-          ["Health Care", 4],
+          ["Education", statistic && statistic[0].length],
+          ["Rental", statistic && statistic[1].length],
+          ["Health Care", statistic && statistic[2].length],
+          ["Local", statistic && statistic[3].length],
+          ["food", statistic && statistic[4].length],
         ]}
         options={pieOptions}
         graph_id="PieChart"
