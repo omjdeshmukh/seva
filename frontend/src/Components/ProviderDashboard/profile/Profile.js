@@ -24,10 +24,11 @@ function ActionDelete() {
     },
   })
     .then(function (response) {
-      alert("Service Deleted Successfully...");
+      alert("Profile Deleted Successfully...");
       refreshPage();
     })
     .catch(function (response) {
+      alert('Something Went Wrong...')
       console.log(response);
     });
 }
