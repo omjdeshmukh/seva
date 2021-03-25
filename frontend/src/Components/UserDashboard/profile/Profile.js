@@ -68,7 +68,7 @@ function UseProfile({ token, userId }) {
       });
   };
 
-  console.log(serviceformData && serviceformData.userName);
+  // console.log(serviceformData && serviceformData.userName);
 
   return (
     <>

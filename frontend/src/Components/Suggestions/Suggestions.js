@@ -20,7 +20,7 @@ function Suggestions() {
 
   return (
     <>
-      {pincode ? (
+      {pincode && suggestion && suggestion.length != 0 ? (
         <>
           <SuggestionContainer>
             <SuggestionInnerContainer>
@@ -40,7 +40,7 @@ function Suggestions() {
         <>
           <NoServiceDiv>
             <h6>
-              Sorry! No Suggustions available yet, But you can{" "}
+              Sorry! No Suggestions available yet, But you can{" "}
               <Link to={"/login"}>login</Link> and <span>Suggest Us.</span>
             </h6>
             <VectorContainer>
