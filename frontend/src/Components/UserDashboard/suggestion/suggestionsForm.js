@@ -36,7 +36,7 @@ function SuggestionsForm() {
     })
       .then(function (response) {
         //handle success
-        console.log(response);
+
         alert(response.data.message);
         afterPost();
       })
@@ -48,7 +48,6 @@ function SuggestionsForm() {
   }
 
   function afterPost() {
-    console.log(FormData);
     setFormData({
       ServiceType: "",
       category: "",

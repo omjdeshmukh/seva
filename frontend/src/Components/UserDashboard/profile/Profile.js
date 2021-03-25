@@ -13,13 +13,7 @@ import {
 import axios from "axios";
 import { getCookieData } from "../../userData";
 
-const cookieData = getCookieData();
-// const token = cookieData.token;
-const token = cookieData.token;
-
-const _id = cookieData.userId;
-
-function UseProfile(props) {
+function UseProfile({ token, userId }) {
   const [serviceformData, setFormData] = useState({});
 
   // console.log(token);
@@ -27,7 +21,7 @@ function UseProfile(props) {
     axios({
       method: "GET",
 
-      url: `https://seva-backend1.herokuapp.com/user/profile/${_id}`,
+      url: `https://seva-backend1.herokuapp.com/user/profile/${userId}`,
 
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +51,7 @@ function UseProfile(props) {
   const UpdateProfile = () => {
     axios({
       method: "PUT",
-      url: "https://seva-backend1.herokuapp.com/user/profile/" + _id,
+      url: "https://seva-backend1.herokuapp.com/user/profile/" + userId,
       data: serviceformData,
       headers: {
         "auth-token": `${token}`,
