@@ -13,21 +13,25 @@ function UserDashboardData({ token, userId, pincode, role }) {
       .get("https://seva-backend1.herokuapp.com/admin/category")
       .then((response) => setCategory(response.data))
       .catch((err) => console.log(err.message));
-  }, []);
+  }, [category]);
 
   useEffect(() => {
     axios
       .get("https://seva-backend1.herokuapp.com/service")
       .then((response) => setTotalServices(response.data))
       .catch((err) => console.log(err.message));
-  }, []);
+  }, [TotalServices]);
 
   useEffect(() => {
     axios
-      .get(`https://seva-backend1.herokuapp.com/suggestionByPincode/${pincode}`)
+      .get(`http://localhost:5000/user/my/suggestion/${userId}`, {
+        headers: {
+          "auth-token": token,
+        },
+      })
       .then((response) => setTotalSuggestion(response.data))
       .catch((err) => console.log(err.message));
-  }, []);
+  }, [totalSuggestion]);
 
   return (
     <>

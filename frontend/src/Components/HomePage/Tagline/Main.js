@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import Vector from "./vector";
+import { getCookieData } from "../../userData";
 
 function Main() {
+  const [path, setPath] = useState("/");
+  const checkAuth = () => {
+    const cookieData = getCookieData();
+    if (cookieData.token == null && cookieData.userId == null) {
+      setPath(`/login`);
+    } else {
+      setPath(`/${cookieData.role}/${cookieData.userId}`);
+    }
+  };
+
   return (
     <>
       <TaglineContainer>
@@ -14,8 +25,10 @@ function Main() {
           <h1>
             If you can't find any Service just <span>Suggest Us</span>.
           </h1>
-          <Link to="/secured">
-            <Button>Suggest Us</Button>
+          <Link to={path}>
+            <Button type="button" onClick={checkAuth}>
+              Suggest Us
+            </Button>
           </Link>
         </TaglineSection>
         {/* Vector Section */}
