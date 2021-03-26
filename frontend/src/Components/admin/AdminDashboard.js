@@ -88,13 +88,13 @@ function AdminDashboard() {
                   );
                 })}
             </Tab.Pane>
-          </Tab.Content>
-          <Tab.Pane eventKey="#showSuggestionRequest">
+            <Tab.Pane eventKey="#showSuggestionRequest">
               <SuggestionTable />
             </Tab.Pane>
           <Tab.Pane eventKey="#Chart">
             <Chart />
           </Tab.Pane>
+          </Tab.Content>
         </Col>
       </Row>
     </Tab.Container>
