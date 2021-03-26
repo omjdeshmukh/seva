@@ -10,7 +10,7 @@ exports.create = (req, res) => {
     // console.log(req.files[0].path)
     const service = new Service({
         user: req.user.id,
-        image: "",
+        image: "https://www.pngitem.com/pimgs/m/243-2434760_woman-helping-customer-hd-png-download.png",
         // image: req.files[0].path || "",
         serviceNames: req.body.serviceNames,
         serviceEmail: req.body.serviceEmail,
