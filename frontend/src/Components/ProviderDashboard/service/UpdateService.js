@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, CardTitle, Media } from "reactstrap";
+import { Button } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
 import { getCookieData } from "../../userData";
@@ -101,7 +101,6 @@ function UpdateService(props) {
       >
         <DialogTitle id="form-dialog-title">Update Service</DialogTitle>
         <Card align="left">
-          {/* <Card.Body  > */}
           <FormField>
             <Card.Text>
               <Form onSubmit={handleSubmit}>
@@ -221,7 +220,6 @@ function UpdateService(props) {
               </Form>
             </Card.Text>
           </FormField>
-          {/* </Card.Body> */}
         </Card>
       </Dialog>
     </div>

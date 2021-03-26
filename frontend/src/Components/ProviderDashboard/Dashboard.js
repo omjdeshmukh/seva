@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Col from "react-bootstrap/Col";
-import { Form, Row, ListGroup, Tab } from "react-bootstrap";
+import { Row, ListGroup, Tab } from "react-bootstrap";
 import AddService from "./service/AddService";
-import ServiceCard from "./ServiceCards/ServiceCard";
+import ServiceCards from "./service/ServiceCard";
 import Profile from "./profile/Profile";
 import Dashboard from "./Dashboard/Dashboard";
 import styled from "styled-components";
@@ -15,22 +15,7 @@ const _id = cookieData.userId;
 // console.log(_id);
 
 function ProviderDashboard() {
-  const [data, setData] = useState();
   const [profile, setProfile] = useState();
-
-  useEffect(() => {
-    fetch("https://seva-backend1.herokuapp.com/provider/my/service/" + _id, {
-      method: "GET",
-      headers: {
-        "auth-token": `${token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setData([...response]))
-      .catch((err) => console.log(err.message));
-  });
-
-  // console.log(data)
 
   useEffect(() => {
     axios({
@@ -79,7 +64,7 @@ function ProviderDashboard() {
               Show My Service
             </ListGroup.Item>
             <ListGroup.Item action href="/">
-              log out
+              Home
             </ListGroup.Item>
           </ListGroup>
         </Col>
@@ -96,15 +81,7 @@ function ProviderDashboard() {
             </Tab.Pane>
             <Tab.Pane eventKey="#showMyService">
               <ServiceCardContainer>
-                {data &&
-                  data.map((item, index) => {
-                    // console.log(item);
-                    return (
-                      <>
-                        <ServiceCard data={item} />
-                      </>
-                    );
-                  })}
+                <ServiceCards {...cookieData} />
               </ServiceCardContainer>
             </Tab.Pane>
           </Tab.Content>

@@ -1,12 +1,47 @@
 import React, { useState, useEffect } from "react";
-import { Button, CardTitle } from "reactstrap";
+import { Button } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
 import { getCookieData } from "../../userData";
 import UpdateService from "./UpdateService";
 
 const cookieData = getCookieData();
-// const __id = cookieData.userId;
+const __id = cookieData.userId;
+const token = cookieData.token;
+
+function ServiceCards() {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    fetch("https://seva-backend1.herokuapp.com/provider/my/service/" + __id, {
+      method: "GET",
+      headers: {
+        "auth-token": `${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => setData([...response]))
+      .catch((err) => console.log(err.message));
+  });
+
+  // console.log(data)
+
+  return (
+    <>
+      {data &&
+        data.map((item, index) => {
+          // console.log(item);
+          return (
+            <>
+              <ServiceCard data={item} />
+            </>
+          );
+        })}
+    </>
+  );
+}
+
+export default ServiceCards;
 
 function ServiceCard(props) {
   // console.log(props);
@@ -20,31 +55,24 @@ function ServiceCard(props) {
     map_location,
   } = props.data;
 
-  // console.log(category);
-  // console.log(image);
-  // console.log(serviceNames);
-  // console.log(_id);
-  // console.log(description);
-
   function ActionDelete() {
     axios({
       method: "DELETE",
       url: "https://seva-backend1.herokuapp.com/provider/service/" + _id,
       headers: {
-        "auth-token": `${cookieData.token}`,
+        "auth-token": `${token}`,
       },
     })
       .then(function (response) {
         // console.log(response);
         alert("Service Deleted Successfully...");
-        // window.location.reload();
       })
       .catch(function (response) {
         console.log(response);
       });
   }
 
-  //+++++++++++++++++++++++++++++ Update Service Data  ++++++++++++++++++++++++++++++++//
+  //+++++++++++++++++++++++++++++ Update Service Data ++++++++++++++++++++++++++++++++//
 
   return (
     <>
@@ -54,7 +82,6 @@ function ServiceCard(props) {
             <img src={image} key={image} />
           </ServiceImage>
           <CardInnerContainer>
-            {/* <InfoContainer> */}
             <Block>
               <ItemInfo
                 tag="h5"
@@ -88,7 +115,6 @@ function ServiceCard(props) {
                 </Button>
               </ItemInfo>
             </Block>
-            {/* </InfoContainer> */}
           </CardInnerContainer>
         </TwoCol>
 
@@ -107,8 +133,6 @@ function ServiceCard(props) {
   );
 }
 
-export default ServiceCard;
-
 const CardContainer = styled.div`
   position: relative;
   display: flex;
@@ -117,10 +141,7 @@ const CardContainer = styled.div`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   font-family: hindLight;
-  /* float: left; */
-  /* @media (max-width: 786px) {
-    display: grid;
-  } */
+
   @media (max-width: 800px) {
     padding-bottom: 40px;
     transition: 0.3s;
@@ -137,20 +158,6 @@ const CardInnerContainer = styled.div`
     min-width: 100%;
   }
 `;
-
-// const InfoContainer = styled.div`
-//   margin-left: 20px;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: flex-start;
-//   /* align-items: center; */
-//   > img {
-//     width: 4rem;
-//     height: 4rem;
-//     border: none;
-//     border-radius: 10%;
-//   }
-// `;
 
 const ServiceImage = styled.div`
   display: flex;
