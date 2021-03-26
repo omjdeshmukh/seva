@@ -80,6 +80,46 @@ exports.findMySuggestion = (req, res) => {
         });
 };
 
+exports.findAndVote = (req, res) => {
+
+    Suggestion.findById(req.params.Id)
+        .populate("user") 
+        .populate("category") 
+        .then(suggestion => {
+            //res.send(suggestion);
+            const value = parseInt(suggestion.voteCount, 10);
+            // console.log("total" + value + 1);
+            ///upadte 
+            Suggestion.findByIdAndUpdate(req.params.Id, {
+                voteCount: value + 1,
+                }, { new: true })
+                .populate("user")
+                .populate("category") 
+                .then(suggestion => {
+                    if (!suggestion) {
+                        return res.status(404).send({
+                            message: "suggestion not found with id " + req.params.Id
+                        });
+                    }
+                    res.send(suggestion);
+                }).catch(err => {s
+                    if (err.kind === 'ObjectId') {
+                        return res.status(404).send({
+                            message: "suggestion not found with id " + req.params.Id
+                        });
+                    }
+                    return res.status(500).send({
+                        message: "Error updating suggestion with id " + req.params.Id
+                    });
+                });
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while"
+            });
+        });
+};
+
 exports.findSuggestionByCategory = (req, res) => {
 
     Suggestion.find({ category: req.params.Id})

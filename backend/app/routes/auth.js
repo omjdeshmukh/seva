@@ -33,6 +33,8 @@ router.get("/VerifiedService", service.findVerify);
 //suggestion
 router.get("/suggestionBycategory/:Id", suggestion.findSuggestionByCategory);
 
+router.get("/VoteSuggestion/:Id", suggestion.findAndVote);
+
 router.get(
   "/suggestionBycategoryAndPin/:Id/:pin",
   suggestion.findSuggestionByCategoryAndPin
