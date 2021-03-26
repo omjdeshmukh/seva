@@ -13,10 +13,16 @@ import {
     Row,
     Col,
   } from "reactstrap";
+  import Pagination from './pagination'
+import styled from 'styled-components'
 
 function SuggestionTable() {
     const [suggestion, setSuggestion] = useState();
     const [formData, setFormData] = useState({});
+
+    const [postPerpages] = useState(6);
+    const [currentpage , setCurrentpage] = useState(1)
+ //   console.log(suggestion);
 
   const updateInput = (e) => {
     setFormData({
@@ -55,8 +61,6 @@ function SuggestionTable() {
         });
   }
 
-   console.log(formData);
-
     useEffect(() => {
         fetch(`https://seva-backend1.herokuapp.com/suggestion/`)
           .then((response) => response.json())
@@ -64,11 +68,19 @@ function SuggestionTable() {
           .catch((err) => console.log(err.message));
       },[]);
   
+      const IndexofLastPost = currentpage * postPerpages;
+      const IndexofFirstPost = IndexofLastPost - postPerpages;
+      const currentPost = suggestion && suggestion.slice(IndexofFirstPost , IndexofLastPost)
+     // console.log(currentPost)
+     const paginate =(pageNumber) =>{
+       setCurrentpage(pageNumber)
+     }
   return (
     <>
         <h4>Requested Suggestion based on area PinCode.....</h4>
         <br></br>
         <Container>
+        
         <Form onSubmit={handleSubmit}>
               {/* <FormGroup> */}
               <Row>
@@ -100,7 +112,7 @@ function SuggestionTable() {
         </Container>
        
 
-       
+      <Scroll>
       <Table responsive striped bordered hover variant="dark">
       <thead>
         <tr>
@@ -113,9 +125,10 @@ function SuggestionTable() {
           <th>Vote by user</th>
         </tr>
       </thead>
+      
       <tbody>
-        {suggestion &&
-            suggestion.map((item, index) => {
+        {currentPost &&
+            currentPost.map((item, index) => {
             //   console.log(item);
               return (
                 <>
@@ -135,8 +148,23 @@ function SuggestionTable() {
        
       </tbody>
     </Table>
+    </Scroll>
+    <div className>
+    <Pagination posts={currentpage} 
+                totalsuggestions={suggestion}
+                postperpages={postPerpages}
+                paginate={paginate}/>
+    </div>
     </>
   );
 }
 
 export default SuggestionTable;
+
+const Scroll = styled.div`
+max-height:500px;
+overflow-y:scroll;
+overflow-x:hidden;
+white-space:nowrap;
+
+`;
