@@ -21,7 +21,9 @@ function SuggestionCard({
             <Avatar>{user.userName.charAt(0).toUpperCase()}</Avatar>
           </UserDetais>
           <SuggestionSection>
-            <Suggestion>{ServiceDescription}</Suggestion>
+            <Suggestion>
+              <p>{ServiceDescription}</p>
+            </Suggestion>
             <VoteCounts>
               <button type="button">
                 <FiThumbsUp />

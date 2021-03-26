@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import {Form ,Button , Card, Col} from 'react-bootstrap';
 import { Card } from "react-bootstrap";
 import {
@@ -10,17 +10,19 @@ import {
   // FormText,
   FormFeedback,
 } from "reactstrap";
+
 import axios from "axios";
-
 import { getCookieData } from "../../userData";
-
 const cookieData = getCookieData();
 const token = cookieData.token ? cookieData.token : null;
 const _id = cookieData.userId ? cookieData.userId : null;
 
+console.log(token);
+
 function AddService() {
   const [serviceformData, setFormData] = useState({});
   const [category, setCategory] = useState();
+  const [file, setFile] = useState();
 
   useEffect(() => {
     axios
@@ -36,12 +38,13 @@ function AddService() {
     });
   };
 
-  const updateFile = (e) => {
-    setFormData({
-      ...serviceformData,
-      image: e.target.files[0],
-    });
-  };
+  // const updateFile = (e) => {
+  //   setFile(e.target.files[0]);
+  //   setFormData({
+  //     ...serviceformData,
+  //     image: file,
+  //   });
+  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,7 +71,7 @@ function AddService() {
       url: "https://seva-backend1.herokuapp.com/provider/service",
       data: serviceformData,
       headers: {
-        "Content-Type": "multipart/form-data",
+        // "Content-Type": "multipart/form-data",
         "auth-token": `${token}`,
       },
     })
@@ -153,7 +156,6 @@ function AddService() {
                   value={serviceformData.servicePincode || ""}
                 />
               </FormGroup>
-
               <FormGroup className="col">
                 <Label for="contactNo">Contact No.</Label>
                 <Input
@@ -187,15 +189,17 @@ function AddService() {
                 />
               </FormGroup>
 
-              <FormGroup className="col">
-                <Label for="image">Image</Label>
+              {/* <FormGroup>
+                <Label for="exampleFile">File</Label>
                 <Input
                   type="file"
                   name="image"
+                  id="exampleFile"
                   placeholder="Image"
                   onChange={updateFile}
+                  accept="png jpg jpeg"
                 />
-              </FormGroup>
+              </FormGroup> */}
 
               <Button
                 color="primary"

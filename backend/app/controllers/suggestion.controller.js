@@ -54,7 +54,7 @@ exports.findWhere = (req, res) => {
         .populate("user") 
         .populate("category") 
         .then(suggestion => {
-            res.send(spuggestion);
+            res.send(suggestion);
             //console.log(feedback);
 
         }).catch(err => {
