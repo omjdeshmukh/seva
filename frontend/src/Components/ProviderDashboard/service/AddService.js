@@ -15,8 +15,8 @@ import axios from "axios";
 import { getCookieData } from "../../userData";
 
 const cookieData = getCookieData();
-const token = cookieData.token;
-const _id = cookieData.userId;
+const token = cookieData.token ? cookieData.token : null;
+const _id = cookieData.userId ? cookieData.userId : null;
 
 function AddService() {
   const [serviceformData, setFormData] = useState({});
@@ -36,13 +36,19 @@ function AddService() {
     });
   };
 
+  const updateFile = (e) => {
+    setFormData({
+      ...serviceformData,
+      image: e.target.files[0],
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     sendService();
   };
 
   function afterPost() {
-    console.log(serviceformData);
     setFormData({
       image: "",
       serviceName: "",
@@ -53,22 +59,22 @@ function AddService() {
       map_location: "",
       description: "",
     });
-    window.location.reload();
   }
 
   const sendService = () => {
+    console.log(serviceformData);
     axios({
       method: "POST",
       url: "https://seva-backend1.herokuapp.com/provider/service",
       data: serviceformData,
       headers: {
-        // 'Content-Type': "application/json",
+        "Content-Type": "multipart/form-data",
         "auth-token": `${token}`,
       },
     })
       .then(function (response) {
         //handle success
-        // console.log(response.data);
+        console.log(response.data);
         alert("hurry! Service added..");
         afterPost();
       })
@@ -184,11 +190,10 @@ function AddService() {
               <FormGroup className="col">
                 <Label for="image">Image</Label>
                 <Input
-                  type="link"
+                  type="file"
                   name="image"
                   placeholder="Image"
-                  onChange={updateInput}
-                  value={serviceformData.image || ""}
+                  onChange={updateFile}
                 />
               </FormGroup>
 
