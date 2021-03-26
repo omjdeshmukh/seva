@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import {Form ,Button , Card, Col} from 'react-bootstrap';
+
 import { Card } from "react-bootstrap";
 import {
   Button,
@@ -7,7 +7,6 @@ import {
   FormGroup,
   Label,
   Input,
-  // FormText,
   FormFeedback,
 } from "reactstrap";
 
