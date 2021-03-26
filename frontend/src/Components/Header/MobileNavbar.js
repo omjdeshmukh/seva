@@ -113,6 +113,7 @@ const NavContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   > a {
+    background-color: transparent;
     color: #5ab9ea;
   }
 

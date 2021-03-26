@@ -140,6 +140,7 @@ const NavContainer = styled.div`
   }
 
   > a {
+    background-color: transparent;
     color: #393232;
     font-size: 15px;
     padding: 0.5rem 1rem;
