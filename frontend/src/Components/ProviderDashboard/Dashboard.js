@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Col from "react-bootstrap/Col";
 import { Form, Row, ListGroup, Tab } from "react-bootstrap";
-// import axios from "axios";
-// import { Button } from "reactstrap";
 import AddService from "./service/AddService";
 import ServiceCard from "./ServiceCards/ServiceCard";
 import Profile from "./profile/Profile";
@@ -10,9 +8,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import styled from "styled-components";
 import { getCookieData } from "../userData";
 import axios from "axios";
-
 const cookieData = getCookieData();
-
 const token = cookieData.token;
 const _id = cookieData.userId;
 
@@ -32,7 +28,7 @@ function ProviderDashboard() {
       .then((response) => response.json())
       .then((response) => setData([...response]))
       .catch((err) => console.log(err.message));
-  }, []);
+  });
 
   // console.log(data)
 

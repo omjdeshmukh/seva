@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ServicesPerPincodeCards from "./ServicePerPincodeCards/ServicePerPincodeCards";
 import Vector from "./vector";
+import { getCookieData } from "../../userData";
 
 function ServicesPerPincode(props) {
   const { _id, pincode } = props.match.params;
   const [services, setService] = useState();
-
+  const cookieData = getCookieData();
   useEffect(() => {
     fetch(`https://seva-backend1.herokuapp.com/serviceByPin/${pincode}`)
       .then((response) => response.json())
@@ -40,8 +41,10 @@ function ServicesPerPincode(props) {
             <>
               <NoServiceDiv>
                 <h6>
-                  Sorry! No service available yet, But you can{" "}
-                  <Link to={"/login"}>login</Link> and <span>Suggest Us.</span>
+                  Sorry! No service available yet{" "}
+                  {cookieData.pincode ? "at" + " " + cookieData.pincode : ""},
+                  But you can <Link to={"/login"}>login</Link> and{" "}
+                  <span>Suggest Us.</span>
                 </h6>
                 <VectorContainer>
                   <Vector />
