@@ -7,6 +7,7 @@ import ShowSuggestion from "./suggestion/ShowSuggestion";
 import AddFeedbackForm from "./feedback/AddFeedbackForm";
 import ShowFeedback from "./feedback/showFeedback";
 import UseProfile from "./profile/Profile";
+import UserDashboardData from "./UserDashboardData/UserDashboardData";
 import axios from "axios";
 import userData, { getCookieData } from "../userData";
 
@@ -93,6 +94,9 @@ function UserDashboard() {
         </Col>
         <Col sm={8}>
           <Tab.Content>
+            <Tab.Pane eventKey="#link1">
+              <UserDashboardData {...cookieData} />
+            </Tab.Pane>
             <Tab.Pane eventKey="#profile">
               <UseProfile {...cookieData} />
             </Tab.Pane>
