@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FiThumbsUp } from "react-icons/fi";
 import { FiThumbsDown } from "react-icons/fi";
@@ -13,6 +13,13 @@ function SuggestionCard({
   ServicePinCode,
   ServiceType,
 }) {
+  const handleLike = () => {
+    fetch(`https://seva-backend1.herokuapp.com/VoteSuggestion/${_id}`)
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error.message));
+  };
+
   return (
     <>
       <SuggestionCardContainer>
@@ -25,13 +32,10 @@ function SuggestionCard({
               <p>{ServiceDescription}</p>
             </Suggestion>
             <VoteCounts>
-              <button type="button">
+              <button type="button" onClick={handleLike}>
                 <FiThumbsUp />
               </button>
               {voteCount}
-              <button type="button">
-                <FiThumbsDown />
-              </button>
             </VoteCounts>
           </SuggestionSection>
         </SuggestionCardInnerContainer>
@@ -53,7 +57,7 @@ const SuggestionCardContainer = styled.div`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 `;
 const SuggestionCardInnerContainer = styled.div`
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -116,7 +120,7 @@ const VoteCounts = styled.div`
 
   > button {
     margin: 0 0.3rem;
-    width: 120px;
+    width: 60px;
     height: 35px;
     font-family: hindLight;
     font-size: 11px;

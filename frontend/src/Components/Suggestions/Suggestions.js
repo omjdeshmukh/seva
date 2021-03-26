@@ -16,7 +16,7 @@ function Suggestions() {
       .then((response) => response.json())
       .then((response) => setSuggestion(response))
       .catch((err) => console.log(err.message));
-  }, []);
+  });
 
   return (
     <>
