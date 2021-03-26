@@ -19,7 +19,7 @@ function ServicesPerPincodeCards({
     <>
       <ServiceCardContainer key="">
         <ServiceImage>
-          <img src="" alt="" />
+          <img src={image} alt="" />
         </ServiceImage>
         <ServiceInfo>
           <ServiceTitle>

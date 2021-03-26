@@ -39,14 +39,14 @@ function ProviderDashboard() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "https://seva-backend1.herokuapp.com/provider/profile/" + _id,
+      url: `https://seva-backend1.herokuapp.com/provider/profile/${_id}`,
       headers: {
         "Content-Type": "application/json",
         "auth-token": `${token}`,
       },
     })
       .then(function (response) {
-        setProfile(response.data.fullName);
+        setProfile(response.data);
         // console.log(response.data.fullName);
       })
       .catch(function (response) {
@@ -54,14 +54,12 @@ function ProviderDashboard() {
       });
   }, []);
 
-  // console.log(profile);
-
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#dashboard">
       {/* <h1>Admin dashboard</h1> */}
       <br></br>
       <Row>
-        <Col sm={3} style={{marginBottom:'20px'}} >
+        <Col sm={3} style={{ marginBottom: "20px" }}>
           <ListGroup>
             <ListGroup.Item>
               <img
@@ -69,8 +67,8 @@ function ProviderDashboard() {
                 width="60%"
                 height="60%"
               />
-              <h5>{profile}</h5>
-              <p>Provider</p>
+              <h5>{profile && profile.fullName}</h5>
+              <p>{profile && profile.role}</p>
             </ListGroup.Item>
             <ListGroup.Item action href="#dashboard">
               Dashboard
@@ -92,10 +90,10 @@ function ProviderDashboard() {
         <Col sm={9}>
           <Tab.Content>
             <Tab.Pane eventKey="#dashboard">
-              <Dashboard />
+              <Dashboard {...cookieData} />
             </Tab.Pane>
             <Tab.Pane eventKey="#link2">
-              <Profile />
+              <Profile {...cookieData} />
             </Tab.Pane>
             <Tab.Pane eventKey="#addService">
               <AddService />

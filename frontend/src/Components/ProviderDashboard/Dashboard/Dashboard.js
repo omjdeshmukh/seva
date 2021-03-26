@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { getCookieData } from "../../userData";
 
-
-const cookieData = getCookieData();
-const _id = cookieData.userId;
-// console.log(cookieData);
-
-function Dashboard() {
+function Dashboard({ token, userId }) {
   const [totalServices, setTotalServices] = useState();
 
   useEffect(() => {
     axios({
       method: "get",
-      url:
-        "https://seva-backend1.herokuapp.com/provider/my/service/"+ _id,
+      url: `https://seva-backend1.herokuapp.com/provider/my/service/${userId}`,
       headers: {
-        "auth-token": `${cookieData.token}`,
+        "auth-token": `${token}`,
       },
     })
       .then((response) => setTotalServices(response.data))
