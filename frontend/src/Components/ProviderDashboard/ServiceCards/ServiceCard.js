@@ -37,16 +37,11 @@ function ServiceCard(props) {
       .then(function (response) {
         // console.log(response);
         alert("Service Deleted Successfully...");
-        refreshPage();
         // window.location.reload();
       })
       .catch(function (response) {
         console.log(response);
       });
-  }
-
-  function refreshPage() {
-    window.location.reload();
   }
 
   //+++++++++++++++++++++++++++++ Update Service Data  ++++++++++++++++++++++++++++++++//
@@ -88,7 +83,7 @@ function ServiceCard(props) {
                   style={{ paddingTop: "10px", paddingBottom: "0" }}
                 >
                   <a href={map_location} style={{ textDecoration: "none" }}>
-                    <h5 > Map Location </h5>
+                    <h5> Map Location </h5>
                   </a>
                 </Button>
               </ItemInfo>
@@ -182,9 +177,8 @@ const Action = styled.div`
 
 const TwoCol = styled.div`
   display: flex;
-  @media (max-width: 450px){
-    display:grid;
-    
+  @media (max-width: 450px) {
+    display: grid;
   }
 `;
 

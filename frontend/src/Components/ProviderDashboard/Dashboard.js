@@ -28,7 +28,7 @@ function ProviderDashboard() {
       .then((response) => response.json())
       .then((response) => setData([...response]))
       .catch((err) => console.log(err.message));
-  }, []);
+  });
 
   // console.log(data)
 
