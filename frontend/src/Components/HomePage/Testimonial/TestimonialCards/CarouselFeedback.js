@@ -55,6 +55,8 @@ function Responsive(props) {
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
+                      minHeight: "17.4rem",
+                      maxHeight: "18.4rem",
                     }}
                   >
                     <FeedbackCardInnerContainer>

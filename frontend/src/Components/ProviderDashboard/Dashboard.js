@@ -8,6 +8,8 @@ import Dashboard from "./Dashboard/Dashboard";
 import styled from "styled-components";
 import { getCookieData } from "../userData";
 import axios from "axios";
+import Vector from "./vector";
+import { Link } from "react-router-dom";
 const cookieData = getCookieData();
 const token = cookieData.token;
 const _id = cookieData.userId;
@@ -96,15 +98,30 @@ function ProviderDashboard() {
             </Tab.Pane>
             <Tab.Pane eventKey="#showMyService">
               <ServiceCardContainer>
-                {data &&
-                  data.map((item, index) => {
-                    // console.log(item);
-                    return (
-                      <>
-                        <ServiceCard data={item} />
-                      </>
-                    );
-                  })}
+                {data && data.length != 0 ? (
+                  <>
+                    {data &&
+                      data.map((item, index) => {
+                        // console.log(item);
+                        return (
+                          <>
+                            <ServiceCard data={item} />
+                          </>
+                        );
+                      })}
+                  </>
+                ) : (
+                  <>
+                    <>
+                      <NoServiceDiv>
+                        <h6>Sorry! No Services available yet.</h6>
+                        <VectorContainer>
+                          <Vector />
+                        </VectorContainer>
+                      </NoServiceDiv>
+                    </>
+                  </>
+                )}
               </ServiceCardContainer>
             </Tab.Pane>
           </Tab.Content>
@@ -121,4 +138,35 @@ const ServiceCardContainer = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
   white-space: nowrap;
+`;
+
+const NoServiceDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > h6 > a {
+    font-family: hindMedium;
+    text-decoration: none;
+    color: #393232;
+    font-weight: 300;
+  }
+
+  h6 > span {
+    font-family: hindMedium;
+    text-decoration: none;
+    color: #5ab9ea;
+    font-weight: 300;
+  }
+`;
+
+const VectorContainer = styled.div`
+  width: 150px;
+  height: 150px;
+
+  > svg {
+    width: 100%;
+    height: 15rem;
+  }
 `;
