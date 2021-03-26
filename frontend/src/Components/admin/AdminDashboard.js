@@ -7,8 +7,7 @@ import ADDCategroyCard from "./categoryCard/addCategory";
 import { Button } from "reactstrap";
 import Dashboard from "./Dashboard/adminDashboard";
 import Chart from "./Chart/Chart";
-import SuggestionTable from "./table/suggestionTable"
-
+import SuggestionTable from "./table/suggestionTable";
 
 function AdminDashboard() {
   const [category, setCategory] = useState();
@@ -44,9 +43,9 @@ function AdminDashboard() {
             <ListGroup.Item action href="#dashboard">
               Dashboard
             </ListGroup.Item>
-            <ListGroup.Item action href="#link2">
+            {/* <ListGroup.Item action href="#link2">
               Profile
-            </ListGroup.Item>
+            </ListGroup.Item> */}
             <ListGroup.Item action href="#addCategory">
               Add Category
             </ListGroup.Item>
@@ -59,9 +58,9 @@ function AdminDashboard() {
             <ListGroup.Item action href="#showSuggestionRequest">
               Show Suggestion Request
             </ListGroup.Item>
-            <ListGroup.Item action href="/">
+            {/* <ListGroup.Item action href="/">
               log out
-            </ListGroup.Item>
+            </ListGroup.Item> */}
           </ListGroup>
         </Col>
         <Col sm={8}>
@@ -69,9 +68,9 @@ function AdminDashboard() {
             <Tab.Pane eventKey="#dashboard">
               <Dashboard />
             </Tab.Pane>
-            <Tab.Pane eventKey="#link2">
+            {/* <Tab.Pane eventKey="#link2">
               <h1>profile</h1>
-            </Tab.Pane>
+            </Tab.Pane> */}
             <Tab.Pane eventKey="#addCategory">
               <ADDCategroyCard />
             </Tab.Pane>
@@ -91,9 +90,9 @@ function AdminDashboard() {
             <Tab.Pane eventKey="#showSuggestionRequest">
               <SuggestionTable />
             </Tab.Pane>
-          <Tab.Pane eventKey="#Chart">
-            <Chart />
-          </Tab.Pane>
+            <Tab.Pane eventKey="#Chart">
+              <Chart />
+            </Tab.Pane>
           </Tab.Content>
         </Col>
       </Row>

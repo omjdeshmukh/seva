@@ -65,9 +65,9 @@ function ProviderDashboard() {
             <ListGroup.Item action href="#showMyService">
               Show My Service
             </ListGroup.Item>
-            <ListGroup.Item action href="/">
-              Home
-            </ListGroup.Item>
+            <Link to="/">
+              <ListGroup.Item action>Home</ListGroup.Item>
+            </Link>
           </ListGroup>
         </Col>
         <Col sm={9}>
@@ -83,9 +83,7 @@ function ProviderDashboard() {
             </Tab.Pane>
             <Tab.Pane eventKey="#showMyService">
               <ServiceCardContainer>
-
                 <ServiceCards {...cookieData} />
-
               </ServiceCardContainer>
             </Tab.Pane>
           </Tab.Content>
