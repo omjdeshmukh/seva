@@ -26,6 +26,7 @@ function PieChart() {
   }, []);
 
   const categories = category && category.map((item) => item.category);
+  console.log(categories);
 
   const statistic =
     categories &&
@@ -49,6 +50,12 @@ function PieChart() {
       },
       {
         color: "#e9a227",
+      },
+      {
+        color: "#fdd723",
+      },
+      {
+        color: "#764abc",
       },
     ],
     legend: {
@@ -80,7 +87,8 @@ function PieChart() {
           ["Rental", statistic && statistic[1].length],
           ["Health Care", statistic && statistic[2].length],
           ["Local", statistic && statistic[3].length],
-          ["food", statistic && statistic[4].length],
+          ["Other", statistic && statistic[4].length],
+          ["food", statistic && statistic[5].length],
         ]}
         options={pieOptions}
         graph_id="PieChart"

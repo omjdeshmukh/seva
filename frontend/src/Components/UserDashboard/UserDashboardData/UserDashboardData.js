@@ -3,10 +3,10 @@ import styled from "styled-components";
 import axios from "axios";
 
 function UserDashboardData({ token, userId, pincode, role }) {
-  const [user, setUser] = useState();
-  const [category, setCategory] = useState();
-  const [totalServices, setTotalServices] = useState();
-  const [totalSuggestion, setTotalSuggestion] = useState();
+  const [user, setUser] = useState(0);
+  const [category, setCategory] = useState(0);
+  const [totalServices, setTotalServices] = useState(0);
+  const [totalSuggestion, setTotalSuggestion] = useState(0);
 
   useEffect(() => {
     axios
@@ -63,7 +63,7 @@ function UserDashboardData({ token, userId, pincode, role }) {
               alt=""
             />
             <InfoSection>
-              <p>Number</p>
+              <p>{user && user}</p>
               <small>Total Users</small>
             </InfoSection>
           </UserSection>

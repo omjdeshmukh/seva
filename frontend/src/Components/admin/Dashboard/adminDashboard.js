@@ -25,6 +25,20 @@ function Dashboard(props) {
       .catch((err) => console.log(err.message));
   }, []);
 
+  useEffect(() => {
+    axios
+      .get("https://seva-backend1.herokuapp.com/suggestion")
+      .then((response) => setTotalSuggestion(response.data))
+      .catch((err) => console.log(err.message));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("https://seva-backend1.herokuapp.com/admin/alluser")
+      .then((response) => setUser(response.data))
+      .catch((err) => console.log(err.message));
+  }, []);
+
   //need to fetch more apis
   return (
     <>
@@ -46,7 +60,7 @@ function Dashboard(props) {
               alt=""
             />
             <InfoSection>
-              <p>Number</p>
+              <p>{totalSuggestion && totalSuggestion.length}</p>
               <small>Total Suggestion</small>
             </InfoSection>
           </SuggectionSection>
@@ -56,7 +70,7 @@ function Dashboard(props) {
               alt=""
             />
             <InfoSection>
-              <p>Number</p>
+              <p>{user && user.length}</p>
               <small>Total Users</small>
             </InfoSection>
           </UserSection>
@@ -72,8 +86,7 @@ function Dashboard(props) {
           </TotalServices>
           {/* graph */}
 
-          <PieChart/>
-
+          <PieChart />
         </DashBoardInnerContainer>
       </DashBoardContainer>
     </>
