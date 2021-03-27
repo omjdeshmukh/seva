@@ -5,7 +5,12 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-One to two paragraph statement about your product and what it does.
+What is the problem?
+
+The problem statement is to focus in our rural areas where the facilities, which are normal in urban areas is not as accessible
+in rural areas.About 65.53 % population in india come under rural areas. The people in this areas find them themselves in a situation where the
+have to travel certain distances for basic needs, which is easily available in urban areas.There may be various reasons like, Lack of knowledge about the facilities available nearby. There can be Geographical, Political, Economical,
+Human behaviour reasons. Or due to lot of ignorance.
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
