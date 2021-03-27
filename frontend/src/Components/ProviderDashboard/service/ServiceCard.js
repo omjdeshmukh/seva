@@ -5,12 +5,11 @@ import axios from "axios";
 import { getCookieData } from "../../userData";
 import UpdateService from "./UpdateService";
 
-const cookieData = getCookieData();
-const __id = cookieData.userId;
-const token = cookieData.token;
-
 function ServiceCards() {
   const [data, setData] = useState();
+  const cookieData = getCookieData();
+  const __id = cookieData.userId;
+  const token = cookieData.token;
 
   useEffect(() => {
     fetch("https://seva-backend1.herokuapp.com/provider/my/service/" + __id, {
@@ -56,6 +55,10 @@ function ServiceCard(props) {
   } = props.data;
 
   function ActionDelete() {
+    const cookieData = getCookieData();
+    const __id = cookieData.userId;
+    const token = cookieData.token;
+
     axios({
       method: "DELETE",
       url: "https://seva-backend1.herokuapp.com/provider/service/" + _id,
