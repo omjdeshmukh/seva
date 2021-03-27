@@ -4,6 +4,8 @@ import styled from "styled-components";
 import axios from "axios";
 import { getCookieData } from "../../userData";
 import UpdateService from "./UpdateService";
+import Vector from "../vector";
+import { Link } from "react-router-dom";
 
 function ServiceCards() {
   const [data, setData] = useState();
@@ -27,15 +29,31 @@ function ServiceCards() {
 
   return (
     <>
-      {data &&
-        data.map((item, index) => {
-          // console.log(item);
-          return (
-            <>
-              <ServiceCard data={item} />
-            </>
-          );
-        })}
+      {data && data.length != 0 ? (
+        <>
+          {data &&
+            data.map((item, index) => {
+              // console.log(item);
+              return (
+                <>
+                  <ServiceCard data={item} />
+                </>
+              );
+            })}
+        </>
+      ) : (
+        <>
+          <NoServiceDiv>
+            <h6>
+              Sorry! No Suggestions available yet, But you can{" "}
+              <Link to={"/login"}>login</Link> and <span>Suggest Us.</span>
+            </h6>
+            <VectorContainer>
+              <Vector />
+            </VectorContainer>
+          </NoServiceDiv>
+        </>
+      )}
     </>
   );
 }
@@ -73,7 +91,6 @@ function ServiceCard(props) {
         console.log(response);
       });
   }
-
 
   return (
     <>
@@ -152,6 +169,7 @@ const CardContainer = styled.div`
 const CardInnerContainer = styled.div`
   line-height: 1;
   min-width: 100%;
+
   margin: 0 auto;
   padding: 2rem 0;
   display: flex;
@@ -206,5 +224,36 @@ const ButtonContainer = styled.div`
   right: 10px;
   @media (max-width: 786px) {
     display: flex;
+  }
+`;
+
+const NoServiceDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > h6 > a {
+    font-family: hindMedium;
+    text-decoration: none;
+    color: #393232;
+    font-weight: 300;
+  }
+
+  h6 > span {
+    font-family: hindMedium;
+    text-decoration: none;
+    color: #5ab9ea;
+    font-weight: 300;
+  }
+`;
+
+const VectorContainer = styled.div`
+  width: 150px;
+  height: 150px;
+  min-height: 27rem;
+  > svg {
+    width: 100%;
+    height: 15rem;
   }
 `;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FcOk } from "react-icons/fc";
 import { BiMap } from "react-icons/bi";
 import { BiPhone } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 function ServicesPerPincodeCards({
   category,
@@ -15,6 +16,7 @@ function ServicesPerPincodeCards({
   serviceNames,
   user,
 }) {
+  console.log(map_location);
   return (
     <>
       <ServiceCardContainer key="">
@@ -31,14 +33,14 @@ function ServicesPerPincodeCards({
             <small>{serviceEmail}</small>
           </OtherDetails>
           <ContactDetails>
-            <button>
+            <a href={map_location} target="_blank">
               <BiMap />
-              {map_location}
-            </button>
-            <button>
+              Location
+            </a>
+            <a href="#">
               <BiPhone />
               {contactNo}
-            </button>
+            </a>
           </ContactDetails>
         </ServiceInfo>
       </ServiceCardContainer>
@@ -95,7 +97,7 @@ const ContactDetails = styled.div`
   justify-content: space-around;
   align-items: baseline;
 
-  > button {
+  > a {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -118,9 +120,13 @@ const ContactDetails = styled.div`
     border-radius: 10px;
     background-color: #5ab9ea;
     color: #ffffff;
+
+    > svg {
+      font-size: 1.2rem;
+    }
   }
 
-  > button:hover {
+  > a:hover {
     background-color: #ffffff;
     color: #393232;
   }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import UserSvg from "./user";
 
 function UserDashboardData({ token, userId, pincode, role }) {
   const [user, setUser] = useState(0);
@@ -37,16 +38,6 @@ function UserDashboardData({ token, userId, pincode, role }) {
     <>
       <DashBoardContainer>
         <DashBoardInnerContainer>
-          <CatagorySection>
-            <img
-              src="https://i.pinimg.com/474x/95/d1/17/95d11754e7ec8e94cbdbed88cd67668a.jpg"
-              alt=""
-            />
-            <InfoSection>
-              <p>{category && category.length}</p>
-              <small>Total Category</small>
-            </InfoSection>
-          </CatagorySection>
           <SuggectionSection>
             <img
               src="http://cdn.onlinewebfonts.com/svg/img_281676.png"
@@ -57,16 +48,6 @@ function UserDashboardData({ token, userId, pincode, role }) {
               <small>Total Suggestion</small>
             </InfoSection>
           </SuggectionSection>
-          <UserSection>
-            <img
-              src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/user-512.png"
-              alt=""
-            />
-            <InfoSection>
-              <p>{user && user}</p>
-              <small>Total Users</small>
-            </InfoSection>
-          </UserSection>
           <TotalServices>
             <img
               src="https://static.thenounproject.com/png/684821-200.png"
@@ -77,7 +58,9 @@ function UserDashboardData({ token, userId, pincode, role }) {
               <small>Total Services</small>
             </InfoSection>
           </TotalServices>
-          {/* graph */}
+          <SvgSection>
+            <UserSvg />
+          </SvgSection>
         </DashBoardInnerContainer>
       </DashBoardContainer>
     </>
@@ -136,5 +119,18 @@ const InfoSection = styled.div`
 
   > p {
     font-weight: 600;
+  }
+`;
+
+const SvgSection = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > svg {
+    width: 15rem;
+    height: 15rem;
+    margin: 0 auto;
   }
 `;

@@ -47,6 +47,7 @@ function Responsive(props) {
           {feedback &&
             feedback.map((item, index) => {
               const { user, feedback } = item;
+
               return (
                 <>
                   <FeedbackCardContainer
@@ -61,7 +62,7 @@ function Responsive(props) {
                   >
                     <FeedbackCardInnerContainer>
                       <UserInfoContainer>
-                        <img src={user.img} alt="User Avatar" />
+                        <img src={user && user.img} alt="User Avatar" />
                       </UserInfoContainer>
                       <FeedbackSection>
                         <p>{feedback}</p>

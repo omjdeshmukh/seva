@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import ProviderSvg from "./Provider";
 
 function Dashboard({ token, userId }) {
   const [totalServices, setTotalServices] = useState();
@@ -33,6 +34,10 @@ function Dashboard({ token, userId }) {
               <small>Total Services</small>
             </InfoSection>
           </TotalServices>
+
+          <SvgSection>
+            <ProviderSvg />
+          </SvgSection>
         </DashBoardInnerContainer>
       </DashBoardContainer>
     </>
@@ -90,5 +95,13 @@ const InfoSection = styled.div`
   height: 200px;
   > p {
     font-weight: 600;
+  }
+`;
+
+const SvgSection = styled.div`
+  > svg {
+    width: 15rem;
+    height: 15rem;
+    margin: 0 auto;
   }
 `;
