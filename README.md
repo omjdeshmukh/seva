@@ -1,5 +1,5 @@
 # SEVA
-> Short blurb about what your product does.
+> Seva a web app that is benificial for both users as well as consumers.
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
@@ -30,7 +30,7 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Technologies used to develop this web application.
 * [React Js](https://reactjs.org)
 * [Node Js](https://nodejs.org/)
 * [Mongo DB](https://www.mongodb.com/)
