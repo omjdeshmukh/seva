@@ -229,13 +229,14 @@ function UpdateService(props) {
 export default UpdateService;
 
 const FormField = styled.div`
-  width: 50vw;
-  padding: 40px;
+  width: 40vw;
+  padding: 10%;
   @media (max-width: 700px) {
     width: 70vw;
   }
   @media (max-width: 500px) {
-    width: 90vw;
+    width: 80vw;
     padding-left: 5%;
+    padding-right: 10%;
   }
 `;
