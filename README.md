@@ -1,6 +1,8 @@
-# SEVA
-> Seva a web app that is benificial for both users as well as consumers.
-> https://seva-webapp.herokuapp.com/
+<p align="center">
+<img width="250px" height="150px" src="https://github.com/omjdeshmukh/seva/blob/main/ScreenShots/Group%207.png?raw=true" alt="Logo"/>
+</p>
+Seva a web app that is benificial for both users as well as consumers.
+https://seva-webapp.herokuapp.com/
 
 What is the problem?
 
