@@ -9,9 +9,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { Card } from "react-bootstrap";
 import { Form, FormGroup, Label, Input, FormFeedback } from "reactstrap";
 
-const cookieData = getCookieData();
-const __id = cookieData.userId;
-
 function UpdateService(props) {
   // console.log(props.data._id)
   const _id = props.data._id;
@@ -30,6 +27,9 @@ function UpdateService(props) {
   };
 
   useEffect(() => {
+
+  const cookieData = getCookieData();
+
     axios({
       method: "GET",
       url: `https://seva-backend1.herokuapp.com/provider/service/${_id}`,
@@ -62,6 +62,9 @@ function UpdateService(props) {
   };
 
   const UpdateServiceData = () => {
+    const cookieData = getCookieData();
+    const __id = cookieData.userId;
+
     axios({
       method: "PUT",
       url: "https://seva-backend1.herokuapp.com/provider/service/" + _id,
