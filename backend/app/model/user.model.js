@@ -15,6 +15,7 @@ var userSchema = new mongoose.Schema({
     },
     img: {
         type: String,
+        default: "https://res.cloudinary.com/drampnn2w/image/upload/v1615827809/Face-Profile-User-Man-Boy-Person-Avatar-512_ervo1s.png"
     },
     email: {
         type: String,
