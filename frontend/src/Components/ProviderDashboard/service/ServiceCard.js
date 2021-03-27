@@ -56,7 +56,6 @@ function ServiceCard(props) {
 
   function ActionDelete() {
     const cookieData = getCookieData();
-    const __id = cookieData.userId;
     const token = cookieData.token;
 
     axios({

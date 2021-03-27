@@ -12,11 +12,11 @@ import {
 
 import axios from "axios";
 import { getCookieData } from "../../userData";
-const cookieData = getCookieData();
-const token = cookieData.token ? cookieData.token : null;
-const _id = cookieData.userId ? cookieData.userId : null;
+// const cookieData = getCookieData();
+// const token = cookieData.token ? cookieData.token : null;
+// const _id = cookieData.userId ? cookieData.userId : null;
 
-console.log(token);
+// console.log(token);
 
 function AddService() {
   const [serviceformData, setFormData] = useState({});
@@ -65,6 +65,9 @@ function AddService() {
 
   const sendService = () => {
     console.log(serviceformData);
+    const cookieData = getCookieData();
+    const token = cookieData.token; 
+
     axios({
       method: "POST",
       url: "https://seva-backend1.herokuapp.com/provider/service",
