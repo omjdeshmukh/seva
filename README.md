@@ -2,10 +2,6 @@
 > Seva a web app that is benificial for both users as well as consumers.
 > https://seva-webapp.herokuapp.com/
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 What is the problem?
 
 The problem statement is to focus in our rural areas where the facilities, which are normal in urban areas is not as accessible
@@ -15,8 +11,9 @@ Human behaviour reasons. Or due to lot of ignorance.
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://github.com/omjdeshmukh/seva/blob/main/ScreenShots/Seva.png?raw=true)
+<p align="center">
+<img width="400px" height="600px" src="https://github.com/omjdeshmukh/seva/blob/main/ScreenShots/Seva.png?raw=true" alt="Webapp Screenshot"/>
+</p>
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
