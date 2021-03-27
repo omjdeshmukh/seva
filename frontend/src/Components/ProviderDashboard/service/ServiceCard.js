@@ -74,7 +74,6 @@ function ServiceCard(props) {
       });
   }
 
-  //+++++++++++++++++++++++++++++ Update Service Data ++++++++++++++++++++++++++++++++//
 
   return (
     <>

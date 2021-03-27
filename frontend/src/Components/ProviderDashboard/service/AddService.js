@@ -12,11 +12,7 @@ import {
 
 import axios from "axios";
 import { getCookieData } from "../../userData";
-// const cookieData = getCookieData();
-// const token = cookieData.token ? cookieData.token : null;
-// const _id = cookieData.userId ? cookieData.userId : null;
 
-// console.log(token);
 
 function AddService() {
   const [serviceformData, setFormData] = useState({});
@@ -37,13 +33,7 @@ function AddService() {
     });
   };
 
-  // const updateFile = (e) => {
-  //   setFile(e.target.files[0]);
-  //   setFormData({
-  //     ...serviceformData,
-  //     image: file,
-  //   });
-  // };
+ 
 
   const handleSubmit = (event) => {
     event.preventDefault();
