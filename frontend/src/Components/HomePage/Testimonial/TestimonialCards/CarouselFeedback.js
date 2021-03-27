@@ -57,7 +57,8 @@ function Responsive(props) {
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
                       minHeight: "17.4rem",
-                      maxHeight: "18.4rem",
+                      maxHeight: "17.4rem",
+                      overflow: "auto",
                     }}
                   >
                     <FeedbackCardInnerContainer>
@@ -112,6 +113,26 @@ const FeedbackCardContainer = styled.div`
   margin: 0 0.5rem;
   padding: 1rem;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 2.5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #fff;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 
 const FeedbackCardInnerContainer = styled.div`
