@@ -63,7 +63,7 @@ function Signup({ history, setToken }) {
       fullName: username,
       email: email,
       password: password,
-      role: role.toLowerCase(),
+      role: role,
       state: State,
       city: Name,
       village: Block,
@@ -113,7 +113,7 @@ function Signup({ history, setToken }) {
                   <Input
                     id="radio1-option1"
                     type="radio"
-                    value="User"
+                    value="user"
                     name="role"
                     onChange={handleRadioChange}
                   />
@@ -125,7 +125,7 @@ function Signup({ history, setToken }) {
                   <Input
                     type="radio"
                     name="role"
-                    value="Provider"
+                    value="provider"
                     id="radio1-option2"
                     onChange={handleRadioChange}
                   />
