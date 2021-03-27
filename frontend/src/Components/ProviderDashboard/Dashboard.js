@@ -8,16 +8,16 @@ import Dashboard from "./Dashboard/Dashboard";
 import styled from "styled-components";
 import { getCookieData } from "../userData";
 import axios from "axios";
-import Vector from "./vector";
 import { Link } from "react-router-dom";
-const cookieData = getCookieData();
-const token = cookieData.token;
-const _id = cookieData.userId;
 
 // console.log(_id);
 
 function ProviderDashboard() {
   const [profile, setProfile] = useState();
+  const cookieData = getCookieData();
+
+  const token = cookieData.token;
+  const _id = cookieData.userId;
 
   useEffect(() => {
     axios({

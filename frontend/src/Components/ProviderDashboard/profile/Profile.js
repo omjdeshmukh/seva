@@ -11,11 +11,11 @@ import {
 import axios from "axios";
 import { getCookieData } from "../../userData";
 
-const cookieData = getCookieData();
-const token = cookieData.token;
-const _id = cookieData.userId;
-
 function ActionDelete() {
+  const cookieData = getCookieData();
+  const token = cookieData.token;
+  const _id = cookieData.userId;
+
   axios({
     method: "DELETE",
     url: "https://seva-backend1.herokuapp.com/" + _id,
@@ -28,7 +28,7 @@ function ActionDelete() {
       refreshPage();
     })
     .catch(function (response) {
-      alert('Something Went Wrong...')
+      alert("Something Went Wrong...");
       console.log(response);
     });
 }
@@ -39,6 +39,10 @@ function refreshPage() {
 
 function Profile() {
   const [serviceformData, setFormData] = useState({});
+
+  const cookieData = getCookieData();
+  const token = cookieData.token;
+  const _id = cookieData.userId;
 
   useEffect(() => {
     axios({
@@ -71,6 +75,10 @@ function Profile() {
   };
 
   const UpdateProfile = () => {
+    const cookieData = getCookieData();
+    const token = cookieData.token;
+    const _id = cookieData.userId;
+
     axios({
       method: "PUT",
       url: "https://seva-backend1.herokuapp.com/provider/profile/" + _id,
