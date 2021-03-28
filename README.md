@@ -20,6 +20,7 @@ Human behaviour reasons. Or due to lot of ignorance.
 <img width="400px" height="600px" src="https://github.com/omjdeshmukh/seva/blob/main/ScreenShots/Seva.png?raw=true" alt="Webapp Screenshot"/>
 </p>
 
+
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
 Here's why:
