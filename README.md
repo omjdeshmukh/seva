@@ -1,10 +1,13 @@
 <p align="center">
 <img width="250px" height="150px" src="https://github.com/omjdeshmukh/seva/blob/main/ScreenShots/Group%207.png?raw=true" alt="Logo"/>
 </p>
-Seva a web app that is benificial for both users as well as consumers.
-https://seva-webapp.herokuapp.com/
 
-What is the problem?
+Seva a web app that is benificial for both users as well as consumers.
+<p align="center">
+   <a href="https://seva-webapp.herokuapp.com/"> Web Demo link </a>&nbsp;&nbsp;&nbsp;&nbsp;  <a href=""> backend api link</a>
+</p>
+
+## What is the problem?
 
 The problem statement is to focus in our rural areas where the facilities, which are normal in urban areas is not as accessible
 in rural areas.About 65.53 % population in india come under rural areas. The people in this areas find them themselves in a situation where the
