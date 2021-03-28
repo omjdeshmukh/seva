@@ -47,6 +47,7 @@ Technologies used to develop this web application.
 OS X & Linux:
 
 ```sh
+
 npm install my-crazy-module --save
 ```
 
