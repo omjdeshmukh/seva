@@ -1,12 +1,13 @@
-# SEVA
-> Seva a web app that is benificial for both users as well as consumers.
-> https://seva-webapp.herokuapp.com/
+<p align="center">
+<img width="250px" height="150px" src="https://github.com/omjdeshmukh/seva/blob/main/ScreenShots/Group%207.png?raw=true" alt="Logo"/>
+</p>
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+Seva :tada: a web app that is benificial for both users as well as consumers.
+* [Web Demo link :white_check_mark:](https://seva-webapp.herokuapp.com/)
+* [Backend api link :rocket:](https://seva-backend1.herokuapp.com)
+* [Backend api Doc :green_book: ](https://github.com/omjdeshmukh/seva/blob/main/API.md)
 
-What is the problem?
+## What is the problem?
 
 The problem statement is to focus in our rural areas where the facilities, which are normal in urban areas is not as accessible
 in rural areas.About 65.53 % population in india come under rural areas. The people in this areas find them themselves in a situation where the
@@ -15,8 +16,10 @@ Human behaviour reasons. Or due to lot of ignorance.
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<p align="center">
+<img width="400px" height="600px" src="https://github.com/omjdeshmukh/seva/blob/main/ScreenShots/Seva.png?raw=true" alt="Webapp Screenshot"/>
+</p>
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
@@ -42,17 +45,42 @@ Technologies used to develop this web application.
 
 ## Installation
 
-OS X & Linux:
+## FrontEnd
 
-```sh
-npm install my-crazy-module --save
-```
+In the project directory, you can run:
 
-Windows:
+### `npm start`
 
-```sh
-edit autoexec.bat
-```
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+
+## BackEnd
+
+https://github.com/omjdeshmukh/seva/blob/main/API.m
+
 
 ## Usage example
 
@@ -71,26 +99,22 @@ npm test
 
 ## Release History
 
-* 0.2.1
+* v1
     * CHANGE: Update docs (module code remains unchanged)
-* 0.2.0
-    * CHANGE: Remove `setDefaultXYZ()`
-    * ADD: Add `init()`
-* 0.1.1
-    * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
-* 0.1.0
-    * The first proper release
-    * CHANGE: Rename `foo()` to `bar()`
-* 0.0.1
-    * Work in progress
 
-## Meta
 
-Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+## Contributors ✨
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/mrDarkk"><img src="https://avatars.githubusercontent.com/u/31968868?v=4" width="100px;" alt=""/><br /><sub><b>Bhupendra Banothe</b></sub></a><br /><a href="#question-kentcdodds" title="Answering Questions">💬</a> <a href="https://github.com/omjdeshmukh/seva/commits?author=mrDarkk" title="Documentation">📖</a> <a href="https://github.com/omjdeshmukh/seva/commits?author=mrDarkk" title="Reviewed Pull Requests">👀</a> <a href="#talk-kentcdodds" title="Talks">📢</a><a href="#infra-jakebolam" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/SarkarPriyanshu"><img src="https://avatars.githubusercontent.com/u/55652493?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Priyanshu Sarkar</b></sub></a><br /><a href="https://github.com/omjdeshmukh/seva/commits?author=SarkarPriyanshu" title="Documentation">📖</a> <a href="https://github.com/omjdeshmukh/seva/commits?author=SarkarPriyanshu" title="Reviewed Pull Requests">👀</a> <a href="#tool-jfmengels" title="Tools">🔧</a></td>
+    <td align="center"><a href="https://github.com/omjdeshmukh"><img src="https://avatars.githubusercontent.com/u/72704286?v=4" width="100px;" alt=""/><br /><sub><b>Omjdeshmukh</b></sub></a><br /><a href="https://github.com/omjdeshmukh/seva/commits?author=omjdeshmukh" title="Documentation">📖</a> <a href="#tool-jakebolam" title="Tools">🔧</a> </td>
+    <td align="center"><a href="https://github.com/Bharath693"><img src="https://avatars.githubusercontent.com/u/72741712?v=4" width="100px;" alt=""/><br /><sub><b>Bharath Reddy</b></sub></a><br /><a href="#maintenance-tbenning" title="Maintenance">🚧</a> <a href="https://github.com/omjdeshmukh/seva/commits?author=Bharath693" title="Code">💻</a> <a href="#design-tbenning" title="Design">🎨</a></td>
+  
+  </tr>
+   </table>
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
 
 ## Contributing
 
@@ -100,15 +124,5 @@ Distributed under the XYZ license. See ``LICENSE`` for more information.
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
-<!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/yourname/yourproject/wiki
 
 
-## Backend API
-
- Backend API Url - https://seva-backend1.herokuapp.com 

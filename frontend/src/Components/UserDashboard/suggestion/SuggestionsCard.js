@@ -25,13 +25,17 @@ function SuggestionCard(props) {
   const token = cookieData.token;
 
   function ActionDelete() {
-    axios("https://seva-backend1.herokuapp.com/user/suggestion/" + `${suggestionid}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        "auth-token": `${token}`,
-      },
-    })
+    axios(
+      "https://seva-backend1.herokuapp.com/user/suggestion/" +
+        `${suggestionid}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          "auth-token": `${token}`,
+        },
+      }
+    )
       .then((data) => {
         console.log(data);
         alert("user suggestion deleted succesfully");
@@ -102,6 +106,10 @@ const Info = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  > h3 {
+    padding: 0;
+}
 `;
 
 const Action = styled.div`
