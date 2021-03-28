@@ -115,9 +115,11 @@ npm test
 ## Meta
 
 ## FrontEnd
-Omjdeshmukh (https://github.com/omjdeshmukh)
-Bharath Reddy (https://github.com/Bharath693)
-Priyanshu Sarkar(https://github.com/SarkarPriyanshu)
+*Omjdeshmukh* (https://github.com/omjdeshmukh)
+
+*Bharath Reddy* (https://github.com/Bharath693)
+
+*Priyanshu Sarkar* (https://github.com/SarkarPriyanshu)
 
 ## BackEnd
 Bhupendra Banothe (https://github.com/mrDarkk)
