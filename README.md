@@ -2,9 +2,10 @@
 <img width="250px" height="150px" src="https://github.com/omjdeshmukh/seva/blob/main/ScreenShots/Group%207.png?raw=true" alt="Logo"/>
 </p>
 
-Seva a web app that is benificial for both users as well as consumers.
-* [Web Demo link ](https://seva-webapp.herokuapp.com/)
-* [Backend api link](https://seva-backend1.herokuapp.com)
+Seva :tada: a web app that is benificial for both users as well as consumers.
+* [Web Demo link :white_check_mark:](https://seva-webapp.herokuapp.com/)
+* [Backend api link :rocket:](https://seva-backend1.herokuapp.com)
+* [Backend api Doc :green_book: ](https://github.com/omjdeshmukh/seva/blob/main/API.md)
 
 ## What is the problem?
 
