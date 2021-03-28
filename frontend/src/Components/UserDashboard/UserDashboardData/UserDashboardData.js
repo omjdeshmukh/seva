@@ -25,7 +25,7 @@ function UserDashboardData({ token, userId, pincode, role }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/user/my/suggestion/${userId}`, {
+      .get(`https://seva-backend1.herokuapp.com/user/my/suggestion/${userId}`, {
         headers: {
           "auth-token": token,
         },

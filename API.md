@@ -1,10 +1,8 @@
-# API for SEVA APP
+# API for SEVA APP (https://seva-backend1.herokuapp.com)
 
-https://seva-backend1.herokuapp.com
-## replace localhost with https://seva-backend1.herokuapp.com 
-### register
+## Register
 
-1. ``` POST``` http://localhost:5000/register
+1. ``` POST``` https://seva-backend1.herokuapp.com/register
 ```
 {
     "userName" : "bhupendra",
@@ -20,9 +18,9 @@ https://seva-backend1.herokuapp.com
 }
 ```
 
-### login
+## login
 
-2. ``` POST``` http://localhost:5000/login
+2. ``` POST``` https://seva-backend1.herokuapp.com/login
 ```
 {
     "email":"provider1@gmail.com",
@@ -31,30 +29,39 @@ https://seva-backend1.herokuapp.com
 
 ```
 
-### user dashboard
+## User dashboard
 
-3. ``` GET``` http://localhost:5000/user
-
-```
-Header : 
-    auth-token - token-value
-```
-
-### provider dashboard
-
-4. ``` GET``` http://localhost:5000/provider
+3. ``` GET``` https://seva-backend1.herokuapp.com/user
 
 ```
 Header : 
     auth-token - token-value
 ```
 
-### feedback
+## Provider dashboard
 
-5. ``` GET``` http://localhost:5000/feedback
+4. ``` GET``` https://seva-backend1.herokuapp.com/provider
+
+```
+Header : 
+    auth-token - token-value
+```
+
+## Admin dashboard
+
+4. ``` GET``` https://seva-backend1.herokuapp.com/admin
+
+```
+Header : 
+    auth-token - token-value
+```
+
+## feedback
+
+5. ``` GET``` https://seva-backend1.herokuapp.com/feedback
 
 
-6. ```POST``` http://localhost:5000/user/feedback
+6. ```POST``` https://seva-backend1.herokuapp.com/user/feedback
 
 ```
 Header : 
@@ -67,7 +74,7 @@ Header :
 }
 ```
 
-7. ```PUT``` http://localhost:5000/user/feedback/:Id
+7. ```PUT``` https://seva-backend1.herokuapp.com/user/feedback/:Id
 
 ```
 Header : 
@@ -81,32 +88,22 @@ Header :
 ```
 
 
-8. ```DELETE``` http://localhost:5000/user/feedback/:Id
+8. ```DELETE``` https://seva-backend1.herokuapp.com/user/feedback/:Id
 
 ```
 Header : 
     auth-token - token-value
 ```
 
-### category
+## category
 
-9. ``` GET``` http://localhost:5000/admin/category
-
-```
+9. ``` GET``` https://seva-backend1.herokuapp.com/admin/category
 
 ```
 
-10. ``` POST``` http://localhost:5000/admin/category
-
-```
-{
-    "icon":"https://raw.githubusercontent.com/omjdeshmukh/seva/main/demo.png?token=AHT44ZFI435X3WB4KHO3BUTAJTNSY",
-    "category": "Health Care",
-    "description": "Health Care Service"
-}
 ```
 
-11. ``` PUT``` http://localhost:5000/admin/category/:Id
+10. ``` POST``` https://seva-backend1.herokuapp.com/admin/category
 
 ```
 {
@@ -116,21 +113,31 @@ Header :
 }
 ```
 
-11. ``` DELETE``` http://localhost:5000/admin/category/:Id
+11. ``` PUT``` https://seva-backend1.herokuapp.com/admin/category/:Id
+
+```
+{
+    "icon":"https://raw.githubusercontent.com/omjdeshmukh/seva/main/demo.png?token=AHT44ZFI435X3WB4KHO3BUTAJTNSY",
+    "category": "Health Care",
+    "description": "Health Care Service"
+}
+```
+
+11. ``` DELETE``` https://seva-backend1.herokuapp.com/admin/category/:Id
 
 ```
 
 ```
 
-### Service
+## Service
 
-12. ``` GET``` http://localhost:5000/service
-
-```
+12. ``` GET``` https://seva-backend1.herokuapp.com/service
 
 ```
 
-13. ``` POST``` http://localhost:5000/provider/service
+```
+
+13. ``` POST``` https://seva-backend1.herokuapp.com/provider/service
 
 ```
 Header : 
@@ -150,7 +157,7 @@ Header :
 }
 ```
 
-14. ``` PUT``` http://localhost:5000/provider/service/:Id
+14. ``` PUT``` https://seva-backend1.herokuapp.com/provider/service/:Id
 
 ```
 Header : 
@@ -170,47 +177,47 @@ Header :
 }
 ```
 
-15. ``` DELETE``` http://localhost:5000/provider/service/:Id
+15. ``` DELETE``` https://seva-backend1.herokuapp.com/provider/service/:Id
 
 ```
 Header : 
     auth-token - token-value
 ```
 
-16. ``` GET``` http://localhost:5000/provider/my/service/:Id
+16. ``` GET``` https://seva-backend1.herokuapp.com/provider/my/service/:Id
 
 ```
 Header : 
     auth-token - token-value
 ```
 
-17. ``` GET``` http://localhost:5000/service/:Pincode
+17. ``` GET``` https://seva-backend1.herokuapp.com/service/:Pincode
 
 ```
 Header : 
     auth-token - token-value
 ```
 
-18. ``` GET``` http://localhost:5000/seriveBycategoryAndPin/:categoryId/:Pincode
+18. ``` GET``` https://seva-backend1.herokuapp.com/seriveBycategoryAndPin/:categoryId/:Pincode
 
 ```
 
 ```
 
 
-19. ``` GET``` http://localhost:5000/seriveBycategoryAndPin/:categoryId/:Pincode
+19. ``` GET``` https://seva-backend1.herokuapp.com/seriveBycategoryAndPin/:categoryId/:Pincode
 
 ```
 
 ```
 
-20. ``` GET``` http://localhost:5000/service/:Id
+20. ``` GET``` https://seva-backend1.herokuapp.com/service/:Id
 
 ```
 
 ```
 
-21. ``` GET``` http://localhost:5000/VerifiedService
+21. ``` GET``` https://seva-backend1.herokuapp.com/VerifiedService
 
 ```
 
@@ -218,20 +225,20 @@ Header :
 
 ## user suggestiom(token requied)
 
-22. ``` GET``` http://localhost:5000/user/my/suggestion/:userId
+22. ``` GET``` https://seva-backend1.herokuapp.com/user/my/suggestion/:userId
 
 ```
 
 ```
 
-22. ``` GET``` http://localhost:5000/user/my/suggestion/:userId
+22. ``` GET``` https://seva-backend1.herokuapp.com/user/my/suggestion/:userId
 
 ```
 https://seva-backend1.herokuapp.com/user/my/suggestion/604cc1fd43e82822a85786e6
 user id - 604cc1fd43e82822a85786e6
 ```
 
-23. ``` POST``` http://localhost:5000/user/suggestion
+23. ``` POST``` https://seva-backend1.herokuapp.com/user/suggestion
 
 ```
 {
@@ -243,33 +250,82 @@ user id - 604cc1fd43e82822a85786e6
 ```
 
 
-24. ``` PUT``` http://localhost:5000/user/suggestion/:suggestionId
+24. ``` PUT``` https://seva-backend1.herokuapp.com/user/suggestion/:suggestionId
 
 ```
 
 ```
 
-25. ``` DELETE``` http://localhost:5000/user/suggestion/:suggestionId
+25. ``` DELETE``` https://seva-backend1.herokuapp.com/user/suggestion/:suggestionId
 
 ```
 
 ```
 
 
-## user profile 
+## User Profile 
 
-26. ``` GET``` http://localhost:5000/user/profile/:profileId
+26. ``` GET``` https://seva-backend1.herokuapp.com/user/profile/:profileId
+
+```
+
+```
+
+27. ``` PUT``` https://seva-backend1.herokuapp.com/user/profile/:profileId
+
+```
+Header : 
+    auth-token - token-value
+```
+
+
+```
+    "fullName" : "user bhupendra ",
+    "state": "MH",
+    "city": "pune",
+    "village": "katraj",
+    "pincode": "411048"
+```
+28. ``` DELETE``` https://seva-backend1.herokuapp.com/user/profile/:profileId
+
+```
+Header : 
+    auth-token - token-value
+```
+
+```
+
+```
+
+## Provider Profile 
+
+26. ``` GET``` https://seva-backend1.herokuapp.com/provider/profile/:profileId
 
 ```
 
 ```
 
-27. ``` PUT``` http://localhost:5000/user/profile/:profileId
+27. ``` PUT``` https://seva-backend1.herokuapp.com/provider/profile/:profileId
 
 ```
+Header : 
+    auth-token - token-value
+```
+
 
 ```
-28. ``` DELETE``` http://localhost:5000/user/profile/:profileId
+    "fullName" : "user bhupendra ",
+    "state": "MH",
+    "city": "pune",
+    "village": "katraj",
+    "pincode": "411048"
+```
+28. ``` DELETE``` https://seva-backend1.herokuapp.com/provider/profile/:profileId
+
+```
+Header : 
+    auth-token - token-values
+```
 
 ```
 
