@@ -3,9 +3,8 @@
 </p>
 
 Seva a web app that is benificial for both users as well as consumers.
-<p align="center">
-   <a href="https://seva-webapp.herokuapp.com/"> Web Demo link </a>&nbsp;&nbsp;&nbsp;&nbsp;  <a href="https://seva-backend1.herokuapp.com"> Backend api link</a>
-</p>
+* [Web Demo link ](https://seva-webapp.herokuapp.com/)
+* [Backend api link](https://seva-backend1.herokuapp.com)
 
 ## What is the problem?
 
