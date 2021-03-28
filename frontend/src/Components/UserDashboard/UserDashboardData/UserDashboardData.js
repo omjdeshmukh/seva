@@ -105,9 +105,17 @@ const DashBoardInnerContainer = styled.div`
 `;
 
 const CatagorySection = styled.div``;
-const SuggectionSection = styled.div``;
+const SuggectionSection = styled.div`
+@media screen and (max-width: 800px){
+  width:100%
+}
+`;
 const UserSection = styled.div``;
-const TotalServices = styled.div``;
+const TotalServices = styled.div`
+@media screen and (max-width: 800px){
+  width:100%
+}
+`;
 const InfoSection = styled.div`
   padding: 0.5rem;
   display: flex;
@@ -120,6 +128,7 @@ const InfoSection = styled.div`
   > p {
     font-weight: 600;
   }
+  
 `;
 
 const SvgSection = styled.div`
