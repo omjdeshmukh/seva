@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { Button } from "reactstrap";
 import { getCookieData } from "../../userData";
+import wrap from 'word-wrap'
 
 function FeedbackCard(props) {
   const cookieData = getCookieData();
@@ -26,20 +27,20 @@ function FeedbackCard(props) {
 
   return (
     <>
+    <ScrollContainer>
       <CardContainer>
         <CardInnerContainer>
-          <InfoContainer>
             <Info>
-              <small>{props.feedbackinfo}</small>
+              <p>{props.feedbackinfo} </p>
             </Info>
             <Action>
               <Button color="danger" onClick={ActionDelete}>
                 Delete
               </Button>
             </Action>
-          </InfoContainer>
         </CardInnerContainer>
       </CardContainer>
+      </ScrollContainer>
     </>
   );
 }
@@ -53,42 +54,34 @@ const CardContainer = styled.div`
   font-family: hindLight;
 `;
 const CardInnerContainer = styled.div`
-  width: 95%;
-  margin: 0 auto;
+  width: 100%;
+  //margin: 0 auto;
   padding: 2rem 0;
+  display:flex;
+  justify-content:space-around;
 `;
 
-const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  // align-items: center;
-  > img {
-    width: 4rem;
-    height: 4rem;
-    border: none;
-    border-radius: 10%;
-  }
-`;
 const Info = styled.div`
-  padding: 0 1rem;
-  text-align: left;
-  width: 85%;
+  width: 70%;
+  padding-left:5%;
   color: black;
-  padding-left: 100px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  > h4 {
-    padding: 0;
   }
 `;
 
 const Action = styled.div`
   padding: 0 1rem;
-  /* align-items: right; */
-  justify-content:center > button {
-    padding: 12;
-  }
+  width:30%;
+   display:flex;
+   flex-direction:flex-end;
+  justify-content:center 
+`;
+
+const ScrollContainer =styled.div`
+height:500px;
+overflow-y:scroll;
+overflow-x:hidden;
+white-space:wrap;
 `;

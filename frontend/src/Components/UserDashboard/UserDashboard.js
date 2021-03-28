@@ -60,8 +60,8 @@ function UserDashboard() {
             <ListGroup.Item>
               <img
                 src="https://res.cloudinary.com/drampnn2w/image/upload/v1615827809/Face-Profile-User-Man-Boy-Person-Avatar-512_ervo1s.png"
-                width="180px"
-                height="180px"
+                width="80%"
+                height="80%"
               />
               <h5>{profileData && profileData.fullName}</h5>
               <p>User</p>

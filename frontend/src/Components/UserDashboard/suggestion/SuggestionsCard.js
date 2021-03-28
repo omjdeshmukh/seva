@@ -48,17 +48,16 @@ function SuggestionCard(props) {
 
   return (
     <>
+    <ScrollContainer>
       <CardContainer>
         <CardInnerContainer>
-          <InfoContainer>
             <Info>
               <h3>{servicetype}</h3>
               {<small>{categoryName}</small>}
               <br></br>
               <small>{servicedescription}</small>
             </Info>
-          </InfoContainer>
-          <ButtonContainer>
+            <ButtonContainer>
             <Action>
               <Button color="danger" onClick={ActionDelete}>
                 Delete
@@ -72,6 +71,8 @@ function SuggestionCard(props) {
           </ButtonContainer>
         </CardInnerContainer>
       </CardContainer>
+      </ScrollContainer>
+
       <UpdateSuggestions open={open} close={setOpen} id={suggestionid} />
     </>
   );
@@ -87,7 +88,7 @@ const CardContainer = styled.div`
   display: flex;
 `;
 const CardInnerContainer = styled.div`
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem 0;
   display: flex;
@@ -95,25 +96,12 @@ const CardInnerContainer = styled.div`
   justify-content: space-around;
 `;
 
-const InfoContainer = styled.div`
-  // display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  // align-items: center;
-  align-items: left;
-  > img {
-    width: 4rem;
-    height: 4rem;
-    border: none;
-    border-radius: 10%;
-  }
-`;
 const Info = styled.div`
   padding: 0 1rem;
   text-align: left;
-  width: 85%;
+  width: 60%;
   color: black;
-  padding-left: 100px;
+  padding-left: 10%;
   // display:flex;
   flex-direction: column;
   justify-content: center;
@@ -121,16 +109,42 @@ const Info = styled.div`
 
   > h3 {
     padding: 0;
-  }
+}
 `;
 
 const Action = styled.div`
-  padding: 0 1rem;
-  /* align-items: right; */
-  justify-content:center > button {
-    padding: 12;
-  }
+  padding:0 5%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 `;
+
 const ButtonContainer = styled.div`
-  display: flex;
+width:40%;
+padding: 0 0.5%;
+display:flex;
+flex-direction:row;
+align-items: right;
+justify-content:center;
+
+@media screen and (max-width: 650px){
+  {
+     flex-direction:column;
+     
+  }
+  > div {
+    @media screen and (max-width: 650px){
+      {
+         margin:0.5rem 0;
+         
+      }
+  }
+}
+`;
+
+const ScrollContainer =styled.div`
+height:500px;
+overflow-y:scroll;
+overflow-x:hidden;
+white-space:wrap;
 `;
