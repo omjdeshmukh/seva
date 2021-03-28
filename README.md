@@ -112,17 +112,16 @@ npm test
 * 0.0.1
     * Work in progress
 
-## Meta
-
-## FrontEnd
-*Omjdeshmukh* (https://github.com/omjdeshmukh)
-
-*Bharath Reddy* (https://github.com/Bharath693)
-
-*Priyanshu Sarkar* (https://github.com/SarkarPriyanshu)
-
-## BackEnd
-Bhupendra Banothe (https://github.com/mrDarkk)
+## Contributors ✨
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/mrDarkk"><img src="https://avatars.githubusercontent.com/u/31968868?v=4" width="100px;" alt=""/><br /><sub><b>Bhupendra Banothe</b></sub></a><br /><a href="#question-kentcdodds" title="Answering Questions">💬</a> <a href="https://github.com/omjdeshmukh/seva/commits?author=mrDarkk" title="Documentation">📖</a> <a href="https://github.com/omjdeshmukh/seva/commits?author=mrDarkk" title="Reviewed Pull Requests">👀</a> <a href="#talk-kentcdodds" title="Talks">📢</a><a href="#infra-jakebolam" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/SarkarPriyanshu"><img src="https://avatars.githubusercontent.com/u/55652493?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Priyanshu Sarkar</b></sub></a><br /><a href="https://github.com/omjdeshmukh/seva/commits?author=SarkarPriyanshu" title="Documentation">📖</a> <a href="https://github.com/omjdeshmukh/seva/commits?author=SarkarPriyanshu" title="Reviewed Pull Requests">👀</a> <a href="#tool-jfmengels" title="Tools">🔧</a></td>
+    <td align="center"><a href="https://github.com/omjdeshmukh"><img src="https://avatars.githubusercontent.com/u/72704286?v=4" width="100px;" alt=""/><br /><sub><b>Omjdeshmukh</b></sub></a><br /><a href="https://github.com/omjdeshmukh/seva/commits?author=omjdeshmukh" title="Documentation">📖</a> <a href="#tool-jakebolam" title="Tools">🔧</a> </td>
+    <td align="center"><a href="https://github.com/Bharath693"><img src="https://avatars.githubusercontent.com/u/72741712?v=4" width="100px;" alt=""/><br /><sub><b>Bharath Reddy</b></sub></a><br /><a href="#maintenance-tbenning" title="Maintenance">🚧</a> <a href="https://github.com/omjdeshmukh/seva/commits?author=Bharath693" title="Code">💻</a> <a href="#design-tbenning" title="Design">🎨</a></td>
+  
+  </tr>
+   </table>
 
 
 
