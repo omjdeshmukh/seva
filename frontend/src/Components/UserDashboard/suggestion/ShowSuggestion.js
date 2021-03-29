@@ -22,8 +22,10 @@ function ShowSuggestion({ pincode, token, userId, role }) {
 
   return (
     <div>
+      
       {suggestions && suggestions.length != 0 ? (
         <>
+        <ScrollContainer>
           {suggestions &&
             suggestions.map((item, i) => {
               return (
@@ -36,7 +38,9 @@ function ShowSuggestion({ pincode, token, userId, role }) {
                 />
               );
             })}
+            </ScrollContainer>
         </>
+        
       ) : (
         <>
           <NoServiceDiv>
@@ -81,4 +85,11 @@ const VectorContainer = styled.div`
     width: 100%;
     height: 15rem;
   }
+`;
+
+const ScrollContainer =styled.div`
+height:500px;
+overflow-y:scroll;
+overflow-x:hidden;
+white-space:wrap;
 `;
