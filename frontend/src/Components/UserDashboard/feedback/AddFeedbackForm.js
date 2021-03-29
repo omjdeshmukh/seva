@@ -31,6 +31,7 @@ function AddFeedbackForm() {
       .then(function (response) {
         console.log(response);
         alert("feedback added ");
+        afterPost()
       })
       .catch(function (response) {
         alert("something went wrong");
@@ -38,7 +39,9 @@ function AddFeedbackForm() {
       });
   }
   function afterPost() {
-    feedbackData = "";
+    SetFeedbackData({
+      feedbackData:""
+    })
   }
 
   function handleInput(e) {

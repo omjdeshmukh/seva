@@ -27,7 +27,6 @@ function FeedbackCard(props) {
 
   return (
     <>
-    <ScrollContainer>
       <CardContainer>
         <CardInnerContainer>
             <Info>
@@ -40,7 +39,6 @@ function FeedbackCard(props) {
             </Action>
         </CardInnerContainer>
       </CardContainer>
-      </ScrollContainer>
     </>
   );
 }
@@ -79,9 +77,3 @@ const Action = styled.div`
   justify-content:center 
 `;
 
-const ScrollContainer =styled.div`
-height:500px;
-overflow-y:scroll;
-overflow-x:hidden;
-white-space:wrap;
-`;

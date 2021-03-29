@@ -26,6 +26,7 @@ function ShowFeedback({ token, userId, pincode, role }) {
     <div>
       {feedback && feedback.length != 0 ? (
         <>
+        <ScrollContainer>
           {feedback &&
             feedback.map((item, i) => {
               return (
@@ -36,6 +37,7 @@ function ShowFeedback({ token, userId, pincode, role }) {
                 />
               );
             })}
+        </ScrollContainer>
         </>
       ) : (
         <>
@@ -81,4 +83,11 @@ const VectorContainer = styled.div`
     width: 100%;
     height: 15rem;
   }
+`;
+
+const ScrollContainer =styled.div`
+height:500px;
+overflow-y:scroll;
+overflow-x:hidden;
+white-space:wrap;
 `;
