@@ -7,7 +7,7 @@ Seva :tada: a web app that is benificial for both users as well as consumers.
 * [Backend api link :rocket:](https://seva-backend1.herokuapp.com)
 * [Backend api Doc :green_book: ](https://github.com/omjdeshmukh/seva/blob/main/API.md)
 
-## What is the problem?
+## What is the problem? :wind_chime:
 
 The problem statement is to focus in our rural areas where the facilities, which are normal in urban areas is not as accessible
 in rural areas.About 65.53 % population in india come under rural areas. The people in this areas find them themselves in a situation where the
@@ -15,24 +15,27 @@ have to travel certain distances for basic needs, which is easily available in u
 Human behaviour reasons. Or due to lot of ignorance.
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About The Project :tada:
 <p align="center">
 <img width="400px" height="600px" src="https://github.com/omjdeshmukh/seva/blob/main/ScreenShots/Seva.png?raw=true" alt="Webapp Screenshot"/>
 </p>
 
+#### Porpose
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+To connect the small town/village people with the service Provider.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+And also the suggestions of the people give the advantages to the provider to open store near by the place where the service required most
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
+#### Scope
+we can add more features in future for our customers as they gives us suggesions and the further research. 
+To minimise the distance for basic need/services/facilities of towns/villages.
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+#### Objective
 
-### Built With
+And aware about the providers or services/facilities which are available near the user/customer
+
+
+### Built With :package:
 
 Technologies used to develop this web application.
 * [React Js](https://reactjs.org)
@@ -44,7 +47,7 @@ Technologies used to develop this web application.
 ![](header.png)
 
 
-## Development setup
+## Development setup :wrench:
 
 ### FrontEnd
 
@@ -72,7 +75,7 @@ Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-## Release History
+## Release History :postbox:
 
 * v1
     * CHANGE: Update docs (module code remains unchanged)
@@ -91,7 +94,7 @@ You will also see any lint errors in the console.
 
 
 
-## Contributing
+## Contributing :confetti_ball:
 
 1. Fork it (<https://github.com/yourname/yourproject/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
