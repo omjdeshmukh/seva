@@ -20,7 +20,7 @@ function SuggestionTable() {
     const [suggestion, setSuggestion] = useState();
     const [formData, setFormData] = useState({});
 
-    const [postPerpages] = useState(6);
+    const [postPerpages] = useState(8);
     const [currentpage , setCurrentpage] = useState(1)
  //   console.log(suggestion);
 

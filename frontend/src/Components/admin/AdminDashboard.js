@@ -8,6 +8,7 @@ import { Button } from "reactstrap";
 import Dashboard from "./Dashboard/adminDashboard";
 import Chart from "./Chart/Chart";
 import SuggestionTable from "./table/suggestionTable";
+import AllUserTable from "./user table/allUserTable";
 
 function AdminDashboard() {
   const [category, setCategory] = useState();
@@ -58,6 +59,9 @@ function AdminDashboard() {
             <ListGroup.Item action href="#showSuggestionRequest">
               Show Suggestion Request
             </ListGroup.Item>
+            <ListGroup.Item action href="#showallUser">
+              Show all User
+            </ListGroup.Item>
             {/* <ListGroup.Item action href="/">
               log out
             </ListGroup.Item> */}
@@ -92,6 +96,9 @@ function AdminDashboard() {
             </Tab.Pane>
             <Tab.Pane eventKey="#Chart">
               <Chart />
+            </Tab.Pane>
+            <Tab.Pane eventKey="#showallUser">
+              <AllUserTable />
             </Tab.Pane>
           </Tab.Content>
         </Col>
