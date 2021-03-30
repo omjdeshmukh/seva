@@ -9,6 +9,7 @@ import Dashboard from "./Dashboard/adminDashboard";
 import Chart from "./Chart/Chart";
 import SuggestionTable from "./table/suggestionTable";
 import AllUserTable from "./user table/allUserTable";
+import ServiceTable from "./servicetable/serviceTable";
 
 function AdminDashboard() {
   const [category, setCategory] = useState();
@@ -62,6 +63,9 @@ function AdminDashboard() {
             <ListGroup.Item action href="#showallUser">
               Show all User
             </ListGroup.Item>
+            <ListGroup.Item action href="#showservice">
+              Show all Service
+            </ListGroup.Item>
             {/* <ListGroup.Item action href="/">
               log out
             </ListGroup.Item> */}
@@ -99,6 +103,9 @@ function AdminDashboard() {
             </Tab.Pane>
             <Tab.Pane eventKey="#showallUser">
               <AllUserTable />
+            </Tab.Pane>
+            <Tab.Pane eventKey="#showservice">
+              <ServiceTable />
             </Tab.Pane>
           </Tab.Content>
         </Col>

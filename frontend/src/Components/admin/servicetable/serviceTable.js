@@ -16,7 +16,7 @@ import {
   import Pagination from './pagination'
 import styled from 'styled-components'
 
-function SuggestionTable() {
+function ServiceTable() {
     const [suggestion, setSuggestion] = useState();
     const [formData, setFormData] = useState({});
 
@@ -37,7 +37,7 @@ function SuggestionTable() {
   };
 
   function clearAll() {
-    fetch(`https://seva-backend1.herokuapp.com/suggestion/`)
+    fetch(`https://seva-backend1.herokuapp.com/service/`)
           .then((response) => response.json())
           .then((response) => setSuggestion(response))
           .catch((err) => console.log(err.message));
@@ -46,7 +46,7 @@ function SuggestionTable() {
   function sendSuggestionBypin(){
     axios({
         method: "GET",
-        url: `https://seva-backend1.herokuapp.com/suggestionByPincode/${formData.pincode}`,
+        url: `https://seva-backend1.herokuapp.com/serviceByPin/${formData.pincode}`,
       })
         .then(function (response) {
           //handle success
@@ -62,7 +62,7 @@ function SuggestionTable() {
   }
 
     useEffect(() => {
-        fetch(`https://seva-backend1.herokuapp.com/suggestion/`)
+        fetch(`https://seva-backend1.herokuapp.com/service/`)
           .then((response) => response.json())
           .then((response) => setSuggestion(response))
           .catch((err) => console.log(err.message));
@@ -77,7 +77,7 @@ function SuggestionTable() {
      }
   return (
     <>
-        <h4>Requested Suggestion based on area PinCode.....</h4>
+        <h4>all service</h4>
         <br></br>
         <Container>
         
@@ -117,29 +117,31 @@ function SuggestionTable() {
       <thead>
         <tr>
           <th>#</th>
-          <th>Requested Area PinCode</th>
-          <th>Service Type</th>
+          <th>Area PinCode</th>
+          <th>Service Name</th>
           <th>category</th>
-          <th>Requested user email</th>
-          <th>Service ServiceDescription</th>
-          <th>Vote by user</th>
+          <th>Service Email</th>
+          <th>Service Contact No</th>
+          <th>IsVerify</th>
+          <th>Provider Email</th>
         </tr>
       </thead>
       
       <tbody>
         {currentPost &&
             currentPost.map((item, index) => {
-            //   console.log(item);
+               //console.log(item);
               return (
                 <>
                 <tr>
                 <th scope="row">{index+1}</th>
-                <td>{item.ServicePinCode}</td>
-                <td>{item.ServiceType}</td>
+                <td>{item.servicePincode}</td>
+                <td>{item.serviceNames}</td>
                 <td>{item.category.category}</td>
+                <td>{item.serviceEmail}</td>
+                <td>{item.contactNo}</td>
+                <td>{item.isVerify}</td>
                 <td>{item.user.email}</td>
-                <td>{item.ServiceDescription}</td>
-                <td>{item.voteCount}</td>
                 </tr>
                   {/* <SuggestionCard key={index} {...item} /> */}
                 </>
@@ -159,7 +161,7 @@ function SuggestionTable() {
   );
 }
 
-export default SuggestionTable;
+export default ServiceTable;
 
 const Scroll = styled.div`
 max-height:500px;
