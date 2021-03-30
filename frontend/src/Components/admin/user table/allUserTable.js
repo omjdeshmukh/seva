@@ -19,7 +19,7 @@ import styled from 'styled-components'
 function AllUserTable() {
     const [suggestion, setSuggestion] = useState();
  
-    const [postPerpages] = useState(9);
+    const [postPerpages] = useState(10);
     const [currentpage , setCurrentpage] = useState(1)
  //   console.log(suggestion);
 
@@ -62,7 +62,7 @@ function AllUserTable() {
       <tbody>
         {currentPost &&
             currentPost.map((item, index) => {
-              console.log(item);
+              //console.log(item);
               return (
                 <>
                 <tr>
@@ -98,7 +98,7 @@ function AllUserTable() {
 export default AllUserTable;
 
 const Scroll = styled.div`
-max-height:500px;
+max-height:600px;
 overflow-y:scroll;
 overflow-x:hidden;
 white-space:nowrap;

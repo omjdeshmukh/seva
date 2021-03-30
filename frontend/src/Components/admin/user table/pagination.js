@@ -9,7 +9,7 @@ function Paginaion(props){
    for(let i=1 ; i <= Math.ceil(totalsuggestions && totalsuggestions.length / postperpages) ; i++){
        pageNumbers.push(i)
    }
-   console.log(pageNumbers)
+   //console.log(pageNumbers)
     return(
         <nav>
             <ul className="pagination mt-5">
