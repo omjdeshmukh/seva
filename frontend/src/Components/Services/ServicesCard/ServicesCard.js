@@ -1,12 +1,22 @@
 import { func } from "prop-types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { getCookieData } from "../../userData";
+import { getCookieData, setCookieData } from "../../userData";
 
 function ServicesCard(props) {
+  const [categoryNo, setCategoryNo] = useState();
   const cookieData = getCookieData();
   const { _id, icon, category, description } = props.data;
+
+  useEffect(() => {
+    fetch(
+      `https://seva-backend1.herokuapp.com/seriveBycategoryAndPin/${_id}/${cookieData.pincode}`
+    )
+      .then((response) => response.json())
+      .then((response) => setCategoryNo(response))
+      .catch((error) => console.log(error.message));
+  }, []);
 
   return (
     <>
@@ -16,7 +26,10 @@ function ServicesCard(props) {
             <img src={icon} alt={description} />
           </ServiceImage>
           <SrviceInfo>
-            <h5>{category}</h5>
+            <h5>
+              {category}
+              <CategoryNo>{categoryNo && categoryNo.length}</CategoryNo>
+            </h5>
           </SrviceInfo>
         </Link>
       </ServiceCardContainer>
@@ -64,4 +77,12 @@ const SrviceInfo = styled.div`
     font-family: hindRegular;
     font-size: 15px;
   }
+`;
+
+const CategoryNo = styled.span`
+  background-color: #5ab9ea;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0 0.5rem;
+  margin: 0 0.3rem;
 `;

@@ -19,7 +19,7 @@ function ServicesPerPincode(props) {
   const requiredService =
     services && services.filter((item) => item.category._id === _id);
 
-  console.log(Array.isArray(requiredService));
+  console.log(requiredService);
 
   return (
     <>

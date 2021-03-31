@@ -48,8 +48,9 @@ function SuggestionCard(props) {
 
   return (
     <>
-      <CardContainer>
-        <CardInnerContainer>
+      <ScrollContainer>
+        <CardContainer>
+          <CardInnerContainer>
             <Info>
               <h3>{servicetype}</h3>
               {<small>{categoryName}</small>}
@@ -57,19 +58,20 @@ function SuggestionCard(props) {
               <small>{servicedescription}</small>
             </Info>
             <ButtonContainer>
-            <Action>
-              <Button color="danger" onClick={ActionDelete}>
-                Delete
-              </Button>
-            </Action>
-            <Action>
-              <Button color="primary" onClick={() => setOpen(true)}>
-                Update
-              </Button>
-            </Action>
-          </ButtonContainer>
-        </CardInnerContainer>
-      </CardContainer>
+              <Action>
+                <Button color="danger" onClick={ActionDelete}>
+                  Delete
+                </Button>
+              </Action>
+              <Action>
+                <Button color="primary" onClick={() => setOpen(true)}>
+                  Update
+                </Button>
+              </Action>
+            </ButtonContainer>
+          </CardInnerContainer>
+        </CardContainer>
+      </ScrollContainer>
 
       <UpdateSuggestions open={open} close={setOpen} id={suggestionid} />
     </>
@@ -107,14 +109,14 @@ const Info = styled.div`
 
   > h3 {
     padding: 0;
-}
+  }
 `;
 
 const Action = styled.div`
-  padding:0 5%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  padding: 0 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ButtonContainer = styled.div`
@@ -126,17 +128,17 @@ align-items: right;
 justify-content:center;
 
 @media screen and (max-width: 650px){
-  {
      flex-direction:column;
-     
-  }
   > div {
     @media screen and (max-width: 650px){
-      {
          margin:0.5rem 0;
-         
-      }
   }
 }
 `;
 
+const ScrollContainer = styled.div`
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  white-space: wrap;
+`;
